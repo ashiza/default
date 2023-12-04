@@ -1,0 +1,36 @@
+#i-fr-ds{
+	border: 0;
+	z-index: 9999;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border: 1px solid #ccc;
+   /* box-shadow: 0 8px 8px 0 rgb(68 139 208 / 50%);*/
+	width:800px;
+	height:450px;
+    overflow: hidden;
+}
+@media screen and (min-width: 1000px) {		
+	#i-fr-ds{
+		width:1000px;
+		height:585px;
+		
+	
+	}
+}	
+@media only screen and (max-width:799px){
+	#i-fr-ds{
+		width:100%;/*height:100%;*/position:absolute;
+		min-height: 684px;height: 100vh;
+	}
+}
+#c-cl-ds {
+    background: url(/image/ic_close_white_24dp.png);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 4px;
+	z-index:10000;
+}

@@ -1,0 +1,3 @@
+.accordion-item{border-top:1px solid rgba(0,0,0,.03);padding:1.2rem;transition:background .3s;height:64px;overflow:hidden}.accordion-item:first-child{border-top:0}.accordion-item.in{background:#f1f5ff;border-top-color:transparent;border-radius:10px;height:auto}.accordion-item h2{position:relative}.accordion-item h2:after{border:2px solid #000;border-radius:2px;border-right:0;border-top:0;content:" ";display:block;height:.625em;margin-top:-.4375em;pointer-events:none;position:absolute;top:50%;right:.2rem;transform:rotate(
+-45deg);transform-origin:center;width:.625em;transition:.3s}.accordion-item.in h2:after{transform:rotate(
+135deg)}.accordion-body{padding-top:1rem}@media only screen and (max-width:799px){.accordion{width:100%;}}
