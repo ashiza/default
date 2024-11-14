@@ -18,30 +18,78 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16 w3-red">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
-  </div>
-  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
+
+
+<!-- Navigation Bar -->
+<div class="w3-container w3-red w3-top w3-padding-16">
+  <h3 class="w3-wide w3-left"><b>One Stamp Shop</b></h3>
+  <div class="w3-bar w3-large">
     <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
-    <a href="#" class="w3-button w3-block w3-white w3-left-align">Engraving</a>
-    <a onclick="myAccFunc()" href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button" id="myBtn">Stamps</a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
-      <a href="#" class="w3-bar-item w3-button">Daters</a>
-      <a href="#" class="w3-bar-item w3-button">None Daters</a>
-      <a href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Copy/Custom%20stamp%20maker%20designer%20make%20stamp%20online%20create%20company%20seal.html" class="w3-bar-item w3-button">Create own Design</a> 
+    <a href="#" class="w3-bar-item w3-button">Engraving</a>
+    <a href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button" id="myBtn">Stamps</a>
+
+    <!-- Dropdown menu for Stamps -->
+    <div class="w3-dropdown-click">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button">Stamps</a>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
+        <a href="#" class="w3-bar-item w3-button">Daters</a>
+        <a href="#" class="w3-bar-item w3-button">None Daters</a>
+        <a href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Copy/Custom%20stamp%20maker%20designer%20make%20stamp%20online%20create%20company%20seal.html" class="w3-bar-item w3-button">Create own Design</a>
       </div>
+    </div>
+
     <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
     <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
     <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
     <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
+
+    <a href="#footer" class="w3-bar-item w3-button">Contact</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+    <a href="#footer" class="w3-bar-item w3-button">Subscribe</a>
   </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
-</nav>
+</div>
+
+<!-- Add additional CSS for styling -->
+<style>
+  /* Make the navigation bar horizontal */
+  .w3-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f44336;
+    padding: 10px 0;
+  }
+
+  /* Space out the menu items */
+  .w3-bar-item {
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .w3-bar-item:hover {
+    background-color: #555;
+  }
+
+  /* Dropdown styles for Stamps */
+  .w3-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .w3-dropdown-click:hover .w3-dropdown-content {
+    display: block;
+  }
+
+  .w3-dropdown-content .w3-bar-item {
+    color: black;
+  }
+</style>
+	
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
