@@ -19,43 +19,60 @@
     width: 250px;
     display: block;
     background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s;
   }
 
-  /* Horizontal Menu for Large Screens */
+  /* Hide Sidebar on large screens */
   @media screen and (min-width: 992px) {
     .w3-sidebar {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: auto;
-      background-color: #f1f1f1;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      z-index: 3;
+      display: none; /* Hide sidebar on large screens */
     }
 
-    .w3-sidebar .w3-bar-item {
-      display: inline-block;
+    /* Horizontal Menu for Large Screens */
+    .w3-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 2;
+    }
+
+    .w3-top .w3-bar-item {
       padding: 14px 20px;
-      text-align: center;
-      color: #000;
+      color: #fff;
       text-decoration: none;
     }
 
-    .w3-sidebar .w3-bar-item:hover {
+    .w3-top .w3-bar-item:hover {
       background-color: #ddd;
       color: #000;
+    }
+
+    /* Content of the page */
+    .w3-content {
+      margin-top: 60px; /* Offset for fixed header */
+    }
+  }
+
+  /* Sidebar on small screens */
+  @media screen and (max-width: 991px) {
+    .w3-sidebar {
+      display: block; /* Show sidebar on smaller screens */
     }
   }
 </style>
 </head>
 <body>
 
-<!-- Sidebar/menu -->
+<!-- Sidebar/menu for smaller screens -->
 <nav class="w3-sidebar w3-bar-block">
   <div class="w3-container w3-display-container w3-padding-16 w3-red">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
@@ -81,10 +98,17 @@
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+<!-- Top menu for large screens -->
+<header class="w3-top w3-bar w3-black w3-hide-small">
   <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+  <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
+  <a href="#" class="w3-bar-item w3-button">Engraving</a>
+  <a href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button">Stamps</a>
+  <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
+  <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
+  <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
+  <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
 </header>
 
 <!-- Page content -->
@@ -114,37 +138,29 @@
       </div>
       <div class="w3-third">
         <p>Family collection</p>
-        <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" class="w3-round" alt="Family collection" style="width:60%">
-      </div>
-    </div>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Key Holders</p>
-        <img src="Engraving_files/set.jpg" class="w3-round w3-margin-bottom" alt="Garden Potrait" style="width:70%">
-      </div>
-      <div class="w3-third">
-        <p>Table runner rack</p>
-        <img src="Engraving_files/Table_Runner_Stack_750x500.webp" class="w3-round w3-margin-bottom" alt="Table Runner" style="width:85%">
-      </div>
-      <div class="w3-third">
-        <p>Timeless Message</p>
-        <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" class="w3-round" alt="Timeless" style="width:75%">
+        <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" class="w3-round" alt="Family collection" style="width:70%">
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-    <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
-    <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
-    <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i>
-    <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
+  <footer class="w3-center w3-light-grey w3-padding-16" id="footer">
+    <a href="https://www.linkedin.com/company/1stampshop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
     <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter w3-hover-opacity"></i></a>
     <p class="w3-medium">Powered by <a href="https://1stampshop.business.site/" target="_blank">1Stampshop</a></p>
   </footer>
-
 </div>
+
+<script>
+// Function to toggle sidebar menu
+function w3_open() {
+  document.getElementsByClassName("w3-sidebar")[0].style.display = "block";
+}
+
+// Function to close sidebar menu
+function w3_close() {
+  document.getElementsByClassName("w3-sidebar")[0].style.display = "none";
+}
+</script>
 
 </body>
 </html>
