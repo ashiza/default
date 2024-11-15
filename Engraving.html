@@ -18,13 +18,9 @@
             font-family: "Roboto", sans-serif;
         }
 
-        /* Top horizontal menu for large screens */
-        .top-menu {
-            display: none;
-        }
-
+        /* Horizontal menu for large screens */
         @media (min-width: 992px) {
-            .top-menu {
+            .big-screen-menu {
                 display: flex;
                 justify-content: space-around;
                 background-color: #f1f1f1;
@@ -34,7 +30,7 @@
                 z-index: 3;
             }
 
-            .top-menu a {
+            .big-screen-menu a {
                 font-size: 16px;
                 color: #333;
                 text-decoration: none;
@@ -42,7 +38,7 @@
                 font-weight: bold;
             }
 
-            .top-menu a:hover {
+            .big-screen-menu a:hover {
                 background-color: #ddd;
                 color: black;
             }
@@ -56,8 +52,8 @@
 </head>
 <body>
 
-<!-- Top horizontal menu for large screens -->
-<div class="top-menu">
+<!-- Horizontal menu for large screens -->
+<div class="big-screen-menu">
     <a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a>
     <a href="#">Engraving</a>
     <a href="http://zvidhindo.co.zw/">Stamps</a>
