@@ -1,106 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Engraving</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="Engraving_files/bannercss.css">
-    <link href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Mail%20Logo.jpg" type="image/x-icon" rel="icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body, h1, h2, h3, h4, h5, h6, .w3-wide {
-            font-family: "Montserrat", sans-serif;
-        }
+<meta charset="utf-8">
+<title>Engraving</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="Engraving_files/bannercss.css">
+<link href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Mail%20Logo.jpg" type="image/x-icon" rel="icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  body, h1, h2, h3, h4, h5, h6, .w3-wide { font-family: "Montserrat", sans-serif; }
+  .w3-sidebar a { font-family: "Roboto", sans-serif; }
 
-        .w3-sidebar a {
-            font-family: "Roboto", sans-serif;
-        }
+  /* Default Sidebar Menu */
+  .w3-sidebar {
+    z-index: 3;
+    width: 250px;
+    display: block;
+    background-color: #f1f1f1;
+  }
 
-        /* Horizontal menu for large screens */
-        @media (min-width: 992px) {
-            .big-screen-menu {
-                display: flex;
-                justify-content: space-around;
-                background-color: #f1f1f1;
-                padding: 10px 0;
-                position: sticky;
-                top: 0;
-                z-index: 3;
-            }
+  /* Horizontal Menu for Large Screens */
+  @media screen and (min-width: 992px) {
+    .w3-sidebar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: auto;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 3;
+    }
 
-            .big-screen-menu a {
-                font-size: 16px;
-                color: #333;
-                text-decoration: none;
-                padding: 14px 20px;
-                font-weight: bold;
-            }
+    .w3-sidebar .w3-bar-item {
+      display: inline-block;
+      padding: 14px 20px;
+      text-align: center;
+      color: #000;
+      text-decoration: none;
+    }
 
-            .big-screen-menu a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
-            /* Hide sidebar on large screens */
-            #mySidebar {
-                display: none;
-            }
-        }
-    </style>
+    .w3-sidebar .w3-bar-item:hover {
+      background-color: #ddd;
+      color: #000;
+    }
+  }
+</style>
 </head>
 <body>
 
-<!-- Horizontal menu for large screens -->
-<div class="big-screen-menu">
-    <a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a>
-    <a href="#">Engraving</a>
-    <a href="http://zvidhindo.co.zw/">Stamps</a>
-    <a href="http://zvidhindo.co.zw/mugs">Mugs</a>
-    <a href="http://zvidhindo.co.zw/misc">Miscellaneous</a>
-    <a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a>
-    <a href="http://zvidhindo.co.zw/badges.html">Badges</a>
-</div>
-
-<!-- Sidebar/menu for small screens -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-    <div class="w3-container w3-display-container w3-padding-16 w3-red">
-        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-        <h3 class="w3-wide"><b>One Stamp Shop</b></h3>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block">
+  <div class="w3-container w3-display-container w3-padding-16 w3-red">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
+    <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
+    <a href="#" class="w3-button w3-block w3-white w3-left-align">Engraving</a>
+    <a onclick="myAccFunc()" href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button" id="myBtn">Stamps</a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
+      <a href="#" class="w3-bar-item w3-button">Daters</a>
+      <a href="#" class="w3-bar-item w3-button">None Daters</a>
+      <a href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Copy/Custom%20stamp%20maker%20designer%20make%20stamp%20online%20create%20company%20seal.html" class="w3-bar-item w3-button">Create own Design</a>
     </div>
-    <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
-        <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
-        <a href="#" class="w3-button w3-block w3-white w3-left-align">Engraving</a>
-        <a href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button">Stamps</a>
-        <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
-        <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
-        <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
-        <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
-    </div>
+    <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
+    <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
+    <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
+    <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
+  </div>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
 </nav>
 
-<!-- Top menu button for small screens -->
+<!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-    <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+  <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
 <!-- Page content -->
 <div class="w3-content w3-center" style="max-width:2000px;margin-top:46px">
-    <img src="Engraving_files/Signature%20email.jpg" class="w3-image w3-greyscale-min" style="width:60%">
-    <!-- Additional page content... -->
+  <img src="Engraving_files/Signature%20email.jpg" class="w3-image w3-greyscale-min" style="width:60%">
+  
+  <div class="mySlides w3-display-container w3-center" style="display: block;">
+    <img src="Engraving_files/Kopie.gif" alt="sliding chains" style="width:70%">
+    <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>A Perfect Gift</h3>
+    </div>
+  </div>
+
+  <!-- The onestampshop Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">ONE STAMP SHOP</h2>
+    <p class="w3-opacity"><i>We are more than stamps!!</i></p>
+    <p class="w3-justify">Engraving is timeless art to share words. The art can be used on various objects to share a message on our hearts with our loved ones!</p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-third">
+        <p>Ring holder</p>
+        <img src="Engraving_files/Ring.jpg" class="w3-round w3-margin-bottom" alt="Desk flag f1" style="width:70%">
+      </div>
+      <div class="w3-third">
+        <p>Home Greeting</p>
+        <img src="Engraving_files/welcome.jpg" class="w3-round w3-margin-bottom" alt="Home Greeting" style="width:80%">
+      </div>
+      <div class="w3-third">
+        <p>Family collection</p>
+        <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" class="w3-round" alt="Family collection" style="width:60%">
+      </div>
+    </div>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-third">
+        <p>Key Holders</p>
+        <img src="Engraving_files/set.jpg" class="w3-round w3-margin-bottom" alt="Garden Potrait" style="width:70%">
+      </div>
+      <div class="w3-third">
+        <p>Table runner rack</p>
+        <img src="Engraving_files/Table_Runner_Stack_750x500.webp" class="w3-round w3-margin-bottom" alt="Table Runner" style="width:85%">
+      </div>
+      <div class="w3-third">
+        <p>Timeless Message</p>
+        <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" class="w3-round" alt="Timeless" style="width:75%">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
+    <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i>
+    <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
+    <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter w3-hover-opacity"></i></a>
+    <p class="w3-medium">Powered by <a href="https://1stampshop.business.site/" target="_blank">1Stampshop</a></p>
+  </footer>
+
 </div>
 
-<script>
-    // Sidebar open/close functionality
-    function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-    }
-
-    function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-    }
-</script>
 </body>
 </html>
