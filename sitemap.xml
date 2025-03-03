@@ -160,5 +160,22 @@
     <lastmod>2025-03-03</lastmod>
     <priority>0.8</priority>
   </url>
+   <url>
+    <loc>https://www.zvidhindo.co.zw/bulawayo-stamp</loc>
+    <lastmod>2025-03-03</lastmod>
+    <priority>1</priority>
+  </url>
+
+   <url>
+    <loc>https://www.zvidhindo.co.zw/bulawayo rubber stamps</loc>
+    <lastmod>2025-03-03</lastmod>
+    <priority>1</priority>
+  </url>
+
+   <url>
+    <loc>https://www.zvidhindo.co.zw/harare-rubber-stamp</loc>
+    <lastmod>2025-03-03</lastmod>
+    <priority>0.8</priority>
+  </url>
   <!-- Add more URLs following the same pattern for other products -->
 </urlset>
