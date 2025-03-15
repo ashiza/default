@@ -17,48 +17,18 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-body {
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
-    font-family: "Montserrat", sans-serif;
-    max-width: 1200px;
-}
-.w3-sidebar {
-    position: fixed; /* Fix sidebar position */
-    top: 0;
-    left: 0;
-    height: 100%; /* Full height */
-    width: 250px; /* Sidebar width */
-    background-color: #f44336; /* Sidebar background color */
-    z-index: 3;
-    overflow: auto;
-}
-.w3-main {
-    margin-left: 250px; /* Space for the sidebar */
-    padding: 20px; /* Add padding to main content */
-}
-@media (max-width: 1199px) {
-    .w3-sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .w3-main {
-        margin-left: 0;
-    }
-}
 </style>
 </head>
-<body class="w3-content">
+<body class="w3-content" style="max-width:1200px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-red" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-red" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
   </div>
   
-  <div class="w3-padding-64 w3-large w3-text-grey w3-blue" style="font-weight:bold">
+  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
     <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
     <a href="http://zvidhindo.co.zw/Engraving.html" class="w3-bar-item w3-button">Engraving</a>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
@@ -90,7 +60,7 @@ body {
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main">
+<div class="w3-main" style="margin-left:250px">
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -105,7 +75,7 @@ body {
   <div class="w3-display-container w3-container">
     <img src="index_files/Signature%20email.jpg" alt="Sig" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <p><a href="#Stamp" class="w3-button w3-black w3-padding-large w3-large">Available Stamps</a></p>
+      <p><a href="#Stamp" class="w3-button w3-blue w3-padding-large w3-large">Available Stamps</a></p>
     </div>
   </div>
 
@@ -167,7 +137,7 @@ body {
   </section>
 
   <!-- Subscribe section -->
-  <div class="w3-container w3-blue w3-padding-32">
+  <div class="w3-container w3-black w3-padding-32">
     <img src="index_files/cup.png" alt="Cup" style="width:100%">
     <h1>Subscribe</h1>
     <p>To get special offers and VIP treatment:</p>
@@ -222,7 +192,7 @@ body {
     </div>
   </footer>
 
-  <div class="w3-blue w3-center w3-padding-24">Powered by <a href="https://zvidhindo.co.zw/" title="1StampShop" target="_blank" class="w3-hover-opacity">1stampshop</a></div>
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://zvidhindo.co.zw/" title="1StampShop" target="_blank" class="w3-hover-opacity">1stampshop</a></div>
 
   <!-- End page content -->
 </div>
