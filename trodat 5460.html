@@ -17,12 +17,42 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+body {
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+    font-family: "Montserrat", sans-serif;
+    max-width: 1200px;
+}
+.w3-sidebar {
+    position: fixed; /* Fix sidebar position */
+    top: 0;
+    left: 0;
+    height: 100%; /* Full height */
+    width: 250px; /* Sidebar width */
+    background-color: #f44336; /* Sidebar background color */
+    z-index: 3;
+    overflow: auto;
+}
+.w3-main {
+    margin-left: 250px; /* Space for the sidebar */
+    padding: 20px; /* Add padding to main content */
+}
+@media (max-width: 1199px) {
+    .w3-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .w3-main {
+        margin-left: 0;
+    }
+}
 </style>
 </head>
-<body class="w3-content" style="max-width:1200px">
+<body class="w3-content">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-red" style="z-index:3;width:250px" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-red" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
@@ -60,7 +90,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:250px">
+<div class="w3-main">
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
