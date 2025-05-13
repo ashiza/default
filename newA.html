@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stamps Collection - One Stamp Shop (zvidhindo.co.zw)</title>
+    <style>
+        /* Basic Reset & Modern Font */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Simplified for this example */
+        .navbar {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px; /* Adjust as needed */
+        }
+
+        .navbar nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        .navbar nav a:hover {
+            color: #007bff;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #007bff; /* Primary color - adjust to their brand */
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Stamp Categories/Filters (Optional but Recommended) */
+        .stamp-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .stamp-filters button {
+            background-color: #e9ecef;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .stamp-filters button:hover, .stamp-filters button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Stamp Grid Container */
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 1.5rem;
+            padding: 0 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Stamp Card Styling */
+        .stamp-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stamp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .stamp-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: contain; /* Use 'contain' to show whole stamp, 'cover' to fill */
+            background-color: #f0f0f0; /* Light background for images */
+            border-bottom: 1px solid #eee;
+        }
+
+        .stamp-card-content {
+            padding: 1rem;
+            flex-grow: 1; /* Allows content to expand */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stamp-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: #343a40;
+        }
+
+        .stamp-card-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+
+        .stamp-card-content .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Secondary/CTA color */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: auto; /* Aligns button to the bottom */
+        }
+        .stamp-card-content .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer - Simplified */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://zvidhindo.co.zw/">
+                <img src="https://zvidhindo.co.zw/path/to/your/logo.png" alt="One Stamp Shop Logo">
+            </a>
+        </div>
+        <nav>
+            <a href="https://zvidhindo.co.zw/">Home</a>
+            <a href="https://zvidhindo.co.zw/stamps">Stamps</a>
+            <a href="https://zvidhindo.co.zw/engraving">Engraving</a>
+            <a href="https://zvidhindo.co.zw/printing">Digital Printing</a>
+            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Our Premium Stamp Collection</h1>
+        <p>High-quality, customizable stamps for all your business and personal needs in Zimbabwe.</p>
+    </section>
+
+    <section class="stamp-filters">
+        <button class="active" data-filter="all">All Stamps</button>
+        <button data-filter="company">Company Stamps</button>
+        <button data-filter="notary">Notary Seals & Embossers</button>
+        <button data-filter="date">Date Stamps</button>
+        <button data-filter="uv">UV & Security Stamps</button>
+        <button data-filter="custom">Custom Trodat Models</button>
+    </section>
+
+    <main class="stamp-grid">
+        <div class="stamp-card" data-category="company">
+            <img src="https://zvidhindo.co.zw/images/stamps/company_stamp_example.jpg" alt="Company Stamp">
+            <div class="stamp-card-content">
+                <h3>Company Stamps</h3>
+                <p>Professional stamps for your business, customizable with your logo and details. Essential for official documents.</p>
+                <a href="https://zvidhindo.co.zw/company-stamps" class="cta-button">View Options & Quote</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="notary">
+            <img src="https://zvidhindo.co.zw/images/stamps/notary_seal_example.jpg" alt="Notary Seal">
+            <div class="stamp-card-content">
+                <h3>Notary Seals & Embossers</h3>
+                <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
+                <a href="https://zvidhindo.co.zw/notary-seals" class="cta-button">Explore Seal Options</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="date custom">
+            <img src="https://zvidhindo.co.zw/images/stamps/trodat_4727_date_stamp.jpg" alt="Trodat Date Stamp">
+            <div class="stamp-card-content">
+                <h3>Trodat Date Stamps</h3>
+                <p>Durable and reliable Trodat date stamps like the Model 4727. Perfect for offices, banks, and administrative tasks.</p>
+                <a href="https://zvidhindo.co.zw/trodat-date-stamps" class="cta-button">See Date Stamp Models</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="uv">
+            <img src="https://zvidhindo.co.zw/images/stamps/uv_stamp_example.jpg" alt="UV Invisible Ink Stamp">
+            <div class="stamp-card-content">
+                <h3>UV & Security Stamps</h3>
+                <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
+                <a href="https://zvidhindo.co.zw/uv-stamps" class="cta-button">Inquire About Security Stamps</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="custom company">
+             <img src="https://zvidhindo.co.zw/images/stamps/trodat_4913_custom.jpg" alt="Custom Trodat 4913">
+            <div class="stamp-card-content">
+                <h3>Custom Trodat Printy 4913</h3>
+                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
+                 <a href="https://zvidhindo.co.zw/trodat-4913" class="cta-button">Customize Yours</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="company">
+             <img src="https://zvidhindo.co.zw/images/stamps/hand_stamp_traditional.jpg" alt="Traditional Hand Stamp">
+            <div class="stamp-card-content">
+                <h3>Traditional Hand Stamps</h3>
+                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
+                 <a href="https://zvidhindo.co.zw/hand-stamp" class="cta-button">View Hand Stamps</a>
+            </div>
+        </div>
+
+        </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Harare, Zimbabwe.</p>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Basic filter functionality (optional)
+        const filterButtons = document.querySelectorAll('.stamp-filters button');
+        const stampCards = document.querySelectorAll('.stamp-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Manage active button style
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                stampCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex'; // Or 'block' depending on your original display type
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
