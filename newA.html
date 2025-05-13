@@ -110,6 +110,11 @@
             border-bottom: 1px solid #eee;
         }
 
+        /* ADDED FOR SLIDESHOW TRANSITION */
+        .slideshow-image {
+            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+        }
+
         .stamp-card-content {
             padding: 1rem;
             flex-grow: 1; /* Allows content to expand */
@@ -191,24 +196,23 @@
 
     <main class="stamp-grid">
 
-            <div class="stamp-card" 
-     data-category="company" 
-     data-slideshow-images="index_files/seal%201.png,index_files/4727.jpg,index_files/5460.jpg">
-    <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
-    <div class="stamp-card-content">
-        <h3>Company Stamps</h3>
-        <p>Professional stamps for your business, customizable with your details. See various examples!</p>
-        <a href="https_//zvidhindo.co.zw/company-stamps" class="cta-button">View Options & Quote</a>
-    </div>
-</div>
+        <div class="stamp-card" 
+             data-category="company" 
+             data-slideshow-images="index_files/seal%201.png,index_files/4727.jpg,index_files/5460.jpg">
+            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
+            <div class="stamp-card-content">
+                <h3>Company Stamps</h3>
+                <p>Professional stamps for your business, customizable with your details. See various examples!</p>
+                <a href="https_//zvidhindo.co.zw/company-stamps" class="cta-button">View Options & Quote</a>
+            </div>
+        </div>
         
-
         <div class="stamp-card" data-category="notary">
             <img src="index_files/seal%201.png" alt="Notary Seal">
             <div class="stamp-card-content">
                 <h3>Notary Seals & Embossers</h3>
                 <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
-                <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
+                 <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
             </div>
         </div>
 
@@ -222,7 +226,7 @@
         </div>
 
         <div class="stamp-card" data-category="uv">
-            <img src="https://zvidhindo.co.zw/images/stamps/uv_stamp_example.jpg" alt="UV Invisible Ink Stamp">
+             <img src="https://zvidhindo.co.zw/images/stamps/uv_stamp_example.jpg" alt="UV Invisible Ink Stamp">
             <div class="stamp-card-content">
                 <h3>UV & Security Stamps</h3>
                 <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
@@ -235,50 +239,109 @@
             <div class="stamp-card-content">
                 <h3>Custom Trodat Printy 4913</h3>
                 <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
-                 <a href="https://zvidhindo.co.zw/trodat-4913" class="cta-button">Customize Yours</a>
+                <a href="https://zvidhindo.co.zw/trodat-4913" class="cta-button">Customize Yours</a>
             </div>
         </div>
 
         <div class="stamp-card" data-category="company">
-             <img src="https://zvidhindo.co.zw/images/stamps/hand_stamp_traditional.jpg" alt="Traditional Hand Stamp">
+            <img src="https://zvidhindo.co.zw/images/stamps/hand_stamp_traditional.jpg" alt="Traditional Hand Stamp">
             <div class="stamp-card-content">
                 <h3>Traditional Hand Stamps</h3>
                 <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
-                 <a href="https://zvidhindo.co.zw/hand-stamp" class="cta-button">View Hand Stamps</a>
+                <a href="https://zvidhindo.co.zw/hand-stamp" class="cta-button">View Hand Stamps</a>
             </div>
         </div>
 
-        </main>
+    </main>
 
     <footer class="footer">
         <p>&copy; <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Harare, Zimbabwe.</p>
     </footer>
 
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
 
-        // Basic filter functionality (optional)
-        const filterButtons = document.querySelectorAll('.stamp-filters button');
-        const stampCards = document.querySelectorAll('.stamp-card');
+            // Basic filter functionality
+            const filterButtons = document.querySelectorAll('.stamp-filters button');
+            const stampCards = document.querySelectorAll('.stamp-card');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Manage active button style
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filter = button.getAttribute('data-filter');
-
-                stampCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.style.display = 'flex'; // Or 'block' depending on your original display type
-                    } else {
-                        card.style.display = 'none';
-                    }
+            if (filterButtons.length > 0 && stampCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const filter = button.getAttribute('data-filter');
+                        stampCards.forEach(card => {
+                            if (filter === 'all' || (card.getAttribute('data-category') && card.getAttribute('data-category').includes(filter))) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
                 });
+            }
+
+            // Image Slideshow Functionality (THIS IS THE ADDED PART)
+            const slideshowCards = document.querySelectorAll('.stamp-card[data-slideshow-images]');
+            const slideInterval = 4000; // Time in milliseconds (e.g., 4 seconds)
+
+            slideshowCards.forEach(card => {
+                const imgElement = card.querySelector('.slideshow-image');
+                if (!imgElement) {
+                    console.warn('Slideshow card found, but no .slideshow-image img tag inside:', card);
+                    return;
+                }
+
+                const imageUrlsString = card.getAttribute('data-slideshow-images');
+                if (!imageUrlsString) {
+                    console.warn('Slideshow card found, but data-slideshow-images attribute is empty or missing:', card);
+                    return;
+                }
+
+                const imageUrls = imageUrlsString.split(',').map(url => url.trim()).filter(url => url); // Ensure no empty strings
+                
+                if (imageUrls.length <= 1) {
+                    // console.log('Not enough images for slideshow on card:', card);
+                    return; // No slideshow needed for 1 or 0 images
+                }
+
+                let currentImageIndex = 0;
+                const initialSrc = imgElement.getAttribute('src');
+                const initialIndexInSlideshow = imageUrls.indexOf(initialSrc);
+
+                if (initialIndexInSlideshow !== -1) {
+                    currentImageIndex = initialIndexInSlideshow;
+                } else {
+                    // If current src is not in the list, or to ensure it starts with the list's first image:
+                    imgElement.src = imageUrls[0]; 
+                    currentImageIndex = 0;
+                }
+                // Ensure initial image is visible if opacity was 0 for some reason
+                imgElement.style.opacity = 1;
+
+
+                setInterval(() => {
+                    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+                    
+                    imgElement.style.opacity = 0; // Start fade out
+
+                    setTimeout(() => {
+                        imgElement.src = imageUrls[currentImageIndex];
+                        imgElement.style.opacity = 1; // Start fade in
+                    }, 250); // This delay should be less than or equal to the CSS transition duration (0.5s = 500ms)
+
+                }, slideInterval);
             });
-        });
+
+        }); // End of DOMContentLoaded
     </script>
 
 </body>
