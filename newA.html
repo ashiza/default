@@ -56,7 +56,7 @@
             opacity: 0.9;
         }
 
-        /* Stamp Categories/Filters (Optional but Recommended) */
+        /* Stamp Filters (Optional but Recommended) */
         .stamp-filters {
             text-align: center;
             margin-bottom: 2rem;
@@ -152,6 +152,24 @@
             background-color: #218838;
         }
 
+        /* Map Section */
+        .map-section {
+            padding: 40px 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .map-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .map-section iframe {
+            border: 0;
+            max-width: 100%;
+            width: 640px; /* Or desired fixed width */
+            height: 480px; /* Or desired fixed height */
+        }
+
         /* Footer - Simplified */
         .footer {
             background-color: #343a40;
@@ -196,8 +214,8 @@
 
     <main class="stamp-grid">
 
-        <div class="stamp-card" 
-             data-category="company" 
+        <div class="stamp-card"
+             data-category="company"
              data-slideshow-images="index_files/4913%202.jpg,index_files/4727.jpg,index_files/5460.jpg,index_files/Prime%20B.jpg,index_files/Colop%20C60.jpg,index_files/2910.jpg">
             <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
             <div class="stamp-card-content">
@@ -206,7 +224,7 @@
                 <a href="https_//zvidhindo.co.zw/company-stamps" class="cta-button">View Options & Quote</a>
             </div>
         </div>
-        
+
         <div class="stamp-card" data-category="notary">
             <img src="index_files/seal%201.png" alt="Notary Seal">
             <div class="stamp-card-content">
@@ -216,8 +234,8 @@
             </div>
         </div>
 
-        <div class="stamp-card" 
-            data-category="date custom"
+        <div class="stamp-card"
+             data-category="date custom"
 data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/2910.jpg">
             <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="slideshow-image">
             <div class="stamp-card-content">
@@ -254,28 +272,28 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
             </div>
         </div>
 
-          <div class="w3-container w3-light-grey w3-padding-64 w3-center" id="google-map" style="text-align: center; padding: 40px 20px; background-color: #f1f1f1;">
-        <h2>Our Location</h2>
-        <p>Find us on Google Maps:</p>
-        <iframe 
-            src="https://www.google.com/maps/d/embed?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&ehbc=2E312F"  width="640" 
-            height="480" 
-            style="border:0; max-width: 100%;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
-    </div>
-        
     </main>
 
+    <section class="map-section">
+        <h2>Our Location</h2>
+        <p>Find us on Google Maps:</p>
+        <iframe
+            src="https://www.google.com/maps/d/embed?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&ehbc=2E312F"  width="640"
+            height="480"
+            style="border:0; max-width: 100%;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </section>
+
     <footer class="footer">
-        <p>&copy; <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Harare, Zimbabwe.</p>
+        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Harare, Zimbabwe.</p>
     </footer>
 
     <script>
         // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // Set current year in footer
             const currentYearSpan = document.getElementById('currentYear');
             if (currentYearSpan) {
@@ -321,7 +339,7 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
                 }
 
                 const imageUrls = imageUrlsString.split(',').map(url => url.trim()).filter(url => url); // Ensure no empty strings
-                
+
                 if (imageUrls.length <= 1) {
                     // console.log('Not enough images for slideshow on card:', card);
                     return; // No slideshow needed for 1 or 0 images
@@ -335,7 +353,7 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
                     currentImageIndex = initialIndexInSlideshow;
                 } else {
                     // If current src is not in the list, or to ensure it starts with the list's first image:
-                    imgElement.src = imageUrls[0]; 
+                    imgElement.src = imageUrls[0];
                     currentImageIndex = 0;
                 }
                 // Ensure initial image is visible if opacity was 0 for some reason
@@ -344,7 +362,7 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
 
                 setInterval(() => {
                     currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
-                    
+
                     imgElement.style.opacity = 0; // Start fade out
 
                     setTimeout(() => {
