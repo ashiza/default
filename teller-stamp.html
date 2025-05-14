@@ -139,6 +139,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
@@ -147,15 +149,29 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .product-image {
+        .product-image-container {
             width: 100%;
-            height: auto;
+            height: 200px; /* Fixed height for consistency */
+            overflow: hidden; /* Clip images to the container */
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            background-color: #f0f0f0; /* Light background for images */
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
             display: block;
+            object-fit: contain; /* Ensure the whole image is visible */
         }
 
         .product-info {
             padding: 1.5rem;
             text-align: center;
+            flex-grow: 1; /* Allow content to take available space */
+            display: flex;
+            flex-direction: column;
         }
 
         .product-info h3 {
@@ -170,6 +186,7 @@
             font-size: 0.9rem;
             color: #777;
             margin-bottom: 1rem;
+            flex-grow: 1; /* Push link to the bottom */
         }
 
         .product-link {
@@ -178,6 +195,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            margin-top: auto; /* Align to the bottom of the info */
         }
 
         .product-link:hover {
@@ -297,7 +315,9 @@
             <div class="product-grid">
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/trodat 4727">
-                        <img src="index_files/4727.jpg" alt="Self-Inking 4727 Date Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/4727.jpg" alt="Self-Inking 4727 Date Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Self-Inking 4727 Date Stamp</h3>
@@ -307,7 +327,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/trodat 5460">
-                        <img src="index_files/5460.jpg" alt="Self-Inking 5460 Date Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/5460.jpg" alt="Self-Inking 5460 Date Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Self-Inking 5460 Date Stamp</h3>
@@ -317,7 +339,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/trodat 2910">
-                        <img src="index_files/2910.jpg" alt="Trodat 2910 Date Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/2910.jpg" alt="Trodat 2910 Date Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Trodat 2910 Date Stamp</h3>
@@ -327,7 +351,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/seal">
-                        <img src="index_files/seal%201.png" alt="Notary Seal" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/seal%201.png" alt="Notary Seal" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Notary Seal</h3>
@@ -337,7 +363,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/trodat 4913">
-                        <img src="index_files/4913%202.jpg" alt="Trodat 4913 Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/4913%202.jpg" alt="Trodat 4913 Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Trodat 4913 Stamp</h3>
@@ -347,7 +375,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/hand stamp">
-                        <img src="index_files/hand2.png" alt="Hand Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/hand2.png" alt="Hand Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Hand Stamp</h3>
@@ -357,7 +387,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/prime">
-                        <img src="index_files/Prime%20B.jpg" alt="Panami/ Prime Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/Prime%20B.jpg" alt="Panami/ Prime Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>Panami/ Prime Stamp</h3>
@@ -367,7 +399,9 @@
                 </div>
                 <div class="product-card">
                     <a href="http://zvidhindo.co.zw/colopc60">
-                        <img src="index_files/Colop%20C60.jpg" alt="C60 Stamp" class="product-image">
+                        <div class="product-image-container">
+                            <img src="index_files/Colop%20C60.jpg" alt="C60 Stamp" class="product-image">
+                        </div>
                     </a>
                     <div class="product-info">
                         <h3>C60 Stamp</h3>
@@ -384,21 +418,5 @@
             <h2>Contact Us</h2>
             <div class="contact-info">
                 <p><i class="fas fa-map-marker-alt"></i> One Stamp Shop, [Your Physical Address Here], Zimbabwe</p>
-                <p><i class="fas fa-phone"></i> <a href="tel:+263719455454">+263 719 455 454</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:onestampshop@gmail.com">onestampshop@gmail.com</a></p>
-            </div>
-            <div class="contact-social">
-                <a href="https://www.facebook.com/onestampshop" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/1stampshop" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/+263719455454" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.pinterest.com/1stampshop/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
-                <a href="https://www.linkedin.com/company/one-stamp-shop" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/1stampshop" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="http
+                <p><i class="fas fa-phone"></i> <a href="tel:+263719455454">+26
+                    
