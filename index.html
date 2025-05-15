@@ -1,26 +1,199 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<title>One Stamp Shop Home</title>
-	<meta name="generator" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="index_files/style.css">
-	<link href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Mail%20Logo.jpg" type="image/x-icon" rel="icon">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title> Home - One Stamp Shop</title>
+    <style>
+        /* Basic Reset & Modern Font */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Simplified for this example */
+        .navbar {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px; /* Adjust as needed */
+        }
+
+        .navbar nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        .navbar nav a:hover {
+            color: #007bff;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #007bff; /* Primary color - adjust to their brand */
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Stamp Filters (Optional but Recommended) */
+        .stamp-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .stamp-filters button {
+            background-color: #e9ecef;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .stamp-filters button:hover, .stamp-filters button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Stamp Grid Container */
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 1.5rem;
+            padding: 0 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Stamp Card Styling */
+        .stamp-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stamp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .stamp-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: contain; /* Use 'contain' to show whole stamp, 'cover' to fill */
+            background-color: #f0f0f0; /* Light background for images */
+            border-bottom: 1px solid #eee;
+        }
+
+        /* ADDED FOR SLIDESHOW TRANSITION */
+        .slideshow-image {
+            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+        }
+
+        .stamp-card-content {
+            padding: 1rem;
+            flex-grow: 1; /* Allows content to expand */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stamp-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: #343a40;
+        }
+
+        .stamp-card-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+
+        .stamp-card-content .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Secondary/CTA color */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: auto; /* Aligns button to the bottom */
+        }
+        .stamp-card-content .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 40px 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .map-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .map-section iframe {
+            border: 0;
+            max-width: 100%;
+            width: 640px; /* Or desired fixed width */
+            height: 480px; /* Or desired fixed height */
+        }
+
+        /* Footer - Simplified */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+    </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
 <link rel="manifest" href="index_files/site.webmanifest">
-<style>
-.w3-sidebar a {font-family: "Roboto", sans-serif}
-body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-</style
-	
+ <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+	 <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
+  	
+
 </head>
 
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJWY6DS2DK"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJWY6DS2DK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -28,336 +201,213 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   gtag('config', 'G-KJWY6DS2DK');
 </script>
-	
-<body class="w3-content" style="max-width:1200px">
+    
+<body>
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-red" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
-  </div>
-	
-  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
-    <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
-    <a href="http://zvidhindo.co.zw/Engraving.html" class="w3-bar-item w3-button">Engraving</a>
-    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Stamps <i class="fa fa-caret-right"></i>
-    </a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium w3-show">
-      <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
-      <a href="#" class="w3-bar-item w3-button">Daters</a>
-      <a href="#" class="w3-bar-item w3-button">None Daters</a>
-      <a href="http://zvidhindo.co.zw/1StampShop.html" class="w3-bar-item w3-button">Create own Design</a> 
-      </div>
-    <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
-    <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
-    <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
-    <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
-  </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:250px">
-
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
-  <!-- Top header -->
- <meta name="description" content="Purchase Trodat rubber stamps, notary stamps, security stamps, company seals, and receipt books. Available in Zimbabwe with customization options for logos, dates, and more.">
-    <meta name="keywords" content="seal notary, trodat receipt books for sale, trodat printy 4913, company stamps with logo, rubber stamp, trodat security stamp, clothes zimbabwe, trodat rubber stamps, trodat ideal seal, church stamp seal, trodat notary stamp 4913, round date stamps, black light stamp, UV stamp, trodat date stamp, invisible stamp ink, paid stamp, company seal templates, rubber stamp template, lawyer stamps, invoice book, stamp design template, notary stickers, rubber stamping valentines, company stamp example, rubber stamp designs templates, bank stamp, uv ink stamp for skin, trodat 5460, ideal seal embosser, invisible ink pad, commissioner stamp">
-   <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-	 <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
-  	
-  <!-- Image header -->
-  <div class="w3-display-container w3-container">
-    <img src="index_files/Signature%20email.jpg" alt="Sig" style="width:100%">
-    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-     
-      <p><a href="#Stamp" class="w3-button w3-black w3-padding-large w3-large">Available Stamps</a></p>
-    </div>
-  </div>
-
- <header>
-        <h1>Welcome to One Stamp Shop</h1>
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://zvidhindo.co.zw/">
+                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
+            </a>
+        </div>
         <nav>
-            <ul>
-               
-                <li><a href="#products">Products</a></li>
-                <li><a href="#customization">Customization</a></li>
-              
-            </ul>
+            <a href="https://zvidhindo.co.zw/mugs">Mugs</a>
+            <a href="https://zvidhindo.co.zw/gift">Gifts</a>
+            <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
+            <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
+		<a href="https://zvidhindo.co.zw/badges">Badges</a>
+		<a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
+            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
         </nav>
     </header>
 
-    <section id="home">
-        <h2>Your Trusted Source for Trodat Rubber Stamps in Zimbabwe</h2>
-        <p>We offer a wide range of Trodat rubber stamps, Notary seals, Engraving solutions and customized stamps in Zimbabwe. Whether you need a company stamp, UV stamp, notary sticker, or receipt books, we have the perfect solution for your needs.</p>
+    <section class="page-header">
+        <h1>Our Premium Rubber Stamps Collection</h1>
+        <p>High-quality, customizable stamps for all your business and personal needs in Zimbabwe.<b>+263 719 455 454</b></p>
     </section>
 
-    <section id="products">
-        <h2>Our Products</h2>
-        <div class="product">
-            <h3>Trodat Stamp Solutions</h3>
-            <p>The advantages of incorporating Trodat rubber stamps into business operations are manifold. First and foremost, these stamps save time. Rather than handwriting information on multiple documents, employees can quickly stamp their details, significantly speeding up administrative tasks. This efficiency is particularly beneficial in high-paced environments, allowing staff to dedicate more time to core responsibilities. In addition to time-saving, Trodat rubber stamps enhance accuracy and consistency. When information is stamped, it minimizes the possibility of human error that can arise from manual writing. This consistency is vital in maintaining professionalism and credibility, especially when dealing with clients or stakeholders. Furthermore, the use of rubber stamps can help establish a uniform appearance across all documents, reinforcing the business's identity and standards. The Trodat range of stamps, are perfect for company stamps with logo. We also offer security stamps and various options of date stamps. Our Trodat stamps are customizable for all business needs, and can be in custome shapes including round date stamps. Beyond our stamp ranges we also have blacklight UV stamps.</p>
+    <section class="stamp-filters">
+        <button class="active" data-filter="all">All Stamps</button>
+        <button data-filter="company">Company Stamps</button>
+        <button data-filter="notary">Notary Seals & Embossers</button>
+        <button data-filter="date">Date Stamps</button>
+        <button data-filter="uv">UV & Security Stamps</button>
+        <button data-filter="custom">Custom Trodat Models</button>
+    </section>
+
+    <main class="stamp-grid">
+
+        <div class="stamp-card"
+             data-category="company"
+             data-slideshow-images="index_files/4913%202.jpg,index_files/4727.jpg,index_files/5460.jpg,index_files/Prime%20B.jpg,index_files/Colop%20C60.jpg,index_files/2910.jpg">
+            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
+            <div class="stamp-card-content">
+                <h3>Company Stamps</h3>
+                <p>Professional stamps for your business, customizable with your details. See various examples!</p>
+                <a href="company-stamps" class="cta-button">View Options & Quote</a>
+            </div>
         </div>
-        
 
-	  <header>
-    <header class="w3-container w3-xlarge">
-    <p class="w3-left">Fast Moving Stamps</p>
-    <p class="w3-right">
-    
-    </p>
-  </header>	    
-	  <div class="w3-container w3-text-grey" id="Stamp">
-    <p>8 items, Click on Image for detailed product description</p>
-  </div>
+        <div class="stamp-card" data-category="notary">
+            <img src="index_files/seal%201.png" alt="Notary Seal">
+            <div class="stamp-card-content">
+                <h3>Notary Seals & Embossers</h3>
+                <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
+                 <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
+            </div>
+        </div>
 
+        <div class="stamp-card"
+             data-category="date custom"
+data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/2910.jpg">
+            <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="slideshow-image">
+            <div class="stamp-card-content">
+                <h3>Trodat Date Stamps</h3>
+                <p>Durable and reliable Trodat date stamps like the Model 4727. Perfect for offices, banks, and administrative tasks.</p>
+                <a href="https://zvidhindo.co.zw/trodat%204727" class="cta-button">See Date Stamp Models</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="uv"
+		data-slideshow-images="index_files/UV1.jpg,index_files/UV2.jpeg,index_files/UV3.jpg,index_files/UV4.jpg">
+             <img src="index_files/UV2.jpeg" alt="UV Invisible Ink Stamp" class="slideshow-image">
+            <div class="stamp-card-content">
+                <h3>UV & Security Stamps</h3>
+                <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
+                <a href="https://zvidhindo.co.zw/uv-stamps" class="cta-button">Inquire About Security Stamps</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="custom company">
+             <img src="index_files/4913%202.jpg" alt="Custom Trodat 4913">
+            <div class="stamp-card-content">
+                <h3>Custom Trodat Printy 4913</h3>
+                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
+                <a href="http://zvidhindo.co.zw/trodat 4913" class="cta-button">Customize Yours</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="company">
+            <img src="index_files/hand2.png" alt="Traditional Hand Stamp">
+            <div class="stamp-card-content">
+                <h3>Traditional Hand Stamps</h3>
+                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
+                <a href="http://zvidhindo.co.zw/hand stamp" class="cta-button">View Hand Stamps</a>
+            </div>
+        </div>
+
+    </main>
+
+    <section class="map-section">
+        <h2>Our Location</h2>
+        <p>Find us on Google Maps:</p>
+        <iframe
+            src="https://www.google.com/maps/d/embed?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&ehbc=2E312F"  width="640"
+            height="480"
+            style="border:0; max-width: 100%;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <footer class="footer">
+
+	    <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
+  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
+  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
+  <a href="https://www.pinterest.com/1stampshop/"> <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i></a>
+  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
+ <a href="https://twitter.com/1stampshop"> <i class="fa-brands fa-x-twitter w3-hover-opacity"></i> </a>
 	    
-    </section>
-	
-  <!-- Product grid -->
+        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe. </p>
+	    
+    </footer>
 
-  <div class="w3-row w3-grayscale">
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-	<a href="http://zvidhindo.co.zw/trodat 4727">
-        <img src="index_files/4727.jpg" alt="4727" style="width:110%"> </a>
-        <p>Self-Inking 4727 Date Stamp<br><b>40*60mm self inking date stamp</b></p>
-      </div>
-      <div class="w3-container">
-	      <a href="http://zvidhindo.co.zw/trodat 5460">
-       <img src="index_files/5460.jpg" alt="5460" style="width:90%"> 		
-</a>
-        <p>Self-Inking 5460 Date Stamp<br><b>33*56mm self inking date stamp</b></p>
-      </div>
-    </div>
+    <script>
+        // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
 
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <div class="w3-display-container">
-	<a href="http://zvidhindo.co.zw/trodat 2910">
-          <img src="index_files/2910.jpg" alt="2910" style="width:100%"></a>
-          <span class="w3-tag w3-display-topleft">New</span>
-          <div class="w3-display-middle w3-display-hover">
-         <!--    <button class="w3-button w3-blue">Buy now <i class="fa fa-shopping-cart"></i></button>  -->
-          </div>
-        </div>
-        <p>Trodat 2910 Date Stamp<br><b>40*60mm none self inking date stamp</b></p>
-      </div>
-      <div class="w3-container">
-	<a href="http://zvidhindo.co.zw/seal">
-        <img src="index_files/seal%201.png" alt="Seal" style="width:100%"></a>
-        <p>Notary Seal<br><b>Dia 40mm embossing press</b></p>
-      </div>
-    </div>
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
 
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-	<a href="http://zvidhindo.co.zw/trodat 4913">
-        <img src="index_files/4913%202.jpg" alt="4913" style="width:105%"></a>
-        <p>Trodat 4913 Stamp<br><b>22*58mm self inking stamp</b></p>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container">
-		<a href="http://zvidhindo.co.zw/hand stamp">
-          <img src="index_files/hand2.png" alt="Hand Stamp" style="width:100%"></a>
-          <span class="w3-tag w3-display-topleft">Sale</span>
-          <div class="w3-display-middle w3-display-hover">
-         <!--      <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>  -->
-          </div>
-        </div>
-        <p>Hand Stamp<br><b class="w3-text-red">custom dimensions</b></p>
-      </div>
-    </div>
+            // Basic filter functionality
+            const filterButtons = document.querySelectorAll('.stamp-filters button');
+            const stampCards = document.querySelectorAll('.stamp-card');
 
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-	<a href="http://zvidhindo.co.zw/prime">
-        <img src="index_files/Prime%20B.jpg" alt="Panami/ Prime" style="width:100%"></a>
-        <p>Panami/ Prime Stamp<br><b>40*60mm none self inking date stamp</b></p>
-      </div>
-      <div class="w3-container">
-	<a href="http://zvidhindo.co.zw/colopc60">
-        <img src="index_files/Colop%20C60.jpg" alt="Colop C60" style="width:125%"></a>
-        <p>C60 Stamp<br><b>36*74mm self inking stamp</b></p>
-     </div>
-    </div>
-  </div>
+            if (filterButtons.length > 0 && stampCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const filter = button.getAttribute('data-filter');
+                        stampCards.forEach(card => {
+                            if (filter === 'all' || (card.getAttribute('data-category') && card.getAttribute('data-category').includes(filter))) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
 
-	        </section>
-	  <div class="w3-display-container w3-container">
-	      
-      <div class="product">
-            <h3>Ideal Seal Embosser</h3>
-            <p>Ideal for professional and notary seals. We offer a variety of Ideal seals and embossers, including customizable options for your company seal, notary seal, and church stamps.</p>
-        </div>
-        <div class="product">
-            <h3>Invisible Ink Stamps</h3>
-            <p>Our invisible ink stamps are ideal for security, creating stamps that are visible only under UV light. Perfect for bank stamps, security, and skin-safe UV ink stamps.</p>
-      
-	</div>
+            // Image Slideshow Functionality (THIS IS THE ADDED PART)
+            const slideshowCards = document.querySelectorAll('.stamp-card[data-slideshow-images]');
+            const slideInterval = 4000; // Time in milliseconds (e.g., 4 seconds)
 
-	        
-	      
-      <section id="customization">
-        <h2>Customization Options</h2>
-        <p>We offer personalized stamps for your business or personal use. Choose from a wide variety of customizable options, including company stamps with logos, notary stamps, date stamps, Trodat 4727, Trodat 2910, Trodat 5460, Trodat 4913.</p>
-        <ul>
-            <li>Company Stamp</li>
-            <li>Notary Seal/ Embosser</li>
-            <li>Round Date Stamps</li>
-            <li>Invisible Ink Stamps</li>
-            <li>Self inking stamps</li>
-            <li>Lawyer Stamps</li>
-	     <li>Notarial Seal Stickers</li>
-		<li>Inkpads</li>
-        </ul>
- </div>
-      </section>
-      
- 
+            slideshowCards.forEach(card => {
+                const imgElement = card.querySelector('.slideshow-image');
+                if (!imgElement) {
+                    console.warn('Slideshow card found, but no .slideshow-image img tag inside:', card);
+                    return;
+                }
+
+                const imageUrlsString = card.getAttribute('data-slideshow-images');
+                if (!imageUrlsString) {
+                    console.warn('Slideshow card found, but data-slideshow-images attribute is empty or missing:', card);
+                    return;
+                }
+
+                const imageUrls = imageUrlsString.split(',').map(url => url.trim()).filter(url => url); // Ensure no empty strings
+
+                if (imageUrls.length <= 1) {
+                    // console.log('Not enough images for slideshow on card:', card);
+                    return; // No slideshow needed for 1 or 0 images
+                }
+
+                let currentImageIndex = 0;
+                const initialSrc = imgElement.getAttribute('src');
+                const initialIndexInSlideshow = imageUrls.indexOf(initialSrc);
+
+                if (initialIndexInSlideshow !== -1) {
+                    currentImageIndex = initialIndexInSlideshow;
+                } else {
+                    // If current src is not in the list, or to ensure it starts with the list's first image:
+                    imgElement.src = imageUrls[0];
+                    currentImageIndex = 0;
+                }
+                // Ensure initial image is visible if opacity was 0 for some reason
+                imgElement.style.opacity = 1;
 
 
+                setInterval(() => {
+                    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
 
-  <!-- Subscribe section -->
-  <div class="w3-container w3-black w3-padding-32">
+                    imgElement.style.opacity = 0; // Start fade out
 
-        <img src="index_files/cup.png" alt="Cup" style="width:100%">
+                    setTimeout(() => {
+                        imgElement.src = imageUrls[currentImageIndex];
+                        imgElement.style.opacity = 1; // Start fade in
+                    }, 250); // This delay should be less than or equal to the CSS transition duration (0.5s = 500ms)
 
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
-  </div>
-  
-  <!-- Footer -->
-  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-    <div class="w3-row-padding">
-      <div class="w3-col s4">
-        <h4>Contact</h4>
-        <p>Questions/ Enquiry? Go ahead.</p>
-        <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post">
-          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required=""></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required=""></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required=""></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required=""></p>
-          <button type="submit" class="w3-button w3-block w3-black">Send</button>
-        </form>
-      </div>
+                }, slideInterval);
+            });
 
-      <div class="w3-col s4">
-        <h4>About</h4>
-        <p><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></p>
-        <p><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></p>
-        <p><a href="http://zvidhindo.co.zw/mugs">Mugs</a></p>
-        <p><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></p>
-        <p><a href="http://zvidhindo.co.zw/badges.html">Badges</a></p>
-        <p><a href="http://zvidhindo.co.zw/misc">Miscellaneous</a></p>
-        <p><a href="https://www.google.com/maps/d/u/0/edit?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&usp=sharing">Find us</a></p>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">Help</a></p>
-      </div>
+        }); // End of DOMContentLoaded
+    </script>
 
-      <div class="w3-col s4 w3-justify">
-        <h4>Store</h4>
-        <p> <a href="https://www.google.com/maps/d/u/0/edit?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&usp=sharing" <i class="fa fa-fw fa-map-marker"></i> </a>One Stamp Shop </p> 
-        <p><i class="fa fa-fw fa-phone"></i>+263 719 455 454</p>
-        <p><i class="fa fa-fw fa-envelope"></i>onestampshop@gmail.com</p>
-        <h4>We accept</h4>
-        <p><i class="fa fa-fw fa-sack-dollar"></i>Cash</p>
-        <p><i class="fa fa-fw fa-credit-card"></i>Bank Transfers</p>
-        <br>
-        <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity w3-large"></i></a>
-  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity w3-large"></i></a>
-  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity w3-large"></i></a>
- <a href="https://www.pinterest.com/1stampshop/">  <i class="fa-brands fa-pinterest-p w3-hover-opacity w3-large"></i></a>
-  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity w3-large"></i></a>
- <a href="https://twitter.com/1stampshop" > <i class="fa-brands fa-x-twitter w3-hover-opacity w3-large"></i> </a>
-      </div>
-    </div>
-
-	<!-- Embed Google Map -->
-  <div class="w3-container w3-light-grey w3-padding-64 w3-center" id="google-map">
-    <h2>Our Location</h2>
-    <p>Find us on Google Maps:</p>
-    <iframe 
-      src="https://www.google.com/maps/d/embed?mid=1S_xyykUTF-xkYvUYnKDZieL__AAPIJE&ehbc=2E312F" 
-      width="640" 
-      height="480" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy">
-    </iframe>
-  </div>
-  </footer>
-
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://zvidhindo.co.zw/" title="1StampShop" target="_blank" class="w3-hover-opacity">1stampshop</a></div>
-
-  <!-- End page content -->
-</div>
-
-<!-- Newsletter Modal -->
-<div id="newsletter" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
-    <div class="w3-container w3-white w3-center">
-      <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NEWSLETTER</h2>
-      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// Accordion 
-function myAccFunc() {
-  var x = document.getElementById("demoAcc");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// Click on the "Customise your rubber stamps" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
-
-
-// Open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
-
-<script>
- (function () {
-   var e,i=["https://www.fastbase.com/fscript.js","LUysSw4rAh","script"],a=document,s=a.createElement(i[2]);
-   s.async=!0,s.id=i[1],s.src=i[0],(e=a.getElementsByTagName(i[2])[0]).parentNode.insertBefore(s,e)
- })();
-</script>
-
-
-</body></html>
-
+</body>
+</html>
