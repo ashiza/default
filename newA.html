@@ -47,32 +47,34 @@
         .page-header {
             background-color: #e9ecef;
             color: #333;
-            padding: 2rem 1rem;
+            padding: 1rem 0.5rem; /* Reduced padding */
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem; /* Reduced margin */
         }
 
         .page-header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 1.75rem; /* Slightly smaller for reduced section */
             font-weight: 600;
         }
 
         .page-header p {
-            font-size: 1.1rem;
+            font-size: 0.9rem; /* Slightly smaller for reduced section */
             opacity: 0.8;
         }
 
         .hero {
             position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem; /* Reduced margin */
         }
 
         .hero img {
             width: 100%;
             display: block;
             animation: kenburns 10s infinite alternate ease-out;
+            height: 150px; /* Reduced height */
+            object-fit: cover;
         }
 
         @keyframes kenburns {
@@ -92,102 +94,104 @@
         }
 
         .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2rem; /* Adjusted for reduced section */
+            margin-bottom: 0.5rem; /* Reduced margin */
         }
 
         .hero-content p {
-            font-size: 1.5rem;
+            font-size: 1.1rem; /* Adjusted for reduced section */
         }
 
         .mugs-section {
-            padding: 2rem;
+            padding: 1rem; /* Reduced padding */
             text-align: center;
-            max-width: 960px;
+            max-width: 720px; /* Reduced max-width */
             margin: 0 auto;
         }
 
         .mugs-section h2 {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Reduced font size for section */
             color: #007bff;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; /* Reduced margin */
         }
 
         .mugs-section p {
             color: #6c757d;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem; /* Reduced margin */
+            font-size: 0.9rem; /* Slightly smaller to fit */
         }
 
         .mugs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduced minmax */
+            gap: 0.75rem; /* Reduced gap */
+            margin-top: 1rem; /* Reduced margin */
         }
 
         .mug-card {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Reduced shadow */
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .mug-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px); /* Reduced transform */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduced shadow */
         }
 
         .mug-card img {
             width: 100%;
-            height: 200px;
+            height: 100px; /* Reduced height */
             object-fit: cover;
             background-color: #f0f0f0;
             border-bottom: 1px solid #eee;
         }
 
         .mug-card-content {
-            padding: 1rem;
+            padding: 0.5rem; /* Reduced padding */
             text-align: center;
         }
 
         .mug-card-content h3 {
             margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.25rem; /* Reduced margin */
+            font-size: 0.9rem; /* Slightly smaller to fit */
             color: #343a40;
         }
 
         .mug-card-content p {
-            font-size: 0.9rem;
+            font-size: 0.7rem; /* Smaller to fit */
             color: #6c757d;
+            margin-bottom: 0.25rem; /* Reduced margin */
         }
 
         .contact-section {
             background-color: #007bff;
             color: white;
-            padding: 2rem 1rem; /* Reduced padding */
+            padding: 1rem 0.5rem; /* Further reduced padding */
             text-align: center;
         }
 
         .contact-section h2 {
-            font-size: 1.75rem; /* Slightly smaller heading */
-            margin-bottom: 0.75rem; /* Reduced margin */
+            font-size: 1.2rem; /* Further reduced heading */
+            margin-bottom: 0.5rem; /* Further reduced margin */
         }
 
         .contact-section p {
-            font-size: 1rem; /* Slightly smaller paragraph */
+            font-size: 0.8rem; /* Further reduced paragraph */
             opacity: 0.9;
-            margin-bottom: 1rem; /* Reduced margin */
+            margin-bottom: 0.5rem; /* Further reduced margin */
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem; /* Reduced gap */
-            margin-bottom: 1.5rem; /* Reduced margin */
-            font-size: 0.9rem; /* Slightly smaller font */
+            gap: 0.25rem; /* Further reduced gap */
+            margin-bottom: 0.75rem; /* Further reduced margin */
+            font-size: 0.8rem; /* Further reduced font */
         }
 
         .contact-details a {
@@ -201,32 +205,32 @@
         }
 
         .contact-details i {
-            margin-right: 0.3rem; /* Reduced margin */
+            margin-right: 0.2rem; /* Further reduced margin */
         }
 
         .contact-form {
-            max-width: 400px; /* Reduced max-width */
+            max-width: 300px; /* Further reduced max-width */
             margin: 0 auto;
             display: grid;
-            gap: 0.75rem; /* Reduced gap */
+            gap: 0.5rem; /* Further reduced gap */
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 0.6rem; /* Reduced padding */
+            padding: 0.4rem; /* Further reduced padding */
             border: none;
             border-radius: 5px;
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 0.8rem; /* Further reduced font */
         }
 
         .contact-form button {
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 0.6rem 1.2rem; /* Reduced padding */
+            padding: 0.4rem 0.8rem; /* Further reduced padding */
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 0.8rem; /* Further reduced font */
             transition: background-color 0.3s ease;
         }
 
@@ -238,14 +242,14 @@
             background-color: #343a40;
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            padding: 0.5rem; /* Reduced footer padding */
+            margin-top: 1rem; /* Reduced footer margin */
         }
 
         .footer a {
             color: white;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
+            margin: 0 0.3rem; /* Reduced icon margin */
+            font-size: 1.2rem; /* Reduced icon size */
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -255,8 +259,8 @@
         }
 
         .footer p {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 0.5rem; /* Reduced paragraph margin */
+            font-size: 0.7rem; /* Reduced paragraph font */
         }
     </style>
 </head>
@@ -281,54 +285,61 @@
 
     <section class="page-header">
         <h1>Custom & Unique Mugs</h1>
-        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. <br> Call us: +263 719 455 454</p>
+        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. Call us: +263 719 455 454</p>
     </section>
 
+    <section class="hero">
+        <img src="mugs_files/coffee-dancing-mug.gif" alt="Animated Coffee Mug">
+        <div class="hero-content">
+            <h2>Start Your Day with a Smile</h2>
+            <p>Get a memorable and unique mug that speaks to you!</p>
+        </div>
+    </section>
 
     <section class="mugs-section">
         <h2>Explore Our Mug Collection</h2>
-        <p>Whether you need a mug with a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
+        <p>Whether you need a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
         <div class="mugs-grid">
             <div class="mug-card">
                 <img src="mugs_files/custom-mugs-1.webp" alt="Custom Printed Mug">
                 <div class="mug-card-content">
                     <h3>Personalized Photo Mugs</h3>
-                    <p>Print your favorite memories on a high-quality mug.</p>
+                    <p>Print your favorite memories.</p>
                 </div>
             </div>
             <div class="mug-card">
                 <img src="mugs_files/custom-mugs-2_1.webp" alt="Mug with Text">
                 <div class="mug-card-content">
                     <h3>Quote & Message Mugs</h3>
-                    <p>Start your day with inspiration or share a laugh.</p>
+                    <p>Start your day inspired.</p>
                 </div>
             </div>
             <div class="mug-card">
                 <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" alt="Color Changing Mug">
                 <div class="mug-card-content">
                     <h3>Color Changing Mugs</h3>
-                    <p>Watch your design appear as you pour in hot liquid!</p>
+                    <p>Watch your design appear!</p>
                 </div>
             </div>
             <div class="mug-card">
                 <img src="mugs_files/blackk.webp" alt="Black Custom Mug">
                 <div class="mug-card-content">
                     <h3>Elegant Black Mugs</h3>
-                    <p>Sleek and stylish for a sophisticated look.</p>
+                    <p>Sleek and stylish.</p>
                 </div>
             </div>
             <div class="mug-card">
                 <img src="mugs_files/custom-mugs.webp" alt="Mug Design Ideas">
                 <div class="mug-card-content">
                     <h3>Design Your Own Mug</h3>
-                    <p>Let your creativity flow and design the perfect mug.</p>
+                    <p>Let your creativity flow.</p>
                 </div>
             </div>
             <div class="mug-card">
                 <img src="mugs_files/mug.gif" alt="Enjoy Your Coffee Mug">
                 <div class="mug-card-content">
                     <h3>Gift Mugs</h3>
-                    <p>A thoughtful and practical gift for any occasion.</p>
+                    <p>A thoughtful gift.</p>
                 </div>
             </div>
         </div>
@@ -346,7 +357,7 @@
         <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email" required>
-            <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
+            <textarea name="Message" rows="2" placeholder="Your Message"></textarea>
             <button type="submit">SEND ENQUIRY</button>
         </form>
     </section>
