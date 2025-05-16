@@ -1,262 +1,365 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugs - One Stamp Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-	<meta charset="utf-8">
-	<title>Mugs</title>
-	<meta name="generator" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="mugs_files/bannercss.css">
-	<link href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Mail%20Logo.jpg" type="image/x-icon" rel="icon">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-<link rel="manifest" href="index_files/site.webmanifest">
-<style>
-.w3-sidebar a {font-family: "Roboto", sans-serif}
-body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-</style>
+        .navbar {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #007bff;
+        }
+
+        .page-header {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero img {
+            width: 100%;
+            display: block;
+            animation: kenburns 10s infinite alternate ease-out;
+        }
+
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(5%, 5%); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+        }
+
+        .mugs-section {
+            padding: 2rem;
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .mugs-section h2 {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .mugs-section p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+
+        .mugs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .mug-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mug-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mug-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mug-card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .mug-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+
+        .mug-card-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .contact-section {
+            background-color: #007bff;
+            color: white;
+            padding: 2rem 1rem; /* Reduced padding */
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 1.75rem; /* Slightly smaller heading */
+            margin-bottom: 0.75rem; /* Reduced margin */
+        }
+
+        .contact-section p {
+            font-size: 1rem; /* Slightly smaller paragraph */
+            opacity: 0.9;
+            margin-bottom: 1rem; /* Reduced margin */
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem; /* Reduced gap */
+            margin-bottom: 1.5rem; /* Reduced margin */
+            font-size: 0.9rem; /* Slightly smaller font */
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-details i {
+            margin-right: 0.3rem; /* Reduced margin */
+        }
+
+        .contact-form {
+            max-width: 400px; /* Reduced max-width */
+            margin: 0 auto;
+            display: grid;
+            gap: 0.75rem; /* Reduced gap */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.6rem; /* Reduced padding */
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem; /* Reduced padding */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem; /* Reduced font size */
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+        }
+
+        .footer p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16 w3-red">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
-  </div>
-  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
-    <a href="http://zvidhindo.co.zw/banner" class="w3-bar-item w3-button">Digital Printing</a>
-    <a href="http://zvidhindo.co.zw/Engraving" class="w3-bar-item w3-button">Engraving</a>
-    <a onclick="myAccFunc()" href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button" id="myBtn">Stamps</a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
-      <a href="#" class="w3-bar-item w3-button">Daters</a>
-      <a href="#" class="w3-bar-item w3-button">None Daters</a>
-      <a href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Copy/Custom%20stamp%20maker%20designer%20make%20stamp%20online%20create%20company%20seal.html" class="w3-bar-item w3-button">Create own Design</a> 
-      </div>
-    <a href="#" class="w3-button w3-block w3-white w3-left-align">Mugs</a>
-    <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
-    <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
-    <a href="http://zvidhindo.co.zw/badges" class="w3-bar-item w3-button">Badges</a>
-  </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
-</nav>
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://zvidhindo.co.zw/">
+                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
+            </a>
+        </div>
+        <nav>
+            <a href="https://zvidhindo.co.zw">Stamps</a>
+            <a href="https://zvidhindo.co.zw/gift">Gifts</a>
+            <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
+            <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
+            <a href="https://zvidhindo.co.zw/badges">Badges</a>
+            <a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
+            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
+        </nav>
+    </header>
 
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- Page content -->
-<div class="w3-content w3-center" style="max-width:2000px;margin-top:46px">
-
-   <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
- <img src="mugs_files/Signature%20email.jpg" alt="top buffer" class="w3-image w3-greyscale-min" style="width:60%">
- 
- 
-  <!-- Automatic Slideshow Images -->
-  
-        <style>
-h3 {
-  text-shadow: 2px 2px 5px red;
-}
-</style>
-<style>
-b {
-  text-shadow: 2px 2px 5px red;
-}
-</style>
-  <div class="mySlides w3-display-container w3-center" style="display: block;">
-  
-
-    <img src="mugs_files/coffee-dancing-mug.gif" alt="Mug1" style="width:30%">
-    <div class="w3-display-topmiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
-      
-      <h3>My turn finally. A memorable CUP of coffee always!</h3> 
-    </div>
-  </div>
-  <!-- The onestampshop Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">ONE STAMP SHOP</h2>
-    <p class="w3-opacity"><i>Coffee Time!</i></p>
-    <p class="w3-justify">Where do you have a coffee? Is it at home, or 
-at work? Have your coffee with a message to cheer you up! Get a mug for a
- loved one, workmates or your customers! ps:&gt; We even got those 
-colour changing ones ready for you!</p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Print what you like</p>
-        <img src="mugs_files/custom-mugs-1.webp" class="w3-round w3-margin-bottom" alt="button badge" style="width:90%">
-      </div>
-      <div class="w3-third">
-        <p>Here is an Idea</p>
-        <img src="mugs_files/custom-mugs-2_1.webp" class="w3-round w3-margin-bottom" alt="Pin badge" style="width:90%">
-      </div>
-      <div class="w3-third">
-        <p>Here is another Idea</p>
-        <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" class="w3-round w3-margin-bottom" alt="Pin badge" style="width:170%">
-      </div>
-       </div>
-       <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>You know best</p>
-        <img src="mugs_files/blackk.webp" class="w3-round w3-margin-bottom" alt="Laser" style="width:90%">
-      </div>
-      <div class="w3-third">
-        <p>You will let us know!</p>
-        <img src="mugs_files/custom-mugs.webp" class="w3-round w3-margin-bottom" alt="Doom" style="width:100%">
-      </div>
-      <div class="w3-third">
-        <p>Do enjoy your coffee!</p>
-        <img src="mugs_files/mug.gif" class="w3-round w3-margin-bottom" alt="Doom" style="width:90%">
-      </div>
-    </div>
-  </div>
-
-  <!-- Ticket Modal -->
-  <div id="ticketModal" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-teal w3-center w3-padding-32"> 
-        <span onclick="document.getElementById('ticketModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
-      </header>
-      <div class="w3-container">
-        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="How many?">
-        <p><label><i class="fa fa-user"></i> Send To</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="Enter email">
-        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
-        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
-        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- The Contact Section -->
-  <div class="w3-container w3-content w3-padding-64 w3-blue" style="max-width:800px" id="contact">
-    <h2 class="w3-wide w3-center">CONTACT</h2>
-    <p class="w3-opacity w3-center"><i>Interested? Drop a note!</i></p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-col m6 w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker" style="width:30px"></i> 4th floor Equity Building, Rezende, Harare CBD<br>
-      <i class="fa fa-map-marker" style="width:30px"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD<br>
-         <i class="fa fa-phone" style="width:30px"></i> Phone: +263 719 455 454<br>
-        <i class="fa fa-envelope" style="width:30px"> </i> Email: onestampshop@mail.com<br>
-      </div>
-      <div class="w3-col m6">
-        <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post">
-          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Name" required="" name="Name">
+    <section class="page-header">
+        <h1>Custom & Unique Mugs</h1>
+        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. <br> Call us: +263 719 455 454</p>
+        <h2>Explore Our Mug Collection</h2>
+        <p>Whether you need a mug with a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
+        <div class="mugs-grid">
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs-1.webp" alt="Custom Printed Mug">
+                <div class="mug-card-content">
+                    <h3>Personalized Photo Mugs</h3>
+                    <p>Print your favorite memories on a high-quality mug.</p>
+                </div>
             </div>
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Email" required="" name="Email">
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs-2_1.webp" alt="Mug with Text">
+                <div class="mug-card-content">
+                    <h3>Quote & Message Mugs</h3>
+                    <p>Start your day with inspiration or share a laugh.</p>
+                </div>
             </div>
-          </div>
-          <input class="w3-input w3-border" type="text" placeholder="Message" required="" name="Message">
-          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+            <div class="mug-card">
+                <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" alt="Color Changing Mug">
+                <div class="mug-card-content">
+                    <h3>Color Changing Mugs</h3>
+                    <p>Watch your design appear as you pour in hot liquid!</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/blackk.webp" alt="Black Custom Mug">
+                <div class="mug-card-content">
+                    <h3>Elegant Black Mugs</h3>
+                    <p>Sleek and stylish for a sophisticated look.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs.webp" alt="Mug Design Ideas">
+                <div class="mug-card-content">
+                    <h3>Design Your Own Mug</h3>
+                    <p>Let your creativity flow and design the perfect mug.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/mug.gif" alt="Enjoy Your Coffee Mug">
+                <div class="mug-card-content">
+                    <h3>Gift Mugs</h3>
+                    <p>A thoughtful and practical gift for any occasion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Get Your Custom Mug Today!</h2>
+        <p>Have a design in mind or need a quote? Contact us now!</p>
+        <div class="contact-details">
+            <p><i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
+            <br><i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
+            <br><i class="fa fa-phone"></i> +263 719 455 454
+            <br><i class="fa fa-envelope"></i> onestampshop@mail.com</p>
+        </div>
+        <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
+            <button type="submit">SEND ENQUIRY</button>
         </form>
-      </div>
-    </div>
-  </div>
-  
-<!-- End Page Content -->
-</div>
+    </section>
 
-<!-- Image of location/map -->
+    <footer class="footer">
+        <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.pinterest.com/1stampshop/"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter"></i></a>
+        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe.</p>
+    </footer>
 
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 
-<img src="mugs_files/Signature%20email.jpg" class="w3-image w3-greyscale-min" style="width:80%">
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-  <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
-  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
-  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
-  <a href="https://www.pinterest.com/1stampshop/"> <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i></a>
-  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
- <a href="https://twitter.com/1stampshop"> <i class="fa-brands fa-x-twitter w3-hover-opacity"></i> </a>
-  <p class="w3-medium">Powered by <a href="https://1stampshop.business.site/" target="_blank">1Stampshop</a></p>
-</footer>
-
-<script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 4000);    
-}
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-<script>
-// Accordion 
-function myAccFunc() {
-  var x = document.getElementById("demoAcc");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-
-
-
-// Open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-
-</script>
-
-
-
-
-
-
-</body></html>
+</body>
+</html>
