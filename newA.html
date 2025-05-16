@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mugs - One Stamp Shop</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <title>Modern One Stamp Shop - Corporate Gifts</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-    <link rel="manifest" href="index_files/site.webmanifest">
     <style>
         body {
             margin: 0;
@@ -19,335 +15,452 @@
             line-height: 1.6;
         }
 
-        .navbar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
             background-color: #fff;
-            padding: 1rem 2rem;
+            padding: 1rem 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar .logo img {
-            height: 40px;
+        .logo h1 {
+            color: #e53935;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
-        .navbar nav a {
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
             margin-left: 20px;
+        }
+
+        .nav-links a {
             text-decoration: none;
             color: #555;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .navbar nav a:hover {
-            color: #007bff;
+        .nav-links a:hover {
+            color: #e53935;
         }
 
-        .page-header {
-            background-color: #e9ecef;
-            color: #333;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
+        .mobile-menu-button {
+            display: none;
+            font-size: 1.5rem;
+            color: #e53935;
+            cursor: pointer;
         }
 
-        .page-header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 600;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
+        /* Hero Section */
         .hero {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .hero img {
-            width: 100%;
-            display: block;
-            animation: kenburns 10s infinite alternate ease-out;
-        }
-
-        @keyframes kenburns {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.1) translate(5%, 5%); }
-            100% { transform: scale(1) translate(0, 0); }
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 4rem 0;
         }
 
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-        }
-
-        .mugs-section {
-            padding: 2rem;
-            text-align: center;
-            max-width: 960px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .mugs-section h2 {
-            font-size: 2rem;
-            color: #007bff;
+        .hero h2 {
+            font-size: 3rem;
             margin-bottom: 1rem;
+            font-weight: 700;
+            color: #e53935;
         }
 
-        .mugs-section p {
-            color: #6c757d;
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background-color: #e53935;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #c62828;
+        }
+
+        .hero-image {
+            max-width: 60%;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Corporate Gifts Section */
+        .corporate-gifts {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .corporate-gifts h2 {
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            color: #e53935;
+            font-weight: 700;
         }
 
-        .mugs-grid {
+        .gift-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 2rem;
         }
 
-        .mug-card {
+        .gift-card {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .mug-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .gift-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .mug-card img {
+        .gift-image-container {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 250px;
+            overflow: hidden;
             background-color: #f0f0f0;
-            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .mug-card-content {
-            padding: 1rem;
+        .gift-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .gift-info {
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .mug-card-content h3 {
+        .gift-info h3 {
             margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            color: #343a40;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 500;
         }
 
-        .mug-card-content p {
-            font-size: 0.9rem;
-            color: #6c757d;
+        .gift-info p {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 1rem;
         }
 
-        .contact-section {
-            background-color: #007bff;
-            color: white;
-            padding: 2rem 1rem; /* Reduced padding */
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: #e9ecef;
             text-align: center;
         }
 
-        .contact-section h2 {
-            font-size: 1.75rem; /* Slightly smaller heading */
-            margin-bottom: 0.75rem; /* Reduced margin */
-        }
-
-        .contact-section p {
-            font-size: 1rem; /* Slightly smaller paragraph */
-            opacity: 0.9;
-            margin-bottom: 1rem; /* Reduced margin */
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #e53935;
+            font-weight: 700;
         }
 
         .contact-details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem; /* Reduced gap */
-            margin-bottom: 1.5rem; /* Reduced margin */
-            font-size: 0.9rem; /* Slightly smaller font */
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
         }
 
         .contact-details a {
-            color: white;
+            color: #e53935;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            opacity: 0.8;
-        }
-
-        .contact-details i {
-            margin-right: 0.3rem; /* Reduced margin */
+            color: #c62828;
         }
 
         .contact-form {
-            max-width: 400px; /* Reduced max-width */
-            margin: 0 auto;
             display: grid;
-            gap: 0.75rem; /* Reduced gap */
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 0.6rem; /* Reduced padding */
-            border: none;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            grid-column: 1 / 3;
         }
 
         .contact-form button {
-            background-color: #28a745;
-            color: white;
+            background-color: #e53935;
+            color: #fff;
             border: none;
-            padding: 0.6rem 1.2rem; /* Reduced padding */
+            padding: 1rem 2rem;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem; /* Reduced font size */
+            font-weight: 600;
             transition: background-color 0.3s ease;
+            grid-column: 1 / 3;
         }
 
         .contact-form button:hover {
-            background-color: #218838;
+            background-color: #c62828;
         }
 
+        /* Footer */
         .footer {
-            background-color: #343a40;
-            color: white;
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            font-size: 0.9rem;
         }
 
-        .footer a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #fff;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            margin: 0 15px;
+            transition: color 0.3s ease;
         }
 
-        .footer a:hover {
+        .footer-links a:hover {
+            color: #e53935;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
             opacity: 0.8;
         }
 
-        .footer p {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-image {
+                max-width: 100%;
+            }
+            .gift-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea {
+                grid-column: 1;
+            }
+            .contact-form button {
+                grid-column: 1;
+            }
         }
     </style>
 </head>
 <body>
-
-    <header class="navbar">
-        <div class="logo">
-            <a href="https://zvidhindo.co.zw/">
-                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
-            </a>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>One Stamp Shop</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="http://zvidhindo.co.zw">Home</a></li>
+                    <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
+                    <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
+                    <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
+                    <li><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></li>
+                    <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
         </div>
-        <nav>
-            <a href="https://zvidhindo.co.zw">Stamps</a>
-            <a href="https://zvidhindo.co.zw/gift">Gifts</a>
-            <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
-            <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
-            <a href="https://zvidhindo.co.zw/badges">Badges</a>
-            <a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
-            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
-        </nav>
     </header>
 
-    <section class="page-header">
-        <h1>Custom & Unique Mugs</h1>
-        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. <br> Call us: +263 719 455 454</p>
-        <h2>Explore Our Mug Collection</h2>
-        <p>Whether you need a mug with a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
-        <div class="mugs-grid">
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs-1.webp" alt="Custom Printed Mug">
-                <div class="mug-card-content">
-                    <h3>Personalized Photo Mugs</h3>
-                    <p>Print your favorite memories on a high-quality mug.</p>
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Elevate Your Brand with Thoughtful Corporate Gifts</h2>
+            <p>Show appreciation and build lasting relationships with our curated selection of corporate gifts.</p>
+            <a href="#corporate-gifts" class="hero-button">Explore Gift Ideas</a>
+            <img src="gift_files/gift.gif" alt="Animated Gift" class="hero-image">
+        </div>
+    </section>
+
+    <section class="corporate-gifts" id="corporate-gifts">
+        <div class="container">
+            <h2>Our Range of Corporate Gifts</h2>
+            <p>Discover a variety of gifting options to suit your clients, employees, and business partners.</p>
+            <div class="gift-grid">
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/corporate-promotional-gifts.jpg" alt="Promotional Gifts" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Promotional Items</h3>
+                        <p>Branded items to keep your company top-of-mind.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs-2_1.webp" alt="Mug with Text">
-                <div class="mug-card-content">
-                    <h3>Quote & Message Mugs</h3>
-                    <p>Start your day with inspiration or share a laugh.</p>
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/Corporate-Gift-Boxes-For-Clients-Employees.jpg" alt="Gift Boxes" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Curated Gift Boxes</h3>
+                        <p>Thoughtfully assembled boxes for a memorable impact.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" alt="Color Changing Mug">
-                <div class="mug-card-content">
-                    <h3>Color Changing Mugs</h3>
-                    <p>Watch your design appear as you pour in hot liquid!</p>
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/bbly01_2.webp" alt="Branded Lanyards" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Branded Lanyards</h3>
+                        <p>Practical and visible branding solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/blackk.webp" alt="Black Custom Mug">
-                <div class="mug-card-content">
-                    <h3>Elegant Black Mugs</h3>
-                    <p>Sleek and stylish for a sophisticated look.</p>
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/360_F_163008251_qS7ySiuwRBbHFABVpSgMzIm1mryNU0yA.jpg" alt="Theme Branding" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Themed Branding Gifts</h3>
+                        <p>Gifts aligned with your brand's message.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs.webp" alt="Mug Design Ideas">
-                <div class="mug-card-content">
-                    <h3>Design Your Own Mug</h3>
-                    <p>Let your creativity flow and design the perfect mug.</p>
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/27263c85c72a7e6ba6016d2f25776ef7.jpg" alt="Custom Branding" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Custom Branding Options</h3>
+                        <p>Personalize gifts with your unique logo and design.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/mug.gif" alt="Enjoy Your Coffee Mug">
-                <div class="mug-card-content">
-                    <h3>Gift Mugs</h3>
-                    <p>A thoughtful and practical gift for any occasion.</p>
+                <div class="gift-card">
+                    <div class="gift-image-container">
+                        <img src="gift_files/giftbag-1000_default.webp" alt="Branded Gift Bags" class="gift-image">
+                    </div>
+                    <div class="gift-info">
+                        <h3>Branded Gift Bags</h3>
+                        <p>Complete your gifting with stylish branded bags.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact-section">
-        <h2>Get Your Custom Mug Today!</h2>
-        <p>Have a design in mind or need a quote? Contact us now!</p>
-        <div class="contact-details">
-            <p><i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-            <br><i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
-            <br><i class="fa fa-phone"></i> +263 719 455 454
-            <br><i class="fa fa-envelope"></i> onestampshop@mail.com</p>
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us for Your Corporate Gift Needs</h2>
+            <div class="contact-details">
+                <p><i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD</p>
+                <p><i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD</p>
+                <p><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263 719 455 454</a></p>
+                <p><i class="fa fa-envelope"></i> <a href="mailto:onestampshop@mail.com">onestampshop@mail.com</a></p>
+            </div>
+            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required></textarea>
+                <button type="submit">SEND ENQUIRY</button>
+            </form>
         </div>
-        <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email" required>
-            <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
-            <button type="submit">SEND ENQUIRY</button>
-        </form>
     </section>
 
-    <footer class="footer">
+    
+
+<footer class="footer">
         <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
