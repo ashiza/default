@@ -351,7 +351,7 @@
                 <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
                 <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
                 <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
-                <li><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></li>
+                <li><a href="http://zvidhindo.co.zw">Stamps</a></li>
                 <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -434,8 +434,8 @@
             <div class="contact-details">
                <p> <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d47!2m2!1d31.045902!2d-17.8313046?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
             <br> <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065f:0x4242c5a576d1d87a!2m2!1d28.5823972!2d-20.1633195?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
-            <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454
-            <br><i class="fa fa-envelope"></i> onestampshop@mail.com</p>
+            <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454</p>
+            <br><i class="fa fa-envelope"></i> onestampshop@gmail.com</p>
             </div>
             <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
                 <div>
@@ -468,6 +468,22 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
+<script>
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const navLinks = document.querySelector('.nav-links');
 
+    menuButton.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.style.flexDirection = 'column'; // stack items vertically on mobile
+        navLinks.style.backgroundColor = '#fff'; // optional: background colour for mobile nav
+        navLinks.style.position = 'absolute';    // optional: better visual separation
+        navLinks.style.top = '100%';             // position just below navbar
+        navLinks.style.right = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.padding = '1rem';
+    });
+</script>
+
+                
 </body>
 </html>
