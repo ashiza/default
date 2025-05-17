@@ -1,11 +1,19 @@
+```html name=digital-printing.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Gifts - One Stamp Shop</title>
+    <title>Digital Printing - One Stamp Shop</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -38,10 +46,11 @@
         }
 
         .logo h1 {
-            color: #e53935;
+            color: #1565c0;
             margin: 0;
             font-size: 1.5rem;
             font-weight: 700;
+            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -63,22 +72,22 @@
         }
 
         .nav-links a:hover {
-            color: #e53935;
+            color: #1565c0;
         }
 
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: #e53935;
+            color: #1565c0;
             cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            background-color: #f8f9fa;
+            background-color: #e3f2fd;
             color: #333;
             text-align: center;
-            padding: 4rem 0;
+            padding: 4rem 0 2rem 0;
         }
 
         .hero-content {
@@ -90,7 +99,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
-            color: #e53935;
+            color: #1565c0;
         }
 
         .hero p {
@@ -101,7 +110,7 @@
 
         .hero-button {
             display: inline-block;
-            background-color: #e53935;
+            background-color: #1565c0;
             color: #fff;
             padding: 1rem 2rem;
             text-decoration: none;
@@ -111,7 +120,7 @@
         }
 
         .hero-button:hover {
-            background-color: #c62828;
+            background-color: #0d47a1;
         }
 
         .hero-image {
@@ -121,27 +130,27 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Corporate Gifts Section */
-        .corporate-gifts {
-            padding: 4rem 0;
+        /* Printing Solutions Section */
+        .printing-solutions {
+            padding: 4rem 0 2rem 0;
             text-align: center;
         }
 
-        .corporate-gifts h2 {
+        .printing-solutions h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #e53935;
+            color: #1565c0;
             font-weight: 700;
         }
 
-        .gift-grid {
+        .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 2rem;
         }
 
-        .gift-card {
+        .solution-card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -149,14 +158,14 @@
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .gift-card:hover {
+        .solution-card:hover {
             transform: scale(1.03);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .gift-image-container {
+        .solution-image-container {
             width: 100%;
-            height: 250px;
+            height: 200px;
             overflow: hidden;
             background-color: #f0f0f0;
             display: flex;
@@ -164,43 +173,85 @@
             justify-content: center;
         }
 
-        .gift-image {
+        .solution-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             display: block;
         }
 
-        .gift-info {
+        .solution-info {
             padding: 1.5rem;
             text-align: center;
         }
 
-        .gift-info h3 {
+        .solution-info h3 {
             margin-top: 0;
             margin-bottom: 0.75rem;
             font-size: 1.2rem;
-            color: #333;
-            font-weight: 500;
+            color: #1565c0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 4px #e3f2fd;
         }
 
-        .gift-info p {
+        .solution-info p {
             font-size: 1rem;
-            color: #777;
+            color: #555;
             margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f1f5fb;
+            padding: 4rem 0 2rem 0;
+        }
+        .gallery h2 {
+            font-size: 2rem;
+            color: #1565c0;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item p {
+            margin: 1rem 0 0 0;
+            color: #1565c0;
+            font-weight: 500;
+            font-size: 1.1rem;
         }
 
         /* Contact Section */
         .contact {
             padding: 4rem 0;
-            background-color: #e9ecef;
+            background-color: #e3f2fd;
             text-align: center;
         }
 
         .contact h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #e53935;
+            color: #1565c0;
             font-weight: 700;
         }
 
@@ -215,14 +266,14 @@
         }
 
         .contact-details a {
-            color: #e53935;
+            color: #1565c0;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            color: #c62828;
+            color: #0d47a1;
         }
 
         .contact-form {
@@ -256,7 +307,7 @@
         }
 
         .contact-form button {
-            background-color: #e53935;
+            background-color: #1565c0;
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -268,7 +319,7 @@
         }
 
         .contact-form button:hover {
-            background-color: #c62828;
+            background-color: #0d47a1;
         }
 
         /* Footer */
@@ -292,7 +343,7 @@
         }
 
         .footer-links a:hover {
-            color: #e53935;
+            color: #1565c0;
         }
 
         .footer-bottom {
@@ -323,8 +374,8 @@
             .hero-image {
                 max-width: 100%;
             }
-            .gift-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            .solution-grid, .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
             .contact-form {
                 grid-template-columns: 1fr;
@@ -339,6 +390,7 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -361,82 +413,106 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Digital Printing Solutions</h2>
+            <p>
+                One Stamp Shop provides top-tier digital printing services for all your branding needs. From in-shop branding to banners, flags, and vehicle wraps, we guarantee vibrant, lasting results to set your business apart.
+            </p>
+            <a href="#contact" class="hero-button">Enquire Now</a>
+            <img src="box_files/Signature%20email.jpg" alt="Digital Printing" class="hero-image">
+        </div>
+    </section>
 
-    <section class="corporate-gifts" id="corporate-gifts">
+    <!-- Printing Solutions Section -->
+    <section class="printing-solutions" id="printing-solutions">
         <div class="container">
-            <h2>Elevate Your Brand with Thoughtful Corporate Gifts</h2>
-            <p>Show appreciation and build lasting relationships with our curated selection of corporate gifts.</p>
-            <h2>Our Range of Corporate Gifts</h2>
-            <p>Discover a variety of gifting options to suit your clients, employees, and business partners.</p>
-            <div class="gift-grid">
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/corporate-promotional-gifts.jpg" alt="Promotional Gifts" class="gift-image">
+            <h2>Our Digital Printing Services</h2>
+            <p>We offer a wide range of printed branding products to help your business stand out:</p>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="box_files/Avacado-Moon-Sticker.jpeg" alt="Internal Shop Signage" class="solution-image">
                     </div>
-                    <div class="gift-info">
-                        <h3>Promotional Items</h3>
-                        <p>Branded items to keep your company top-of-mind.</p>
+                    <div class="solution-info">
+                        <h3>Internal Shop Signage</h3>
+                        <p>Custom branding for gondola shelves, aisle signage, and in-store displays.</p>
                     </div>
                 </div>
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/Corporate-Gift-Boxes-For-Clients-Employees.jpg" alt="Gift Boxes" class="gift-image">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="box_files/VUE-Packaging.jpeg" alt="Equipment" class="solution-image">
                     </div>
-                    <div class="gift-info">
-                        <h3>Curated Gift Boxes</h3>
-                        <p>Thoughtfully assembled boxes for a memorable impact.</p>
-                    </div>
-                </div>
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/bbly01_2.webp" alt="Branded Lanyards" class="gift-image">
-                    </div>
-                    <div class="gift-info">
-                        <h3>Branded Lanyards</h3>
-                        <p>Practical and visible branding solutions.</p>
+                    <div class="solution-info">
+                        <h3>High-End Equipment</h3>
+                        <p>We use top of the range machines for outstanding print quality every time.</p>
                     </div>
                 </div>
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/360_F_163008251_qS7ySiuwRBbHFABVpSgMzIm1mryNU0yA.jpg" alt="Theme Branding" class="gift-image">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="box_files/workshop.webp" alt="Workshop" class="solution-image">
                     </div>
-                    <div class="gift-info">
-                        <h3>Themed Branding Gifts</h3>
-                        <p>Gifts aligned with your brand's message.</p>
-                    </div>
-                </div>
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/27263c85c72a7e6ba6016d2f25776ef7.jpg" alt="Custom Branding" class="gift-image">
-                    </div>
-                    <div class="gift-info">
-                        <h3>Custom Branding Options</h3>
-                        <p>Personalize gifts with your unique logo and design.</p>
+                    <div class="solution-info">
+                        <h3>Project Support</h3>
+                        <p>We help you pitch your projects and take your business to the next level.</p>
                     </div>
                 </div>
-                <div class="gift-card">
-                    <div class="gift-image-container">
-                        <img src="gift_files/giftbag-1000_default.webp" alt="Branded Gift Bags" class="gift-image">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="box_files/outdoor%20banner.webp" alt="Outdoor Banners" class="solution-image">
                     </div>
-                    <div class="gift-info">
-                        <h3>Branded Gift Bags</h3>
-                        <p>Complete your gifting with stylish branded bags.</p>
+                    <div class="solution-info">
+                        <h3>Outdoor Banners</h3>
+                        <p>Get noticed! We offer high-visibility solutions for your outdoor branding.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2>Gallery: Our Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="box_files/Vinnies-Shop-Signage.jpeg" alt="Shop Branding">
+                <p>Shop Branding</p>
+            </div>
+            <div class="gallery-item">
+                <img src="box_files/Vegan-Garage-Signage.jpeg" alt="Food Court Styling">
+                <p>Food Court Styling</p>
+            </div>
+            <div class="gallery-item">
+                <img src="box_files/Car-Business-Signage-Agline-400x400.jpg" alt="Vehicle Branding">
+                <p>Vehicle Branding</p>
+            </div>
+            <div class="gallery-item">
+                <img src="box_files/metal-signs-04.jpg" alt="Fence Signage">
+                <p>Fence Signage</p>
+            </div>
+            <div class="gallery-item">
+                <img src="box_files/banner2.webp" alt="Banners">
+                <p>Banners</p>
+            </div>
+            <div class="gallery-item">
+                <img src="box_files/personalized-flags_1_1.webp" alt="Flags">
+                <p>Flags</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Contact Us for Your Corporate Gift Needs</h2>
+            <h2>Contact Us</h2>
             <div class="contact-details">
-               <p> <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d47!2m2!1d31.045902!2d-17.8313046?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-            <br> <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065f:0x4242c5a576d1d87a!2m2!1d28.5823972!2d-20.1633195?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
-            <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454
-            <br><i class="fa fa-envelope"></i> onestampshop@mail.com</p>
+               <p> <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d47!2m2!1d31.045902!2d-17.8313046?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD </a>
+                <br> <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065f:0x4242c5a576d1d87a!2m2!1d28.5823972!2d-20.1633195?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD </a>
+                <br><i class="fa fa-phone"></i> +263 719 455 454
+                <br><i class="fa fa-envelope"></i> onestampshop@mail.com
             </div>
-            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
+            <form action="https://formspree.io/f/mrgnbgwl" method="post" class="contact-form">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="Name" required>
@@ -452,9 +528,8 @@
         </div>
     </section>
 
-    
-
-<footer class="footer">
+    <!-- Footer -->
+    <footer class="footer">
         <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
@@ -467,6 +542,22 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
+    <script>
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
 
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
+        });
+    </script>
 </body>
 </html>
+```
