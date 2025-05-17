@@ -1,246 +1,401 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Engraving - One Stamp Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
+    <style>
+        :root {
+            --brown-main: #8d5524;
+            --brown-dark: #5c2e0a;
+            --brown-light: #e0c7a1;
+            --brown-accent: #b18052;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-	<meta charset="utf-8">
-	<title>Engraving</title>
-	<meta name="generator" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="Engraving_files/bannercss.css">
-	<link href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Mail%20Logo.jpg" type="image/x-icon" rel="icon">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-<link rel="manifest" href="index_files/site.webmanifest">
-<style>
-.w3-sidebar a {font-family: "Roboto", sans-serif}
-body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-</style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--brown-main);
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--brown-main);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--brown-main);
+            cursor: pointer;
+        }
+
+        /* Engraving Section with LESS TOP SPACE */
+        .engraving-section {
+            padding: 1.5rem 0 4rem 0; /* reduced top padding from 4rem to 1.5rem */
+            text-align: center;
+        }
+
+        .engraving-section h2:first-of-type {
+            margin-top: 0.5rem; /* reduce top margin above "Timeless Engraving" */
+        }
+
+        .engraving-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem; /* slightly less space below "Timeless Engraving" and "Featured Engraved Gifts" */
+            color: var(--brown-main);
+            font-weight: 700;
+            text-shadow: 1px 2px 7px var(--brown-light);
+        }
+        .engraving-section p {
+            margin-top: 0.2rem;     /* reduce space above "Engraving is more than art" */
+            margin-bottom: 1.3rem;  /* reduce space below this paragraph */
+        }
+        .engraving-section .w3-opacity {
+            color: var(--brown-accent);
+            margin-top: 0.5rem;   /* reduce space above "We are more than stamps!!" */
+            margin-bottom: 1.2rem;
+        }
+
+        .engraving-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 2rem;
+        }
+
+        .engraving-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(141,85,36,0.10);
+            padding: 1.5rem 1rem 1.5rem 1rem;
+            text-align: center;
+        }
+        .engraving-card img {
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            width: 85%;
+            max-width: 270px;
+        }
+        .engraving-card p {
+            margin: 0 0 1rem 0;
+            color: var(--brown-main);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--brown-light);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--brown-main);
+            font-weight: 700;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: var(--brown-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--brown-dark);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #b18052;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            grid-column: 1 / 3;
+        }
+
+        .contact-form button {
+            background-color: var(--brown-main);
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            grid-column: 1 / 3;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--brown-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--brown-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.6rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--brown-dark);
+        }
+
+        .footer p {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .engraving-section h2 {
+                font-size: 2.1rem;
+            }
+            .engraving-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea {
+                grid-column: 1;
+            }
+            .contact-form button {
+                grid-column: 1;
+            }
+        }
+    </style>
 </head>
-
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJWY6DS2DK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KJWY6DS2DK');
-</script>
 <body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>One Stamp Shop</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="http://zvidhindo.co.zw">Home</a></li>
+                    <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
+                    <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
+                    <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
+                    <li><a href="http://zvidhindo.co.zw">Stamps</a></li>
+                    <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16 w3-red">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide-justify"><b>One Stamp Shop</b></h3>
-  </div>
-  <div class="w3-padding-64 w3-large w3-text-grey w3-black" style="font-weight:bold">
-    <a href="http://zvidhindo.co.zw/banner.html" class="w3-bar-item w3-button">Digital Printing</a>
-    <a href="#" class="w3-button w3-block w3-white w3-left-align">Engraving</a>
-    <a onclick="myAccFunc()" href="http://zvidhindo.co.zw/" class="w3-bar-item w3-button" id="myBtn">Stamps</a>
-    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" class="w3-bar-item w3-button">Fast moving Stamps</a>
-      <a href="#" class="w3-bar-item w3-button">Daters</a>
-      <a href="#" class="w3-bar-item w3-button">None Daters</a>
-      <a href="file:///Users/The_Ash/Documents/Nicepage/bb/stamps/Copy/Custom%20stamp%20maker%20designer%20make%20stamp%20online%20create%20company%20seal.html" class="w3-bar-item w3-button">Create own Design</a> 
-      </div>
-    <a href="http://zvidhindo.co.zw/mugs" class="w3-bar-item w3-button">Mugs</a>
-    <a href="http://zvidhindo.co.zw/misc" class="w3-bar-item w3-button">Miscellaneous</a>
-    <a href="http://zvidhindo.co.zw/gift" class="w3-bar-item w3-button">Corporate Gifts</a>
-    <a href="http://zvidhindo.co.zw/badges.html" class="w3-bar-item w3-button">Badges</a>
-  </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">One Stamp Shop</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-
-
-<!-- Page content -->
-<div class="w3-content w3-center" style="max-width:2000px;margin-top:46px">
-<img src="Engraving_files/Signature%20email.jpg" class="w3-image w3-greyscale-min" style="width:60%">
-  <!-- Automatic Slideshow Images -->
-  
-        <style>
-h3 {
-  text-shadow: 2px 2px 5px red;
-}
-</style>
-<style>
-b {
-  text-shadow: 2px 2px 5px red;
-}
-</style>
-  <div class="mySlides w3-display-container w3-center" style="display: block;">
-  
-
-    <img src="Engraving_files/Kopie.gif" alt="sliding chains" style="width:70%">
-    <div class="w3-display-topmiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      
-      <h3>A Perfect Gift</h3> 
-    </div>
-  </div>
-  <!-- The onestampshop Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">ONE STAMP SHOP</h2>
-    <p class="w3-opacity"><i>We are more than stamps!!</i></p>
-    <p class="w3-justify">Engraving is timeless art to share words. The 
-art can be used on various objects to share a message on our hearts with
- our loved ones!</p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Ring holder</p>
-        <img src="Engraving_files/Ring.jpg" class="w3-round w3-margin-bottom" alt="Desk flag f1" style="width:70%">
-      </div>
-      <div class="w3-third">
-        <p>Home Greeting</p>
-        <img src="Engraving_files/welcome.jpg" class="w3-round w3-margin-bottom" alt="Home Greeting" style="width:80%">
-      </div>
-      <div class="w3-third">
-        <p>Family collection</p>
-        <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" class="w3-round" alt="Family collection" style="width:60%">
-      </div> 
-       </div>
-        <div class="w3-row w3-padding-32">
-      <div class="w3-third">
-        <p>Key Holders</p>
-        <img src="Engraving_files/set.jpg" class="w3-round w3-margin-bottom" alt="Garden Potrait" style="width:70%">
-      </div>
-      <div class="w3-third">
-        <p>Table runner rack</p>
-        <img src="Engraving_files/Table_Runner_Stack_750x500.webp" class="w3-round w3-margin-bottom" alt="Table Runner" style="width:85%">
-      </div>
-      <div class="w3-third">
-        <p>Timeless Message</p>
-        <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" class="w3-round" alt="Timeless" style="width:75%">
-      </div>
-    </div>
-  </div>
-
-  <!-- Ticket Modal -->
-  <div id="ticketModal" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-teal w3-center w3-padding-32"> 
-        <span onclick="document.getElementById('ticketModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
-      </header>
-      <div class="w3-container">
-        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="How many?">
-        <p><label><i class="fa fa-user"></i> Send To</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="Enter email">
-        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
-        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
-        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- The Contact Section -->
-  <div class="w3-container w3-content w3-padding-64 w3-blue" style="max-width:800px" id="contact">
-    <h2 class="w3-wide w3-center">CONTACT</h2>
-    <p class="w3-opacity w3-center"><i>Interested? Drop a note!</i></p>
-    <div class="w3-row w3-padding-32">
-      <div class="w3-col m6 w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker" style="width:30px"></i> 4th floor Equity Building, Rezende, Harare CBD<br>
-       <i class="fa fa-map-marker" style="width:30px"></i> Suite 5, Sunninghill Building, Corner 14th Avenue & Fife Street, Bulawayo CBD<br>
-        <i class="fa fa-phone" style="width:30px"></i> Phone: +263 719 455 454<br>
-        <i class="fa fa-envelope" style="width:30px"> </i> Email: onestampshop@mail.com<br>
-      </div>
-      <div class="w3-col m6">
-        <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post">
-          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Name" required="" name="Name">
+      <section class="engraving-section" id="engraving">
+     <div class="container">
+            <h2>Timeless Engraving</h2>
+            <p>
+                Engraving is more than art—it's a personal message etched in time. Share your words, love, and meaning on objects that last a lifetime.
+            </p>
+           
+            <h2>Featured Engraved Gifts</h2>
+            <p class="w3-opacity"><i>We are more than stamps!!</i></p>
+            <div class="engraving-grid">
+                <div class="engraving-card">
+                    <img src="Engraving_files/Ring.jpg" alt="Ring holder">
+                    <p>Ring holder</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/welcome.jpg" alt="Home Greeting">
+                    <p>Home Greeting</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" alt="Family collection">
+                    <p>Family collection</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/set.jpg" alt="Key Holders">
+                    <p>Key Holders</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/Table_Runner_Stack_750x500.webp" alt="Table Runner Rack">
+                    <p>Table runner rack</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" alt="Timeless Message">
+                    <p>Timeless Message</p>
+                </div>
             </div>
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Email" required="" name="Email">
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us for Custom Engraving</h2>
+            <div class="contact-details">
+                <p>
+                    <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/"> 
+                        <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
+                    </a>
+                    <br>
+                    <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/"> 
+                        <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Corner 14th Avenue & Fife Street, Bulawayo CBD
+                    </a>
+                    <br><i class="fa fa-phone"></i> +263 719 455 454
+                    <br><i class="fa fa-envelope"></i> onestampshop@mail.com
+                </p>
             </div>
-          </div>
-          <input class="w3-input w3-border" type="text" placeholder="Message" required="" name="Message">
-          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  
-<!-- End Page Content -->
-</div>
+            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required></textarea>
+                <button type="submit">SEND ENQUIRY</button>
+            </form>
+        </div>
+    </section>
 
-<!-- Image of location/map -->
+    <footer class="footer">
+        <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.pinterest.com/1stampshop/"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter"></i></a>
+        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe.</p>
+    </footer>
 
-
-<img src="Engraving_files/Signature%20email.jpg" class="w3-image w3-greyscale-min" style="width:80%">
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-  <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
-  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
-  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
-  <a href="https://www.pinterest.com/1stampshop/"> <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i></a>
-  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
- <a href="https://twitter.com/1stampshop"> <i class="fa-brands fa-x-twitter w3-hover-opacity"></i> </a>
-  <p class="w3-medium">Powered by <a href="https://zvidhindo.co.zw/" target="_blank">1Stampshop</a></p>
-</footer>
-
-<script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 4000);    
-}
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-	// Open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
-
-
-
-
-
-
-</body></html>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+        });
+    </script>
+</body>
+</html>
