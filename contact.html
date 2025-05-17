@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - One Stamp Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+    }
+
+    .navbar nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+    }
+    .navbar nav a:hover {
+      color: #007bff;
+    }
+
+    .page-header {
+      background-color: #007bff;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .branch-selector {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .branch-selector button {
+      background-color: #e9ecef;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .branch-selector button:hover, .branch-selector button.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .map-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .map-section iframe {
+      border: 0;
+      max-width: 100%;
+      width: 640px;
+      height: 480px;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="https://zvidhindo.co.zw/">
+      <img src="index_files/icon.png" alt="One Stamp Shop Logo">
+    </a>
+  </div>
+  <nav>
+    <a href="https://zvidhindo.co.zw/mugs">Mugs</a>
+    <a href="https://zvidhindo.co.zw/gift">Gifts</a>
+    <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
+    <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
+    <a href="https://zvidhindo.co.zw/badges">Badges</a>
+    <a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
+    <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <h1>Contact One Stamp Shop</h1>
+  <p>Get in touch or find our locations in Bulawayo or Harare</p>
+</section>
+
+<section class="branch-selector">
+  <button class="active" onclick="showBranch('bulawayo')">Bulawayo Branch</button>
+  <button onclick="showBranch('harare')">Harare Branch</button>
+</section>
+
+<section class="map-section">
+  <div id="bulawayo-map">
+    <h2>Bulawayo Branch</h2>
+    <p>Located in Bulawayo CBD</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.8138643258755!2d28.6296592!3d-20.1596673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a58a0e9938a3%3A0xa7f7cf54228e2f89!2sBulawayo%2C%20Zimbabwe!5e0!3m2!1sen!2szw!4v1715953835517" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <div id="harare-map" style="display: none;">
+    <h2>Harare Branch</h2>
+    <p>Located near Avondale, Harare</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.5442987982185!2d30.999168314900703!3d-17.82922298779232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4362cfb6791%3A0x17b45dfe01b8bb49!2sHarare%2C%20Zimbabwe!5e0!3m2!1sen!2szw!4v1715954038411" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo / Harare, Zimbabwe.</p>
+</footer>
+
+<script>
+  function showBranch(branch) {
+    document.getElementById('bulawayo-map').style.display = (branch === 'bulawayo') ? 'block' : 'none';
+    document.getElementById('harare-map').style.display = (branch === 'harare') ? 'block' : 'none';
+
+    const buttons = document.querySelectorAll('.branch-selector button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (branch === 'bulawayo') {
+      buttons[0].classList.add('active');
+    } else {
+      buttons[1].classList.add('active');
+    }
+  }
+
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
