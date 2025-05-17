@@ -83,6 +83,43 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+
+     .contact-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 1rem; /* Adds consistent spacing between elements */
+    max-width: 400px; /* Optional: limits form width */
+    margin: 0 auto; /* Centers the form horizontally */
+}
+
+.contact-form label {
+    font-weight: 500;
+    margin-bottom: 0.5rem; /* Adds space below the label */
+}
+
+.contact-form input, 
+.contact-form textarea, 
+.contact-form button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Makes input fields span full width */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.contact-form button {
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #c62828;
+}
   </style>
 </head>
 
