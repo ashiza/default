@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Miscellaneous - One Stamp Shop</title>
+    <title>Badges - One Stamp Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -10,14 +10,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
-    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="x-icon">
     <style>
         :root {
-            --orange-main: #FF8C00;
-            --orange-dark: #E67300;
-            --orange-light: #FFB347;
+            --blue-main: #2962FF;
+            --blue-dark: #0D47A1;
+            --blue-light: #BBDEFB;
             --grey-bg: #f8f9fa;
             --text-dark: #333;
         }
@@ -36,7 +33,7 @@
         /* Header */
         .header {
             background-color: #fff;
-            padding: 0.5rem 0; /* Reduced header padding */
+            padding: 0.5rem 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -48,11 +45,11 @@
             align-items: center;
         }
         .logo h1 {
-            color: var(--orange-main);
+            color: var(--blue-main);
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         .nav-links {
             list-style: none;
@@ -70,12 +67,12 @@
             transition: color 0.3s ease;
         }
         .nav-links a:hover {
-            color: var(--orange-main);
+            color: var(--blue-main);
         }
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: var(--orange-main);
+            color: var(--blue-main);
             cursor: pointer;
         }
         /* Hero Section */
@@ -83,71 +80,77 @@
             background-color: var(--grey-bg);
             color: var(--text-dark);
             text-align: center;
-            padding: 2rem 0; /* Reduced hero padding */
+            padding: 1rem 0;
         }
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem; /* Reduced h2 margin */
+            font-size: 2rem;
+            margin-bottom: 0.1rem;
             font-weight: 700;
-            color: var(--orange-main);
+            color: var(--blue-main);
         }
         .hero p {
             font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 1rem; /* Reduced p margin */
+            margin-bottom: 0.5rem;
         }
         .hero-button {
             display: inline-block;
-            background-color: var(--orange-main);
+            background-color: var(--blue-main);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.5rem 1rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
             transition: background-color 0.3s ease;
         }
         .hero-button:hover {
-            background-color: var(--orange-dark);
+            background-color: var(--blue-dark);
         }
         .hero-image {
             max-width: 60%;
-            margin-top: 2rem;
+            margin-top: 0.6rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        /* Misc Section */
-        .misc-section {
-            padding: 4rem 0;
+
+        /* Badges Section */
+        .badges-section {
+            padding: 1rem 0;
             text-align: center;
         }
-        .misc-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--orange-main);
+
+        .badges-section h2 {
+            font-size: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--blue-main);
             font-weight: 700;
         }
-        .misc-grid {
+
+        .badges-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
-        .misc-card {
+
+        .badges-card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
-        .misc-card:hover {
+
+        .badges-card:hover {
             transform: scale(1.03);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
-        .misc-image-container {
+
+        .badges-image-container {
             width: 100%;
             height: 250px;
             overflow: hidden;
@@ -156,57 +159,68 @@
             align-items: center;
             justify-content: center;
         }
-        .misc-image {
+
+        .badges-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             display: block;
         }
-        .misc-info {
+
+        .badges-info {
             padding: 1.5rem;
             text-align: center;
         }
-        .misc-info h3 {
+
+        .badges-info h3 {
             margin-top: 0;
             margin-bottom: 0.75rem;
             font-size: 1.2rem;
             color: var(--text-dark);
             font-weight: 500;
         }
-        .misc-info p {
+
+        .badges-info p {
             font-size: 1rem;
             color: #777;
             margin-bottom: 1rem;
         }
+
         /* Contact Section */
         .contact {
-            padding: 4rem 0;
+            padding: 2rem 0;
             background-color: #e9ecef;
             text-align: center;
         }
+
         .contact h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--orange-main);
+            margin-bottom: 0.5rem;
+            color: var(--blue-main);
             font-weight: 700;
         }
+
         .contact-details {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
+
         .contact-details p {
             font-size: 1.1rem;
             color: #555;
             margin-bottom: 0.5rem;
         }
+
         .contact-details a {
-            color: var(--orange-main);
+            color: var(--blue-main);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
+
         .contact-details a:hover {
-            color: var(--orange-dark);
+            color: var(--blue-dark);
         }
+
         .contact-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -214,14 +228,17 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .contact-form div {
             display: flex;
             flex-direction: column;
         }
+
         .contact-form label {
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
+
         .contact-form input,
         .contact-form textarea {
             padding: 0.75rem;
@@ -229,11 +246,13 @@
             border-radius: 5px;
             font-size: 1rem;
         }
+
         .contact-form textarea {
             grid-column: 1 / 3;
         }
+
         .contact-form button {
-            background-color: var(--orange-main);
+            background-color: var(--blue-main);
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -243,9 +262,11 @@
             transition: background-color 0.3s ease;
             grid-column: 1 / 3;
         }
+
         .contact-form button:hover {
-            background-color: var(--orange-dark);
+            background-color: var(--blue-dark);
         }
+
         /* Footer */
         .footer {
             background-color: #333;
@@ -254,22 +275,27 @@
             text-align: center;
             font-size: 0.9rem;
         }
+
         .footer-links {
             margin-bottom: 1rem;
         }
+
         .footer-links a {
             color: #fff;
             text-decoration: none;
             margin: 0 15px;
             transition: color 0.3s ease;
         }
+
         .footer-links a:hover {
-            color: var(--orange-main);
+            color: var(--blue-main);
         }
+
         .footer-bottom {
             margin-top: 1rem;
             opacity: 0.8;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -293,7 +319,7 @@
             .hero-image {
                 max-width: 100%;
             }
-            .gift-grid {
+            .badges-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             .contact-form {
@@ -339,7 +365,8 @@
                     <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
                     <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
                     <li><a href="http://zvidhindo.co.zw">Stamps</a></li>
-                    <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
+                     <li><a href="http://zvidhindo.co.zw/misc">Miscellaneous</a></li>
+                    <li><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-button">
@@ -352,96 +379,46 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Discover Our Diverse Range of Products</h2>
-            <p>Beyond our main products, we provide a wide array of services and items to meet your needs.</p>
-        </div>
-    </section>
-
-    <!-- Miscellaneous Section -->
-    <section class="misc-section" id="miscellaneous">
-        <div class="container">
-            <h2>Explore Our Other Offerings</h2>
-            <p>Beyond our main products, we provide a wide array of services and items to meet your needs.</p>
-            <div class="misc-grid">
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/metal-signs.jpg" alt="Fencing Signage" class="misc-image">
+            <h2>Get Noticed with Custom Badges</h2>
+            <p>High-quality badges for every organization and event.</p>
+       
+            <h2>Explore Our Badge Options</h2>
+            <p>Durable, customizable, and perfect for identification and promotion.</p>
+            <div class="badges-grid">
+                <div class="badges-card">
+                    <div class="badges-image-container">
+                        <img src="badges_files/badge%201.webp" alt="Button Badges" class="badges-image">
                     </div>
-                    <div class="misc-info">
-                        <h3>Fencing Signage</h3>
-                        <p>Durable and visible signage solutions for your property.</p>
+                    <div class="badges-info">
+                        <h3>Button Badges</h3>
+                        <p>Classic and versatile badges for any occasion.</p>
                     </div>
                 </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/one-way-2.webp" alt="Road Signs" class="misc-image">
+                <div class="badges-card">
+                    <div class="badges-image-container">
+                        <img src="badges_files/badges2.jpg" alt="Pin/Magnetic Badges" class="badges-image">
                     </div>
-                    <div class="misc-info">
-                        <h3>Road Signs</h3>
-                        <p>High-quality road signs for traffic management and safety.</p>
-                    </div>
-                </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/Annies-Takeaway_salad-bar.jpg" alt="Custom Branding" class="misc-image">
-                    </div>
-                    <div class="misc-info">
-                        <h3>Custom Branding</h3>
-                        <p>Tailored branding solutions to elevate your business identity.</p>
+                    <div class="badges-info">
+                        <h3>Pin/Magnetic Badges</h3>
+                        <p>Secure and easy-to-use badges with pin or magnetic attachments.</p>
                     </div>
                 </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/banner2.webp" alt="Banners" class="misc-image">
+                <div class="badges-card">
+                    <div class="badges-image-container">
+                        <img src="badges_files/product-jpeg.jpg" alt="Laser Printed Badges" class="badges-image">
                     </div>
-                    <div class="misc-info">
-                        <h3>Banners</h3>
-                        <p>Eye-catching banners for promotions, events, and advertisements.</p>
-                    </div>
-                </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/baseball-cap-10.webp" alt="Caps" class="misc-image">
-                    </div>
-                    <div class="misc-info">
-                        <h3>Caps</h3>
-                        <p>Customized caps for branding, events, or personal use.</p>
+                    <div class="badges-info">
+                        <h3>Laser Printed Badges</h3>
+                        <p>High-resolution badges with precise laser printing.</p>
                     </div>
                 </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/bottle.webp" alt="Branded Bottles" class="misc-image">
+                <div class="badges-card">
+                    <div class="badges-image-container">
+                        <img src="badges_files/src.png" alt="Doom Decorated Badges" class="badges-image">
                     </div>
-                    <div class="misc-info">
-                        <h3>Branded Bottles</h3>
-                        <p>Promotional bottles with your logo for effective marketing.</p>
-                    </div>
-                </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/car-decals-stickers-clear-11.webp" alt="Car Stickers" class="misc-image">
-                    </div>
-                    <div class="misc-info">
-                        <h3>Car Stickers</h3>
-                        <p>Durable car stickers for branding or personal expression.</p>
-                    </div>
-                </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/ice%20cream%20neon.webp" alt="Neon Signs" class="misc-image">
-                    </div>
-                    <div class="misc-info">
-                        <h3>Neon Signs</h3>
-                        <p>Vibrant neon signs to enhance your business ambiance.</p>
-                    </div>
-                </div>
-                <div class="misc-card">
-                    <div class="misc-image-container">
-                        <img src="misc_files/upsbcd02_1.webp" alt="Business Cards" class="misc-image">
-                    </div>
-                    <div class="misc-info">
-                        <h3>Business Cards</h3>
-                        <p>Professionally designed business cards for effective networking.</p>
+                    <div class="badges-info">
+                        <h3>Doom Decorated Badges</h3>
+                        <p>Unique and durable badges with doom decoration.</p>
                     </div>
                 </div>
             </div>
@@ -462,10 +439,10 @@
                         <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Corner 14th Avenue & Fife Street, Bulawayo CBD
                     </a>
                     <br><i class="fa fa-phone"></i> +263719455454
-                    <br><i class="fa fa-envelope"></i> onestampshop@gmail.com
+                    <br><i class="fa fa-envelope"></i> onestampshop@mail.com
                 </p>
             </div>
-            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post">
+            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="Name" required>
