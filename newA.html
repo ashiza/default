@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Badges - One Stamp Shop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trodat Rubber Stamps, Notary Seals & Engraving in Bulawayo</title>
+    <meta name="description" content="Bulawayo Trodat rubber stamps.">
+    <meta name="keywords" content="seal notary, bulawayo trodat stamps, trodat printy 4913, company stamps with logo, rubber stamp, trodat security stamp, bulawayo zimbabwe, trodat rubber stamps, trodat ideal seal, church stamp seal, trodat notary stamp 4913, round date stamps, bulawayo date stamp, trodat date stamp, invisible stamp ink, paid stamp, company seal templates, rubber stamp template, lawyer stamps, invoice book, stamp design template, notary stickers, rubber stamping valentines, company stamp example, rubber stamp designs templates, bank stamp, uv ink stamp for skin, trodat 5460, ideal seal embosser, invisible ink pad, commissioner stamp">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
         :root {
             --blue-main: #2962FF;
@@ -47,9 +53,9 @@
         .logo h1 {
             color: var(--blue-main);
             margin: 0;
-            font-size: 1.rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
         .nav-links {
             list-style: none;
@@ -80,28 +86,28 @@
             background-color: var(--grey-bg);
             color: var(--text-dark);
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
         }
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
         .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 0.1rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
             color: var(--blue-main);
         }
         .hero p {
             font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
         .hero-button {
             display: inline-block;
             background-color: var(--blue-main);
             color: #fff;
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
@@ -112,32 +118,20 @@
         }
         .hero-image {
             max-width: 60%;
-            margin-top: 0.6rem;
+            margin-top: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Badges Section */
-        .badges-section {
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        .badges-section h2 {
-            font-size: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--blue-main);
-            font-weight: 700;
-        }
-
-        .badges-grid {
+        /* Stamp Grid */
+        .stamp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 1rem;
+            padding: 2rem;
         }
 
-        .badges-card {
+        .stamp-card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -145,12 +139,12 @@
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .badges-card:hover {
+        .stamp-card:hover {
             transform: scale(1.03);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .badges-image-container {
+        .stamp-image-container {
             width: 100%;
             height: 250px;
             overflow: hidden;
@@ -160,19 +154,19 @@
             justify-content: center;
         }
 
-        .badges-image {
+        .stamp-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             display: block;
         }
 
-        .badges-info {
+        .stamp-info {
             padding: 1.5rem;
             text-align: center;
         }
 
-        .badges-info h3 {
+        .stamp-info h3 {
             margin-top: 0;
             margin-bottom: 0.75rem;
             font-size: 1.2rem;
@@ -180,7 +174,7 @@
             font-weight: 500;
         }
 
-        .badges-info p {
+        .stamp-info p {
             font-size: 1rem;
             color: #777;
             margin-bottom: 1rem;
@@ -188,20 +182,20 @@
 
         /* Contact Section */
         .contact {
-            padding: 2rem 0;
+            padding: 4rem 0;
             background-color: #e9ecef;
             text-align: center;
         }
 
         .contact h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             color: var(--blue-main);
             font-weight: 700;
         }
 
         .contact-details {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .contact-details p {
@@ -319,7 +313,7 @@
             .hero-image {
                 max-width: 100%;
             }
-            .badges-grid {
+            .stamp-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
             .contact-form {
@@ -352,113 +346,93 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <h1>One Stamp Shop</h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="http://zvidhindo.co.zw">Home</a></li>
-                    <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
-                    <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
-                    <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
-                    <li><a href="http://zvidhindo.co.zw">Stamps</a></li>
-                     <li><a href="http://zvidhindo.co.zw/misc">Miscellaneous</a></li>
-                    <li><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu-button">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </nav>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://zvidhindo.co.zw/">
+                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
+            </a>
         </div>
+        <nav>
+            <a href="https://zvidhindo.co.zw/mugs">Mugs</a>
+            <a href="https://zvidhindo.co.zw/gift">Gifts</a>
+            <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
+            <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
+		    <a href="https://zvidhindo.co.zw/badges">Badges</a>
+		    <a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
+            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Get Noticed with Custom Badges</h2>
-            <p>High-quality badges for every organization and event.</p>
-       
-            <h2>Explore Our Badge Options</h2>
-            <p>Durable, customizable, and perfect for identification and promotion.</p>
-            <div class="badges-grid">
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/badge%201.webp" alt="Button Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Button Badges</h3>
-                        <p>Classic and versatile badges for any occasion.</p>
-                    </div>
-                </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/badges2.jpg" alt="Pin/Magnetic Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Pin/Magnetic Badges</h3>
-                        <p>Secure and easy-to-use badges with pin or magnetic attachments.</p>
-                    </div>
-                </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/product-jpeg.jpg" alt="Laser Printed Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Laser Printed Badges</h3>
-                        <p>High-resolution badges with precise laser printing.</p>
-                    </div>
-                </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/src.png" alt="Doom Decorated Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Doom Decorated Badges</h3>
-                        <p>Unique and durable badges with doom decoration.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="page-header">
+        <h1>Our Premium Rubber Stamps Collection</h1>
+        <p>High-quality, customizable stamps for all your business and personal needs in Bulawayo.<b>+263 719 455 454</b></p>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-details">
-                <p>
-                    <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/">
-                        <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-                    </a>
-                    <br>
-                    <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/">
-                        <i class="fa fa-map-marker"></i> Suite 5, Sunninghill Building, Corner 14th Avenue & Fife Street, Bulawayo CBD
-                    </a>
-                    <br><i class="fa fa-phone"></i> +263719455454
-                    <br><i class="fa fa-envelope"></i> onestampshop@mail.com
-                </p>
+    <main class="stamp-grid">
+
+        <div class="stamp-card">
+            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="stamp-image">
+            <div class="stamp-info">
+                <h3>Company Stamps</h3>
+                <p>Professional stamps for your business, customizable with your details. See various examples!</p>
+                <a href="company-stamps" class="cta-button">View Options & Quote</a>
             </div>
-            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="Name" required>
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
-                <label for="message">Message</label>
-                <textarea id="message" name="Message" rows="5" required></textarea>
-                <button type="submit">SEND ENQUIRY</button>
-            </form>
         </div>
+
+        <div class="stamp-card">
+            <img src="index_files/seal%201.png" alt="Notary Seal" class="stamp-image">
+            <div class="stamp-info">
+                <h3>Notary Seals & Embossers</h3>
+                <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
+                 <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
+            </div>
+        </div>
+
+        <div class="stamp-card">
+            <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="stamp-image">
+            <div class="stamp-info">
+                <h3>Trodat Date Stamps</h3>
+                <p>Durable and reliable Trodat date stamps like the Model 4727. Perfect for offices, banks, and administrative tasks.</p>
+                <a href="https://zvidhindo.co.zw/trodat%204727" class="cta-button">See Date Stamp Models</a>
+            </div>
+        </div>
+
+        <div class="stamp-card">
+             <img src="index_files/4913%202.jpg" alt="Custom Trodat 4913" class="stamp-image">
+            <div class="stamp-info">
+                <h3>Custom Trodat Printy 4913</h3>
+                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
+                <a href="http://zvidhindo.co.zw/trodat 4913" class="cta-button">Customize Yours</a>
+            </div>
+        </div>
+
+        <div class="stamp-card">
+             <img src="index_files/hand2.png" alt="Traditional Hand Stamp" class="stamp-image">
+            <div class="stamp-info">
+                <h3>Traditional Hand Stamps</h3>
+                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
+                <a href="http://zvidhindo.co.zw/hand stamp" class="cta-button">View Hand Stamps</a>
+            </div>
+        </div>
+
+	 <div class="stamp-card">
+            <img src="index_files/seal%201.png" alt="Notary Seal" class="stamp-image">
+            <div class="stamp-info">
+                <h3>UV & Security Stamps</h3>
+                <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
+                <a href="https://zvidhindo.co.zw/uv-stamps" class="cta-button">Inquire About Security Stamps</a>
+            </div>
+        </div>
+
+    </main>
+
+    <section class="map-section">
+        <h2>Our Location in Bulawayo</h2>
+        <p>Find us on Google Maps:</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.104849285577!2d29.602533623691713!3d-20.158447073791764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb55584435c065f%3A0x4242c5a576d1d87a!2sSuite%205%2C%20Sunninghill%20Building%20Fife%20Avenue%2C%20Fourteenth%20Ave%2C%20Bulawayo!5e0!3m2!1sen!2szw!4v1716049282094!5m2!1sen!2szw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
@@ -470,12 +444,10 @@
     </footer>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        const menuButton = document.querySelector('.mobile-menu-button');
-        const navLinks = document.querySelector('.nav-links');
-        menuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
+
 </body>
 </html>
