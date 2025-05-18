@@ -3,348 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trodat Rubber Stamps, Notary Seals & Engraving in Bulawayo</title>
-    <meta name="description" content="Bulawayo Trodat rubber stamps.">
-    <meta name="keywords" content="seal notary, bulawayo trodat stamps, trodat printy 4913, company stamps with logo, rubber stamp, trodat security stamp, bulawayo zimbabwe, trodat rubber stamps, trodat ideal seal, church stamp seal, trodat notary stamp 4913, round date stamps, bulawayo date stamp, trodat date stamp, invisible stamp ink, paid stamp, company seal templates, rubber stamp template, lawyer stamps, invoice book, stamp design template, notary stickers, rubber stamping valentines, company stamp example, rubber stamp designs templates, bank stamp, uv ink stamp for skin, trodat 5460, ideal seal embosser, invisible ink pad, commissioner stamp">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-    <link rel="manifest" href="index_files/site.webmanifest">
-    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
+	
+    <title> Bulawayo Rubber Stamps</title>
     <style>
-        :root {
-            --blue-main: #2962FF;
-            --blue-dark: #0D47A1;
-            --blue-light: #BBDEFB;
-            --grey-bg: #f8f9fa;
-            --text-dark: #333;
-        }
+        /* Basic Reset & Modern Font */
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--grey-bg);
-            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* Header */
-        .header {
-            background-color: #fff;
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+
+        /* Navigation - Simplified for this example */
         .navbar {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo h1 {
-            color: var(--blue-main);
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+
+        .navbar .logo img {
+            height: 40px; /* Adjust as needed */
         }
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        .nav-links li {
+
+        .navbar nav a {
             margin-left: 20px;
-        }
-        .nav-links a {
             text-decoration: none;
             color: #555;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
-        .nav-links a:hover {
-            color: var(--blue-main);
+        .navbar nav a:hover {
+            color: #007bff;
         }
-        .mobile-menu-button {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--blue-main);
-            cursor: pointer;
-        }
-        /* Hero Section */
-        .hero {
-            background-color: var(--grey-bg);
-            color: var(--text-dark);
+
+        /* Page Header */
+        .page-header {
+            background-color: #007bff; /* Primary color - adjust to their brand */
+            color: white;
+            padding: 2rem 1rem;
             text-align: center;
-            padding: 2rem 0;
+            margin-bottom: 2rem;
         }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
         }
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            color: var(--blue-main);
-        }
-        .hero p {
-            font-size: 1.2rem;
+        .page-header p {
+            font-size: 1.1rem;
             opacity: 0.9;
-            margin-bottom: 1rem;
         }
-        .hero-button {
-            display: inline-block;
-            background-color: var(--blue-main);
-            color: #fff;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
+
+        /* Stamp Filters (Optional but Recommended) */
+        .stamp-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .stamp-filters button {
+            background-color: #e9ecef;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: background-color 0.3s ease;
         }
-        .hero-button:hover {
-            background-color: var(--blue-dark);
-        }
-        .hero-image {
-            max-width: 60%;
-            margin-top: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .stamp-filters button:hover, .stamp-filters button.active {
+            background-color: #007bff;
+            color: white;
         }
 
-        /* Stamp Grid */
+        /* Stamp Grid Container */
         .stamp-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 1.5rem;
+            padding: 0 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        /* Stamp Card Styling */
         .stamp-card {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             overflow: hidden;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .stamp-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        .stamp-image-container {
+        .stamp-card img {
             width: 100%;
-            height: 250px;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: contain; /* Use 'contain' to show whole stamp, 'cover' to fill */
+            background-color: #f0f0f0; /* Light background for images */
+            border-bottom: 1px solid #eee;
         }
 
-        .stamp-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            display: block;
+        /* ADDED FOR SLIDESHOW TRANSITION */
+        .slideshow-image {
+            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
         }
 
-        .stamp-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .stamp-info h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        .stamp-info p {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 0;
-            background-color: #e9ecef;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--blue-main);
-            font-weight: 700;
-        }
-
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-
-        .contact-details p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details a {
-            color: var(--blue-main);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: var(--blue-dark);
-        }
-
-        .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form div {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-form label {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            grid-column: 1 / 3;
-        }
-
-        .contact-form button {
-            background-color: var(--blue-main);
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            grid-column: 1 / 3;
-        }
-
-        .contact-form button:hover {
-            background-color: var(--blue-dark);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--blue-main);
-        }
-
-        .footer-bottom {
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu-button {
-                display: block;
-            }
-            .navbar {
-                justify-content: space-between;
-            }
-            .logo h1 {
-                font-size: 1.2rem;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .hero-image {
-                max-width: 100%;
-            }
-            .stamp-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-            .contact-form {
-                grid-template-columns: 1fr;
-            }
-            .contact-form textarea {
-                grid-column: 1;
-            }
-            .contact-form button {
-                grid-column: 1;
-            }
-        }
-        /* Mobile menu */
-        .nav-links.mobile-active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #fff;
-            width: 100%;
-            z-index: 200;
+        .stamp-card-content {
             padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-grow: 1; /* Allows content to expand */
+            display: flex;
+            flex-direction: column;
         }
-        .nav-links.mobile-active li {
-            margin: 0.7rem 0;
+
+        .stamp-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            color: #343a40;
+        }
+
+        .stamp-card-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+
+        .stamp-card-content .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Secondary/CTA color */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: auto; /* Aligns button to the bottom */
+        }
+        .stamp-card-content .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 40px 20px;
+            background-color: #f1f1f1;
             text-align: center;
         }
+
+        .map-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .map-section iframe {
+            border: 0;
+            max-width: 100%;
+            width: 640px; /* Or desired fixed width */
+            height: 480px; /* Or desired fixed height */
+        }
+
+        /* Footer - Simplified */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
     </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+<link rel="manifest" href="index_files/site.webmanifest">
+ <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+	 <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
+  	
+
 </head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJWY6DS2DK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KJWY6DS2DK');
+</script>
+    
 <body>
 
     <header class="navbar">
@@ -358,95 +215,202 @@
             <a href="https://zvidhindo.co.zw/gift">Gifts</a>
             <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
             <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
-		    <a href="https://zvidhindo.co.zw/badges">Badges</a>
-		    <a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
+		<a href="https://zvidhindo.co.zw/badges">Badges</a>
+		<a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
             <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
         </nav>
     </header>
 
     <section class="page-header">
-        <h1>Our Premium Rubber Stamps Collection</h1>
+        <h1>Premium Rubber Stamps Made in Bulawayo</h1>
         <p>High-quality, customizable stamps for all your business and personal needs in Bulawayo.<b>+263 719 455 454</b></p>
+    </section>
+
+    <section class="stamp-filters">
+        <button class="active" data-filter="all">All Stamps</button>
+        <button data-filter="company">Company Stamps</button>
+        <button data-filter="notary">Notary Seals & Embossers</button>
+        <button data-filter="date">Date Stamps</button>
+        <button data-filter="uv">UV & Security Stamps</button>
+        <button data-filter="custom">Custom Trodat Models</button>
     </section>
 
     <main class="stamp-grid">
 
-        <div class="stamp-card">
-            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="stamp-image">
-            <div class="stamp-info">
+        <div class="stamp-card"
+             data-category="company"
+             data-slideshow-images="index_files/4913%202.jpg,index_files/4727.jpg,index_files/5460.jpg,index_files/Prime%20B.jpg,index_files/Colop%20C60.jpg,index_files/2910.jpg">
+            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
+            <div class="stamp-card-content">
                 <h3>Company Stamps</h3>
                 <p>Professional stamps for your business, customizable with your details. See various examples!</p>
                 <a href="company-stamps" class="cta-button">View Options & Quote</a>
             </div>
         </div>
 
-        <div class="stamp-card">
-            <img src="index_files/seal%201.png" alt="Notary Seal" class="stamp-image">
-            <div class="stamp-info">
+        <div class="stamp-card" data-category="notary">
+            <img src="index_files/seal%201.png" alt="Notary Seal">
+            <div class="stamp-card-content">
                 <h3>Notary Seals & Embossers</h3>
                 <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
                  <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
             </div>
         </div>
 
-        <div class="stamp-card">
-            <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="stamp-image">
-            <div class="stamp-info">
+        <div class="stamp-card"
+             data-category="date custom"
+data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/2910.jpg">
+            <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="slideshow-image">
+            <div class="stamp-card-content">
                 <h3>Trodat Date Stamps</h3>
                 <p>Durable and reliable Trodat date stamps like the Model 4727. Perfect for offices, banks, and administrative tasks.</p>
                 <a href="https://zvidhindo.co.zw/trodat%204727" class="cta-button">See Date Stamp Models</a>
             </div>
         </div>
 
-        <div class="stamp-card">
-             <img src="index_files/4913%202.jpg" alt="Custom Trodat 4913" class="stamp-image">
-            <div class="stamp-info">
-                <h3>Custom Trodat Printy 4913</h3>
-                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
-                <a href="http://zvidhindo.co.zw/trodat 4913" class="cta-button">Customize Yours</a>
-            </div>
-        </div>
-
-        <div class="stamp-card">
-             <img src="index_files/hand2.png" alt="Traditional Hand Stamp" class="stamp-image">
-            <div class="stamp-info">
-                <h3>Traditional Hand Stamps</h3>
-                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
-                <a href="http://zvidhindo.co.zw/hand stamp" class="cta-button">View Hand Stamps</a>
-            </div>
-        </div>
-
-	 <div class="stamp-card">
-            <img src="index_files/seal%201.png" alt="Notary Seal" class="stamp-image">
-            <div class="stamp-info">
+        <div class="stamp-card" data-category="uv"
+		data-slideshow-images="index_files/UV1.jpg,index_files/UV2.jpeg,index_files/UV3.jpg,index_files/UV4.jpg">
+             <img src="index_files/UV2.jpeg" alt="UV Invisible Ink Stamp" class="slideshow-image">
+            <div class="stamp-card-content">
                 <h3>UV & Security Stamps</h3>
                 <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
                 <a href="https://zvidhindo.co.zw/uv-stamps" class="cta-button">Inquire About Security Stamps</a>
             </div>
         </div>
 
+        <div class="stamp-card" data-category="custom company">
+             <img src="index_files/4913%202.jpg" alt="Custom Trodat 4913">
+            <div class="stamp-card-content">
+                <h3>Custom Trodat Printy 4913</h3>
+                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
+                <a href="http://zvidhindo.co.zw/trodat 4913" class="cta-button">Customize Yours</a>
+            </div>
+        </div>
+
+        <div class="stamp-card" data-category="company">
+            <img src="index_files/hand2.png" alt="Traditional Hand Stamp">
+            <div class="stamp-card-content">
+                <h3>Traditional Hand Stamps</h3>
+                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
+                <a href="http://zvidhindo.co.zw/hand stamp" class="cta-button">View Hand Stamps</a>
+            </div>
+        </div>
+
     </main>
 
-    <section class="map-section">
-        <h2>Our Location in Bulawayo</h2>
-        <p>Find us on Google Maps:</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.104849285577!2d29.602533623691713!3d-20.158447073791764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb55584435c065f%3A0x4242c5a576d1d87a!2sSuite%205%2C%20Sunninghill%20Building%20Fife%20Avenue%2C%20Fourteenth%20Ave%2C%20Bulawayo!5e0!3m2!1sen!2szw!4v1716049282094!5m2!1sen!2szw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   <section class="map-section">
+  <div id="bulawayo-map">
+    <h2>Bulawayo Branch</h2>
+    <p>Located in Bulawayo CBD, Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street.</p>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.3910983335653!2d28.58020821537194!3d-20.16331948539169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb55584435c065f%3A0x4242c5a576d1d87a!2sOne%20Stamp%20Shop!5e0!3m2!1sen!2szw!4v1715943750045!5m2!1sen!2szw" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
     </section>
 
     <footer class="footer">
-        <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.pinterest.com/1stampshop/"><i class="fa-brands fa-pinterest-p"></i></a>
-        <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter"></i></a>
-        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe.</p>
+
+	    <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
+  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
+  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
+  <a href="https://www.pinterest.com/1stampshop/"> <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i></a>
+  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
+ <a href="https://twitter.com/1stampshop"> <i class="fa-brands fa-x-twitter w3-hover-opacity"></i> </a>
+	    
+        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe. </p>
+	    
     </footer>
 
     <script>
+        // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        });
+
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Basic filter functionality
+            const filterButtons = document.querySelectorAll('.stamp-filters button');
+            const stampCards = document.querySelectorAll('.stamp-card');
+
+            if (filterButtons.length > 0 && stampCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const filter = button.getAttribute('data-filter');
+                        stampCards.forEach(card => {
+                            if (filter === 'all' || (card.getAttribute('data-category') && card.getAttribute('data-category').includes(filter))) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Image Slideshow Functionality (THIS IS THE ADDED PART)
+            const slideshowCards = document.querySelectorAll('.stamp-card[data-slideshow-images]');
+            const slideInterval = 4000; // Time in milliseconds (e.g., 4 seconds)
+
+            slideshowCards.forEach(card => {
+                const imgElement = card.querySelector('.slideshow-image');
+                if (!imgElement) {
+                    console.warn('Slideshow card found, but no .slideshow-image img tag inside:', card);
+                    return;
+                }
+
+                const imageUrlsString = card.getAttribute('data-slideshow-images');
+                if (!imageUrlsString) {
+                    console.warn('Slideshow card found, but data-slideshow-images attribute is empty or missing:', card);
+                    return;
+                }
+
+                const imageUrls = imageUrlsString.split(',').map(url => url.trim()).filter(url => url); // Ensure no empty strings
+
+                if (imageUrls.length <= 1) {
+                    // console.log('Not enough images for slideshow on card:', card);
+                    return; // No slideshow needed for 1 or 0 images
+                }
+
+                let currentImageIndex = 0;
+                const initialSrc = imgElement.getAttribute('src');
+                const initialIndexInSlideshow = imageUrls.indexOf(initialSrc);
+
+                if (initialIndexInSlideshow !== -1) {
+                    currentImageIndex = initialIndexInSlideshow;
+                } else {
+                    // If current src is not in the list, or to ensure it starts with the list's first image:
+                    imgElement.src = imageUrls[0];
+                    currentImageIndex = 0;
+                }
+                // Ensure initial image is visible if opacity was 0 for some reason
+                imgElement.style.opacity = 1;
+
+
+                setInterval(() => {
+                    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+
+                    imgElement.style.opacity = 0; // Start fade out
+
+                    setTimeout(() => {
+                        imgElement.src = imageUrls[currentImageIndex];
+                        imgElement.style.opacity = 1; // Start fade in
+                    }, 250); // This delay should be less than or equal to the CSS transition duration (0.5s = 500ms)
+
+                }, slideInterval);
+            });
+
+        }); // End of DOMContentLoaded
     </script>
 
 </body>
