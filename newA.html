@@ -327,6 +327,38 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
 	    
     </footer>
 
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/263773123456?text=Hello%20I%20am%20interested%20in%20your%20stamps"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat with us on WhatsApp">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+
+<style>
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+.whatsapp-float:hover {
+    background-color: #20b955;
+}
+</style>
+
     <script>
         // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
@@ -415,3 +447,4 @@ data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/291
 
 </body>
 </html>
+
