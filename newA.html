@@ -1,450 +1,312 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-    <title> Bulawayo Rubber Stamps</title>
-    <style>
-        /* Basic Reset & Modern Font */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
+// File: src/components/StampMaker.jsx
+/*
+TL;DR
+A single-file React component that implements a web-based stamp maker inspired by the provided sites.
+Features: choose shape (circle/square/triangle), add circular & center text, upload SVG/logo, adjust fonts/sizes/spacing, live SVG preview, download SVG or PNG.
 
-        /* Navigation - Simplified for this example */
-        .navbar {
-            background-color: #fff;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+PLAN / PSEUDOCODE
+1. UI layout: left controls, right preview + export.
+2. Controls:
+   - Shape selector (circle | square | triangle)
+   - Outer ring toggle and circular text input + font-size + letter-spacing
+   - Center text input + font, size
+   - Upload logo (SVG/PNG) with basic positioning and scale
+   - Color and stroke options (ink color, ring thickness)
+   - Size slider (mm -> px conversion for preview)
+3. Model state: shape, outerText, centerText, logo (dataURL), colors, sizes, ringRadius, scale, fonts.
+4. SVG renderer: build an <svg> that composes shapes, ring, circular text (using <textPath>), center text, and logo image (embedded as <image> or <use> for svg).
+5. Export functions:
+   - exportSVG: serialize SVG node and download as .svg
+   - exportPNG: serialize SVG to XML, create Image, draw into canvas at desired DPI, then download png
+6. Utilities: mmToPx conversion, sanitize uploaded SVG, base64 helpers
+7. Minimal accessibility and responsiveness.
 
-        .navbar .logo img {
-            height: 40px; /* Adjust as needed */
-        }
+USAGE
+- Drop this file into a React app that uses Tailwind CSS (or adapt classes), import and mount <StampMaker/>.
 
-        .navbar nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-        }
-        .navbar nav a:hover {
-            color: #007bff;
-        }
 
-        /* Page Header */
-        .page-header {
-            background-color: #007bff; /* Primary color - adjust to their brand */
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .page-header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 600;
-        }
-        .page-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
+import React, { useRef, useState, useEffect } from 'react';
 
-        /* Stamp Filters (Optional but Recommended) */
-        .stamp-filters {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .stamp-filters button {
-            background-color: #e9ecef;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            margin: 0.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-        .stamp-filters button:hover, .stamp-filters button.active {
-            background-color: #007bff;
-            color: white;
-        }
+export default function StampMaker() {
+  const svgRef = useRef(null);
+  const [shape, setShape] = useState('circle');
+  const [sizeMm, setSizeMm] = useState(38);
+  const [inkColor, setInkColor] = useState('#000000');
+  const [ringThickness, setRingThickness] = useState(4);
 
-        /* Stamp Grid Container */
-        .stamp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-            gap: 1.5rem;
-            padding: 0 2rem 2rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  // Outer circular text
+  const [outerText, setOuterText] = useState('COMPANY NAME');
+  const [outerFontSize, setOuterFontSize] = useState(12);
+  const [outerLetterSpacing, setOuterLetterSpacing] = useState(0);
+  const [outerEnabled, setOuterEnabled] = useState(true);
 
-        /* Stamp Card Styling */
-        .stamp-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .stamp-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
+  // Center text
+  const [centerText, setCenterText] = useState('Logo');
+  const [centerFontSize, setCenterFontSize] = useState(18);
 
-        .stamp-card img {
-            width: 100%;
-            height: 200px; /* Fixed height for consistency */
-            object-fit: contain; /* Use 'contain' to show whole stamp, 'cover' to fill */
-            background-color: #f0f0f0; /* Light background for images */
-            border-bottom: 1px solid #eee;
-        }
+  // Logo
+  const [logoDataUrl, setLogoDataUrl] = useState(null);
+  const [logoScale, setLogoScale] = useState(1);
+  const [logoX, setLogoX] = useState(0);
+  const [logoY, setLogoY] = useState(0);
 
-        /* ADDED FOR SLIDESHOW TRANSITION */
-        .slideshow-image {
-            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
-        }
+  // Derived sizes
+  const dpi = 300; // for high-res PNG export
+  const mmToPx = (mm, ppi = 96) => Math.round((mm / 25.4) * ppi);
+  const viewBoxPx = mmToPx(sizeMm, 300); // high-res preview internally
 
-        .stamp-card-content {
-            padding: 1rem;
-            flex-grow: 1; /* Allows content to expand */
-            display: flex;
-            flex-direction: column;
-        }
+  // Simple set of fonts; for production load Google Fonts dynamically
+  const fonts = ['Arial', 'Georgia', 'Times New Roman', 'Verdana', 'Courier New'];
+  const [outerFont, setOuterFont] = useState(fonts[0]);
+  const [centerFont, setCenterFont] = useState(fonts[0]);
 
-        .stamp-card-content h3 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            color: #343a40;
-        }
+  // Helpers
+  function handleLogoUpload(e) {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => setLogoDataUrl(reader.result);
+    reader.readAsDataURL(f);
+  }
 
-        .stamp-card-content p {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-bottom: 1rem;
-            flex-grow: 1; /* Pushes button to bottom */
-        }
+  function download(filename, content, mime) {
+    const blob = new Blob([content], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
 
-        .stamp-card-content .cta-button {
-            display: inline-block;
-            background-color: #28a745; /* Secondary/CTA color */
-            color: white;
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-top: auto; /* Aligns button to the bottom */
-        }
-        .stamp-card-content .cta-button:hover {
-            background-color: #218838;
-        }
+  function exportSVG() {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const serializer = new XMLSerializer();
+    const clone = svg.cloneNode(true);
+    // inline styles that could be necessary
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    const str = serializer.serializeToString(clone);
+    download('stamp.svg', str, 'image/svg+xml;charset=utf-8');
+  }
 
-        /* Map Section */
-        .map-section {
-            padding: 40px 20px;
-            background-color: #f1f1f1;
-            text-align: center;
-        }
+  async function exportPNG() {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const serializer = new XMLSerializer();
+    const clone = svg.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    const str = serializer.serializeToString(clone);
+    const svgBlob = new Blob([str], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
 
-        .map-section h2 {
-            margin-bottom: 1rem;
-        }
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      // export at 300 DPI relative to mm size
+      const px = Math.round((sizeMm / 25.4) * dpi);
+      canvas.width = px;
+      canvas.height = px;
+      const ctx = canvas.getContext('2d');
+      // white background optional — keep transparent by default
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // center image
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob((blob) => {
+        const url2 = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url2;
+        a.download = 'stamp.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url2);
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    };
+    img.onerror = (e) => {
+      console.error('Failed to convert SVG to PNG', e);
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  }
 
-        .map-section iframe {
-            border: 0;
-            max-width: 100%;
-            width: 640px; /* Or desired fixed width */
-            height: 480px; /* Or desired fixed height */
-        }
+  // Build path for circular text
+  const idForPath = 'outerPath';
+  const radius = Math.max( (viewBoxPx / 2) - 20, 10 );
 
-        /* Footer - Simplified */
-        .footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
+  function renderShape() {
+    const cx = viewBoxPx / 2;
+    const cy = viewBoxPx / 2;
+    if (shape === 'circle') {
+      return (
+        <circle cx={cx} cy={cy} r={radius} stroke={inkColor} strokeWidth={ringThickness} fill="none" />
+      );
+    }
+    if (shape === 'square') {
+      const pad = ringThickness;
+      const size = radius * Math.SQRT2;
+      return (
+        <rect x={cx - size/2} y={cy - size/2} width={size} height={size} stroke={inkColor} strokeWidth={ringThickness} fill="none" rx={Math.max(4, ringThickness)} />
+      );
+    }
+    if (shape === 'triangle') {
+      const s = radius * Math.SQRT2;
+      const p1 = `${cx},${cy - s/1.4}`;
+      const p2 = `${cx - s/1.2},${cy + s/2.2}`;
+      const p3 = `${cx + s/1.2},${cy + s/2.2}`;
+      return (
+        <polygon points={`${p1} ${p2} ${p3}`} stroke={inkColor} strokeWidth={ringThickness} fill="none" />
+      );
+    }
+    return null;
+  }
 
-    </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-<link rel="manifest" href="index_files/site.webmanifest">
- <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-	 <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
-  	
+  // Compute transform for logo
+  function logoProps() {
+    if (!logoDataUrl) return { width: 0, height: 0 };
+    const max = radius * 1.1 * logoScale;
+    const cx = viewBoxPx / 2;
+    const cy = viewBoxPx / 2;
+    const w = max;
+    const h = max;
+    return { x: cx - w/2 + logoX, y: cy - h/2 + logoY, width: w, height: h };
+  }
 
-</head>
+  return (
+    <div className="flex gap-6 p-6">
+      <div className="w-96 bg-white rounded shadow p-4">
+        <h3 className="font-bold mb-2">Stamp Controls</h3>
+        <div className="space-y-3 text-sm">
+          <label className="block">Shape
+            <select value={shape} onChange={(e) => setShape(e.target.value)} className="w-full mt-1 p-2 border rounded">
+              <option value="circle">Circle</option>
+              <option value="square">Square</option>
+              <option value="triangle">Triangle</option>
+            </select>
+          </label>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJWY6DS2DK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+          <label>Size (mm)
+            <input type="range" min="10" max="120" value={sizeMm} onChange={(e)=>setSizeMm(Number(e.target.value))} />
+            <div>{sizeMm} mm</div>
+          </label>
 
-  gtag('config', 'G-KJWY6DS2DK');
-</script>
-    
-<body>
+          <label>Ink color
+            <input type="color" value={inkColor} onChange={(e)=>setInkColor(e.target.value)} className="block mt-1" />
+          </label>
 
-    <header class="navbar">
-        <div class="logo">
-            <a href="https://zvidhindo.co.zw/">
-                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
-            </a>
-        </div>
-        <nav>
-            <a href="https://zvidhindo.co.zw/mugs">Mugs</a>
-            <a href="https://zvidhindo.co.zw/gift">Gifts</a>
-            <a href="https://zvidhindo.co.zw/Engraving">Engraving</a>
-            <a href="https://zvidhindo.co.zw/banner">Digital Printing</a>
-		<a href="https://zvidhindo.co.zw/badges">Badges</a>
-		<a href="https://zvidhindo.co.zw/misc">Miscellaneous</a>
-            <a href="https://zvidhindo.co.zw/contact">Contact Us</a>
-        </nav>
-    </header>
+          <label>Ring thickness
+            <input type="range" min="1" max="20" value={ringThickness} onChange={(e)=>setRingThickness(Number(e.target.value))} />
+            <div>{ringThickness}px</div>
+          </label>
 
-    <section class="page-header">
-        <h1>Premium Rubber Stamps Made in Bulawayo</h1>
-        <p>High-quality, customizable stamps for all your business and personal needs in Bulawayo.<b>+263 719 455 454</b></p>
-    </section>
+          <hr />
 
-    <section class="stamp-filters">
-        <button class="active" data-filter="all">All Stamps</button>
-        <button data-filter="company">Company Stamps</button>
-        <button data-filter="notary">Notary Seals & Embossers</button>
-        <button data-filter="date">Date Stamps</button>
-        <button data-filter="uv">UV & Security Stamps</button>
-        <button data-filter="custom">Custom Trodat Models</button>
-    </section>
+          <label className="flex items-center gap-2"> <input type="checkbox" checked={outerEnabled} onChange={(e)=>setOuterEnabled(e.target.checked)} /> Outer circular text</label>
+          {outerEnabled && (
+            <>
+              <input className="w-full p-2 border rounded mt-1" value={outerText} onChange={(e)=>setOuterText(e.target.value)} placeholder="ENTER OUTER TEXT" />
+              <div className="grid grid-cols-2 gap-2">
+                <div>Font
+                  <select value={outerFont} onChange={(e)=>setOuterFont(e.target.value)} className="w-full p-1 border rounded mt-1">
+                    {fonts.map(f=> <option key={f} value={f}>{f}</option>)}
+                  </select>
+                </div>
+                <div>Size
+                  <input type="number" value={outerFontSize} onChange={(e)=>setOuterFontSize(Number(e.target.value))} className="w-full p-1 border rounded mt-1" />
+                </div>
+              </div>
+              <label>Letter spacing
+                <input type="range" min="-5" max="10" value={outerLetterSpacing} onChange={(e)=>setOuterLetterSpacing(Number(e.target.value))} />
+              </label>
+            </>
+          )}
 
-    <main class="stamp-grid">
+          <hr />
 
-        <div class="stamp-card"
-             data-category="company"
-             data-slideshow-images="index_files/4913%202.jpg,index_files/4727.jpg,index_files/5460.jpg,index_files/Prime%20B.jpg,index_files/Colop%20C60.jpg,index_files/2910.jpg">
-            <img src="index_files/4727.jpg" alt="Company Stamp Examples" class="slideshow-image">
-            <div class="stamp-card-content">
-                <h3>Company Stamps</h3>
-                <p>Professional stamps for your business, customizable with your details. See various examples!</p>
-                <a href="company-stamps" class="cta-button">View Options & Quote</a>
+          <label>Center text
+            <input className="w-full p-2 border rounded mt-1" value={centerText} onChange={(e)=>setCenterText(e.target.value)} />
+            <div className="grid grid-cols-2 gap-2 mt-1">
+              <select value={centerFont} onChange={(e)=>setCenterFont(e.target.value)} className="p-1 border rounded">
+                {fonts.map(f=> <option key={f} value={f}>{f}</option>)}
+              </select>
+              <input type="number" value={centerFontSize} onChange={(e)=>setCenterFontSize(Number(e.target.value))} className="p-1 border rounded" />
             </div>
-        </div>
+          </label>
 
-        <div class="stamp-card" data-category="notary">
-            <img src="index_files/seal%201.png" alt="Notary Seal">
-            <div class="stamp-card-content">
-                <h3>Notary Seals & Embossers</h3>
-                <p>High-quality Ideal seals and embossers for notaries public, legal documents, and official certifications.</p>
-                 <a href="http://zvidhindo.co.zw/seal" class="cta-button">Explore Seal Options</a>
+          <hr />
+
+          <label>Upload logo (SVG/PNG)
+            <input type="file" accept="image/*,.svg" onChange={handleLogoUpload} className="block mt-1" />
+          </label>
+          {logoDataUrl && (
+            <div className="space-y-1">
+              <div>Scale
+                <input type="range" min="0.2" max="2" step="0.05" value={logoScale} onChange={(e)=>setLogoScale(Number(e.target.value))} />
+                <div>{logoScale.toFixed(2)}</div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <label>X <input type="range" min="-50" max="50" value={logoX} onChange={(e)=>setLogoX(Number(e.target.value))} /></label>
+                <label>Y <input type="range" min="-50" max="50" value={logoY} onChange={(e)=>setLogoY(Number(e.target.value))} /></label>
+              </div>
             </div>
+          )}
+
+          <div className="flex gap-2 mt-3">
+            <button onClick={exportSVG} className="px-3 py-2 bg-slate-800 text-white rounded">Download SVG</button>
+            <button onClick={exportPNG} className="px-3 py-2 bg-slate-700 text-white rounded">Download PNG</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex-1 bg-white rounded shadow p-4 flex flex-col">
+        <h3 className="font-bold mb-2">Live Preview</h3>
+        <div className="flex-1 flex items-center justify-center">
+          <div className="bg-gray-50 p-4 rounded">
+            <svg ref={svgRef} width={400} height={400} viewBox={`0 0 ${viewBoxPx} ${viewBoxPx}`} xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id={idForPath} d={`M ${viewBoxPx/2} ${viewBoxPx/2 - radius} A ${radius} ${radius} 0 1 1 ${viewBoxPx/2 - 0.001} ${viewBoxPx/2 - radius}`} />
+              </defs>
+
+              {/* background guide */}
+              <rect x="0" y="0" width={viewBoxPx} height={viewBoxPx} fill="transparent" />
+
+              {renderShape()}
+
+              {/* outer circular text */}
+              {outerEnabled && (
+                <text fontFamily={outerFont} fontSize={outerFontSize} fill={inkColor} letterSpacing={`${outerLetterSpacing}px`} textAnchor="middle">
+                  <textPath startOffset="50%" href={`#${idForPath}`}>{outerText}</textPath>
+                </text>
+              )}
+
+              {/* logo image */}
+              {logoDataUrl && (()=>{
+                const p = logoProps();
+                return <image href={logoDataUrl} x={p.x} y={p.y} width={p.width} height={p.height} preserveAspectRatio="xMidYMid meet" />;
+              })()}
+
+              {/* center text */}
+              <text x={viewBoxPx/2} y={viewBoxPx/2 + centerFontSize/3} fontFamily={centerFont} fontSize={centerFontSize} fill={inkColor} textAnchor="middle">{centerText}</text>
+            </svg>
+          </div>
         </div>
 
-        <div class="stamp-card"
-             data-category="date custom"
-data-slideshow-images="index_files/4727.jpg,index_files/5460.jpg,index_files/2910.jpg">
-            <img src="index_files/2910.jpg" alt="Trodat Date Stamp" class="slideshow-image">
-            <div class="stamp-card-content">
-                <h3>Trodat Date Stamps</h3>
-                <p>Durable and reliable Trodat date stamps like the Model 4727. Perfect for offices, banks, and administrative tasks.</p>
-                <a href="https://zvidhindo.co.zw/trodat%204727" class="cta-button">See Date Stamp Models</a>
-            </div>
-        </div>
-
-        <div class="stamp-card" data-category="uv"
-		data-slideshow-images="index_files/UV1.jpg,index_files/UV2.jpeg,index_files/UV3.jpg,index_files/UV4.jpg">
-             <img src="index_files/UV2.jpeg" alt="UV Invisible Ink Stamp" class="slideshow-image">
-            <div class="stamp-card-content">
-                <h3>UV & Security Stamps</h3>
-                <p>Invisible ink stamps visible only under UV light. Ideal for security marking, event entry, and anti-counterfeiting.</p>
-                <a href="https://zvidhindo.co.zw/uv-stamps" class="cta-button">Inquire About Security Stamps</a>
-            </div>
-        </div>
-
-        <div class="stamp-card" data-category="custom company">
-             <img src="index_files/4913%202.jpg" alt="Custom Trodat 4913">
-            <div class="stamp-card-content">
-                <h3>Custom Trodat Printy 4913</h3>
-                <p>A versatile self-inking stamp, perfect for addresses, logos, or custom messages. Multiple lines of text possible.</p>
-                <a href="http://zvidhindo.co.zw/trodat 4913" class="cta-button">Customize Yours</a>
-            </div>
-        </div>
-
-        <div class="stamp-card" data-category="company">
-            <img src="index_files/hand2.png" alt="Traditional Hand Stamp">
-            <div class="stamp-card-content">
-                <h3>Traditional Hand Stamps</h3>
-                <p>Classic and cost-effective hand stamps for various applications. Requires a separate ink pad.</p>
-                <a href="http://zvidhindo.co.zw/hand stamp" class="cta-button">View Hand Stamps</a>
-            </div>
-        </div>
-
-    </main>
-
-   <section class="map-section">
-  <div id="bulawayo-map">
-    <h2>Bulawayo Branch</h2>
-    <p>Located in Bulawayo CBD, Suite 5, Sunninghill Building, Cnr 14th Avenue & Fife Street.</p>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.3910983335653!2d28.58020821537194!3d-20.16331948539169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eb55584435c065f%3A0x4242c5a576d1d87a!2sOne%20Stamp%20Shop!5e0!3m2!1sen!2szw!4v1715943750045!5m2!1sen!2szw" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-    </section>
-
-    <footer class="footer">
-
-	    <a href="https://www.facebook.com/onestampshop"> <i class="fa-brands fa-facebook w3-hover-opacity"></i></a>
-  <a href="https://www.instagram.com/1stampshop"> <i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
-  <a href="https://wa.me/+263719455454"> <i class="fa-brands fa-whatsapp w3-hover-opacity"></i></a>
-  <a href="https://www.pinterest.com/1stampshop/"> <i class="fa-brands fa-pinterest-p w3-hover-opacity"></i></a>
-  <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
- <a href="https://twitter.com/1stampshop"> <i class="fa-brands fa-x-twitter w3-hover-opacity"></i> </a>
-	    
-        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe. </p>
-	    
-    </footer>
-
-<a href="https://wa.me/263719455454?text=Hello%20I%20am%20interested%20in%20your%20stamps"
-    class="whatsapp-float"
-   target="_blank">
-   <img src="whatsapp-icon.png" alt="WhatsApp" />
-</a>
-
-<style>
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
-    font-size: 32px;
-    color: white;
-text-decoration: none !important;  
+        <div className="mt-3 text-xs text-slate-600">Size: {sizeMm}mm — Preview drawn at 300 DPI for export fidelity.</div>
+      </div>
+    </div>
+  );
 }
-.whatsapp-float:hover {
-    background-color: #20b955;
-}
-</style>
 
-    <script>
-        // It's good practice to wrap all DOM manipulation code in DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // Set current year in footer
-            const currentYearSpan = document.getElementById('currentYear');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Basic filter functionality
-            const filterButtons = document.querySelectorAll('.stamp-filters button');
-            const stampCards = document.querySelectorAll('.stamp-card');
-
-            if (filterButtons.length > 0 && stampCards.length > 0) {
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        const filter = button.getAttribute('data-filter');
-                        stampCards.forEach(card => {
-                            if (filter === 'all' || (card.getAttribute('data-category') && card.getAttribute('data-category').includes(filter))) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            }
-
-            // Image Slideshow Functionality (THIS IS THE ADDED PART)
-            const slideshowCards = document.querySelectorAll('.stamp-card[data-slideshow-images]');
-            const slideInterval = 4000; // Time in milliseconds (e.g., 4 seconds)
-
-            slideshowCards.forEach(card => {
-                const imgElement = card.querySelector('.slideshow-image');
-                if (!imgElement) {
-                    console.warn('Slideshow card found, but no .slideshow-image img tag inside:', card);
-                    return;
-                }
-
-                const imageUrlsString = card.getAttribute('data-slideshow-images');
-                if (!imageUrlsString) {
-                    console.warn('Slideshow card found, but data-slideshow-images attribute is empty or missing:', card);
-                    return;
-                }
-
-                const imageUrls = imageUrlsString.split(',').map(url => url.trim()).filter(url => url); // Ensure no empty strings
-
-                if (imageUrls.length <= 1) {
-                    // console.log('Not enough images for slideshow on card:', card);
-                    return; // No slideshow needed for 1 or 0 images
-                }
-
-                let currentImageIndex = 0;
-                const initialSrc = imgElement.getAttribute('src');
-                const initialIndexInSlideshow = imageUrls.indexOf(initialSrc);
-
-                if (initialIndexInSlideshow !== -1) {
-                    currentImageIndex = initialIndexInSlideshow;
-                } else {
-                    // If current src is not in the list, or to ensure it starts with the list's first image:
-                    imgElement.src = imageUrls[0];
-                    currentImageIndex = 0;
-                }
-                // Ensure initial image is visible if opacity was 0 for some reason
-                imgElement.style.opacity = 1;
+/*
+Minimal notes:
+- For production, sanitize uploaded SVGs to avoid XSS and properly inline fonts (or load Google Fonts dynamically).
+- Improve circular text by calculating spacing & flipping orientation for bottom half if needed.
+- Add templates, pre-made icons, and server-side rendering for higher performance.
+*/
 
 
-                setInterval(() => {
-                    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
-
-                    imgElement.style.opacity = 0; // Start fade out
-
-                    setTimeout(() => {
-                        imgElement.src = imageUrls[currentImageIndex];
-                        imgElement.style.opacity = 1; // Start fade in
-                    }, 250); // This delay should be less than or equal to the CSS transition duration (0.5s = 500ms)
-
-                }, slideInterval);
-            });
-
-        }); // End of DOMContentLoaded
-    </script>
-
-</body>
-</html>
-
-
-
-
+**a.** Would you like me to add preset templates (e.g., Notary, Wedding, Corporate) to the UI?
+**b.** Want unit tests or an automated export pipeline (zip with SVG+PNG+PDF)?
