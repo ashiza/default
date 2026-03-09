@@ -3,51 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stamp Maker</title>
+    <title>Professional Stamp Maker Application</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        #preview { border: 2px dashed black; height: 200px; width: 300px; margin: 20px 0; position: relative; }
-        #stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        #stamp-builder { background: white; border: 1px solid #ccc; padding: 20px; border-radius: 5px; }
+        #preview { width: 200px; height: 200px; border: 1px solid black; position: relative; margin-bottom: 20px; }
+        #preview img { position: absolute; top: 0; left: 0; }
     </style>
 </head>
 <body>
-    <h1>Stamp Maker Application</h1>
-    <label for="text-input">Stamp Text:</label>
-    <input type="text" id="text-input" placeholder="Enter text for stamp" />
-    <br />
-    <label for="font-size">Font Size:</label>
-    <input type="number" id="font-size" value="24" /> px
-    <br />
-    <label for="color-picker">Stamp Color:</label>
-    <input type="color" id="color-picker" value="#000000" />
-    <br />
-    <button id="export-btn">Export Stamp</button>
-    <h2>Live Preview:</h2>
-    <div id="preview">
-        <div id="stamp">Your Stamp</div>
+    <div id="stamp-builder">
+        <h1>Create Your Custom Stamp</h1>
+        <div id="preview"></div>
+        <label for="shape">Select Shape:</label>
+        <select id="shape">
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+            <option value="rectangle">Rectangle</option>
+        </select>
+        <br />
+        <label for="text">Customize Text:</label>
+        <input type="text" id="text" placeholder="Enter your text" />
+        <br />
+        <label for="logo">Upload Logo:</label>
+        <input type="file" id="logo" accept="image/*" />
+        <br />
+        <label for="rings">Add Rings:</label>
+        <input type="checkbox" id="rings" />
+        <br />
+        <button id="preview-btn">Live Preview</button>
+        <button id="export">Export as SVG/PNG</button>
     </div>
     <script>
-        const textInput = document.getElementById('text-input');
-        const fontSizeInput = document.getElementById('font-size');
-        const colorPicker = document.getElementById('color-picker');
-        const stamp = document.getElementById('stamp');
-        const exportBtn = document.getElementById('export-btn');
+        const preview = document.getElementById('preview');
+        document.getElementById('preview-btn').addEventListener('click', () => {
+            const shape = document.getElementById('shape').value;
+            const text = document.getElementById('text').value;
+            const logo = document.getElementById('logo').files[0];
+            preview.innerHTML = '';
+            const shapeElement = document.createElement('div');
+            shapeElement.style.width = '100%';
+            shapeElement.style.height = '100%';
+            shapeElement.style.borderRadius = shape === 'circle' ? '50%' : '0';
+            shapeElement.style.border = '5px solid black';
+            preview.appendChild(shapeElement);
+            if (logo) {
+                const logoURL = URL.createObjectURL(logo);
+                const img = document.createElement('img');
+                img.src = logoURL;
+                img.style.width = '100%';
+                shapeElement.appendChild(img);
+            }
+            const textElement = document.createElement('div');
+            textElement.innerText = text;
+            textElement.style.position = 'absolute';
+            textElement.style.top = '50%';
+            textElement.style.left = '50%';
+            textElement.style.transform = 'translate(-50%, -50%)';
+            preview.appendChild(textElement);
+        });
 
-        textInput.addEventListener('input', updateStamp);
-        fontSizeInput.addEventListener('input', updateStamp);
-        colorPicker.addEventListener('input', updateStamp);
-
-        function updateStamp() {
-            stamp.textContent = textInput.value || 'Your Stamp';
-            stamp.style.fontSize = fontSizeInput.value + 'px';
-            stamp.style.color = colorPicker.value;
-        }
-
-        exportBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.download = 'stamp.html';
-            link.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(`<!DOCTYPE html>\n<html lang='en'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Your Stamp</title>\n    <style>\n        body { font-family: Arial, sans-serif; }\n        .stamp { font-size: ${fontSizeInput.value}px; color: ${colorPicker.value}; }\n    </style>\n</head>\n<body>\n    <div class='stamp'>${textInput.value || 'Your Stamp'}</div>\n</body>\n</html>`);
-            link.click();
+        document.getElementById('export').addEventListener('click', () => {
+            // Export logic for SVG/PNG would go here
+            alert('Export functionality is being developed!');
         });
     </script>
 </body>
