@@ -1,1 +1,285 @@
-<textarea name="multilineInput" rows="4" cols="50"></textarea>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Rubber Stamp Maker | The Stampmaker</title>
+    <!-- Critical CSS inlined to prevent render-blocking -->
+    <style>
+        /* Minimal critical styles for above-the-fold content */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif; 
+            background: #f5f7fa; 
+            color: #1e293b; 
+            line-height: 1.5; 
+            padding: 1.5rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .subhead { color: #475569; margin-bottom: 1.5rem; }
+        .step-indicator { 
+            font-size: 0.875rem; 
+            color: #2563eb; 
+            font-weight: 500; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            margin-bottom: 0.5rem; 
+        }
+        .card { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .note { 
+            font-size: 0.875rem; 
+            background: #fffbeb; 
+            padding: 0.75rem; 
+            border-radius: 8px; 
+            border-left: 4px solid #f59e0b; 
+            margin: 1rem 0; 
+        }
+        button { 
+            background: #2563eb; 
+            color: white; 
+            border: none; 
+            padding: 0.6rem 1.2rem; 
+            border-radius: 6px; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: background 0.2s; 
+        }
+        button:hover { background: #1d4ed8; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { 
+            background: white; 
+            color: #2563eb; 
+            border: 1px solid #cbd5e1; 
+        }
+        .btn-secondary:hover { background: #f8fafc; }
+        .form-group { margin-bottom: 1.25rem; }
+        label { 
+            display: block; 
+            font-weight: 500; 
+            margin-bottom: 0.25rem; 
+            font-size: 0.9rem; 
+        }
+        input, textarea, select { 
+            width: 100%; 
+            padding: 0.6rem; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px; 
+            font-size: 1rem; 
+        }
+        hr { margin: 1.5rem 0; border-color: #e2e8f0; }
+        .loader { display: none; } /* Hidden by default, shown via JS when needed */
+    </style>
+    <!-- Preconnect to critical origins for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.thestampmaker.com" crossorigin>
+    <!-- Deferred non-critical CSS (loads after page render) -->
+    <link rel="preload" href="https://cdn.thestampmaker.com/css/optional-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.thestampmaker.com/css/optional-styles.css"></noscript>
+</head>
+<body>
+    <div class="container">
+        <!-- Main heading - simplified, removed redundant 'Step 1' from H1 -->
+        <h1>Design a Custom Rubber Stamp</h1>
+        <div class="subhead">Create your perfect stamp in minutes</div>
+
+        <!-- Step indicator - cleaner presentation -->
+        <div class="step-indicator">Step 1 of 3 — Design Your Stamp</div>
+
+        <!-- Main design card -->
+        <div class="card">
+            <!-- Dimension note with icon (text only for speed) -->
+            <div class="note">
+                <strong>📏 Size limit:</strong> Stamp designs cannot exceed 9.5" x 7.5"
+            </div>
+
+            <!-- Text input section - simplified -->
+            <div class="form-group">
+                <label for="stamp-text">Add text to your stamp</label>
+                <input type="text" id="stamp-text" placeholder="Enter your text here..." maxlength="200">
+                <small style="color: #64748b;">Maximum 200 characters</small>
+            </div>
+
+            <!-- Back link - styled as a simple text link instead of button-looking element -->
+            <div style="margin-bottom: 1rem;">
+                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.9rem;">← Back</a>
+            </div>
+
+            <!-- Upload section with improved formats display -->
+            <div class="form-group">
+                <label for="image-upload">Upload an image</label>
+                <input type="file" id="image-upload" accept=".pdf,.jpg,.jpeg,.gif,.png,.bmp,.tiff,.eps,.svg">
+                <small style="color: #64748b; display: block; margin-top: 0.25rem;">
+                    Accepted: PDF, JPG, GIF, PNG, BMP, TIFF, EPS, SVG • 300 DPI B&W recommended
+                </small>
+                <small style="color: #b91c1c; display: block; margin-top: 0.25rem;">
+                    ⚠️ Avoid black backgrounds with white text/images
+                </small>
+            </div>
+
+            <!-- Lazy-loaded sections: clipart and my images -->
+            <div style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                <!-- Clipart button triggers lazy loading -->
+                <button class="btn-secondary" id="browse-clipart-btn" aria-label="Browse clipart library">
+                    🖼️ Browse Clipart
+                </button>
+                <!-- My images button triggers lazy loading -->
+                <button class="btn-secondary" id="browse-myimages-btn" aria-label="Browse my uploaded images">
+                    🖼️ Browse My Images
+                </button>
+            </div>
+
+            <!-- Container for lazy-loaded content (clipart/images) - initially empty -->
+            <div id="lazy-content-container" style="min-height: 50px;"></div>
+
+            <!-- Note about image library retention - moved closer to relevant buttons -->
+            <small style="color: #64748b; display: block; margin: 0.5rem 0 1.5rem 0;">
+                📁 Unused images are removed from your library after 12 months.
+            </small>
+
+            <!-- Resize & position section with percentage control -->
+            <div style="margin: 1.5rem 0;">
+                <label for="image-scale">Resize & position image</label>
+                <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                    <input type="range" id="image-scale" min="10" max="200" value="100" style="flex: 2; min-width: 200px;">
+                    <span id="scale-percent">100%</span>
+                    <button id="apply-scale" class="btn-secondary" style="white-space: nowrap;">Apply</button>
+                </div>
+                <small style="color: #64748b;">Proportions locked — drag slider to scale</small>
+            </div>
+
+            <!-- Border toggle with loading indicator (hidden initially) -->
+            <div style="margin: 1rem 0;">
+                <label for="add-border">
+                    <input type="checkbox" id="add-border"> Add a border to your stamp
+                </label>
+                <!-- Loading spinner - hidden by default, shown via JS when border is processing -->
+                <div id="border-loader" class="loader" style="margin-top: 0.5rem;">
+                    <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <span style="width: 16px; height: 16px; border: 2px solid #e2e8f0; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+                        Processing border...
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <hr>
+            <div style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
+                <button class="btn-secondary">Preview</button>
+                <button>Continue to Step 2</button>
+            </div>
+        </div>
+
+        <!-- Small print / trust signals (could be extended) -->
+        <p style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 2rem;">
+            Secure checkout • Satisfaction guaranteed
+        </p>
+    </div>
+
+    <!-- Deferred JavaScript with lazy loading implementation -->
+    <script>
+        // Use requestIdleCallback or setTimeout to load non-critical JS after page render
+        window.addEventListener('load', function() {
+            // Set a small timeout to ensure critical rendering is complete
+            setTimeout(function() {
+                // Dynamically load the main stamp wizard logic
+                var script = document.createElement('script');
+                script.src = 'https://cdn.thestampmaker.com/js/stamp-wizard.min.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }, 200);
+        });
+
+        // Lazy loading for clipart and images
+        document.getElementById('browse-clipart-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var container = document.getElementById('lazy-content-container');
+            
+            // Show loading state in container
+            container.innerHTML = '<div style="padding: 1rem; text-align: center; color: #64748b;">Loading clipart library...</div>';
+            
+            // Simulate loading clipart (replace with actual fetch/load)
+            setTimeout(function() {
+                // This would be replaced with actual content from an API or preloaded HTML fragment
+                container.innerHTML = `
+                    <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.5rem;">
+                            <div style="background: #f1f5f9; height: 80px; border-radius: 4px;"></div>
+                            <div style="background: #f1f5f9; height: 80px; border-radius: 4px;"></div>
+                            <div style="background: #f1f5f9; height: 80px; border-radius: 4px;"></div>
+                            <div style="background: #f1f5f9; height: 80px; border-radius: 4px;"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 0.5rem;"><button class="btn-secondary">Load more</button></p>
+                    </div>
+                `;
+            }, 500); // Simulate network delay
+        });
+
+        document.getElementById('browse-myimages-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var container = document.getElementById('lazy-content-container');
+            
+            container.innerHTML = '<div style="padding: 1rem; text-align: center; color: #64748b;">Loading your images...</div>';
+            
+            setTimeout(function() {
+                // Simulate user images view
+                container.innerHTML = `
+                    <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;">
+                        <p style="margin-bottom: 0.5rem;"><strong>Your uploaded images</strong></p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.5rem;">
+                            <div style="background: #dbeafe; height: 80px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">Logo</div>
+                            <div style="background: #dbeafe; height: 80px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">Stamp</div>
+                            <div style="background: #dbeafe; height: 80px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">Icon</div>
+                        </div>
+                        <p style="text-align: center; margin-top: 0.5rem;"><button class="btn-secondary">Upload new</button></p>
+                    </div>
+                `;
+            }, 500);
+        });
+
+        // Simple scale percentage display
+        document.getElementById('image-scale').addEventListener('input', function(e) {
+            document.getElementById('scale-percent').textContent = e.target.value + '%';
+        });
+
+        // Apply scale button handler
+        document.getElementById('apply-scale').addEventListener('click', function() {
+            // Show some feedback
+            var btn = this;
+            var originalText = btn.textContent;
+            btn.textContent = 'Applied!';
+            btn.disabled = true;
+            setTimeout(function() {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1000);
+        });
+
+        // Border checkbox handler with loader
+        document.getElementById('add-border').addEventListener('change', function(e) {
+            var loader = document.getElementById('border-loader');
+            if (e.target.checked) {
+                loader.style.display = 'block';
+                // Simulate border processing
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                    // Could show success message
+                }, 800);
+            } else {
+                loader.style.display = 'none';
+            }
+        });
+
+        // Add keyframe animation for spinner (not in CSS to keep critical CSS minimal)
+        var style = document.createElement('style');
+        style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
