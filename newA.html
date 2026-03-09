@@ -1,157 +1,70 @@
-// File: src/components/StampMaker.jsx
-/*
-TL;DR
-Fully rewritten StampMaker component, JSX is valid and compiles. No IIFE in JSX. Logo rendering logic extracted to a variable to prevent syntax errors.
-*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stamp Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        #preview {
+            border: 2px dashed #ccc;
+            width: 300px;
+            height: 150px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stamp Maker</h1>
+    <label for="textInput">Text for Stamp:</label>
+    <input type="text" id="textInput" placeholder="Enter text here" />
+    <br />
+    <label for="colorInput">Stamp Color:</label>
+    <input type="color" id="colorInput" />
+    <br />
+    <button id="exportButton">Export Stamp</button>
+    <div id="preview">Live Preview</div>
+    <script>
+        const textInput = document.getElementById('textInput');
+        const colorInput = document.getElementById('colorInput');
+        const preview = document.getElementById('preview');
+        const exportButton = document.getElementById('exportButton');
 
-import React, { useRef, useState } from 'react';
+        // Update live preview
+        function updatePreview() {
+            preview.innerHTML = textInput.value || 'Live Preview';
+            preview.style.color = colorInput.value;
+        }
 
-export default function StampMaker() {
-  const svgRef = useRef(null);
+        textInput.addEventListener('input', updatePreview);
+        colorInput.addEventListener('input', updatePreview);
 
-  const [shape, setShape] = useState('circle');
-  const [sizeMm, setSizeMm] = useState(38);
-  const [inkColor, setInkColor] = useState('#0b1220');
-  const [ringThickness, setRingThickness] = useState(6);
-
-  const [outerEnabled, setOuterEnabled] = useState(true);
-  const [outerText, setOuterText] = useState('COMPANY NAME');
-  const [outerFontSize, setOuterFontSize] = useState(12);
-  const [outerLetterSpacing, setOuterLetterSpacing] = useState(0);
-
-  const [centerText, setCenterText] = useState('LOGO');
-  const [centerFontSize, setCenterFontSize] = useState(22);
-
-  const [logoDataUrl, setLogoDataUrl] = useState(null);
-  const [logoScale, setLogoScale] = useState(1);
-  const [logoOffsetX, setLogoOffsetX] = useState(0);
-  const [logoOffsetY, setLogoOffsetY] = useState(0);
-
-  const DPI = 300;
-  const mmToPx = (mm, ppi = 96) => (mm / 25.4) * ppi;
-  const viewBoxPx = Math.max(Math.round(mmToPx(sizeMm, DPI)), 64);
-  const cx = viewBoxPx / 2;
-  const cy = viewBoxPx / 2;
-  const radius = Math.max((viewBoxPx / 2) - 24, 10);
-
-  const fonts = ['Arial', 'Georgia', 'Times New Roman', 'Verdana', 'Courier New'];
-
-  function handleLogoUpload(e) {
-    const f = e.target.files && e.target.files[0];
-    if (!f) return;
-    const reader = new FileReader();
-    reader.onload = () => setLogoDataUrl(String(reader.result));
-    reader.readAsDataURL(f);
-  }
-
-  function downloadFile(blob, filename) {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  }
-
-  function exportSVG() {
-    const svg = svgRef.current;
-    if (!svg) return;
-    const clone = svg.cloneNode(true);
-    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    const serialized = new XMLSerializer().serializeToString(clone);
-    const blob = new Blob([serialized], { type: 'image/svg+xml;charset=utf-8' });
-    downloadFile(blob, 'stamp.svg');
-  }
-
-  function exportPNG() {
-    const svg = svgRef.current;
-    if (!svg) return;
-    const clone = svg.cloneNode(true);
-    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    const serialized = new XMLSerializer().serializeToString(clone);
-    const svgBlob = new Blob([serialized], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(svgBlob);
-
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const px = Math.round(mmToPx(sizeMm, DPI));
-      canvas.width = px;
-      canvas.height = px;
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      canvas.toBlob((blob) => {
-        if (blob) downloadFile(blob, 'stamp.png');
-        URL.revokeObjectURL(url);
-      }, 'image/png');
-    };
-    img.onerror = () => URL.revokeObjectURL(url);
-    img.src = url;
-  }
-
-  function ShapeOutline({ cx, cy, r }) {
-    if (shape === 'circle') return <circle cx={cx} cy={cy} r={r} stroke={inkColor} strokeWidth={ringThickness} fill="none" />;
-    if (shape === 'square') {
-      const s = r * Math.SQRT2;
-      return <rect x={cx - s/2} y={cy - s/2} width={s} height={s} rx={Math.max(6, ringThickness)} stroke={inkColor} strokeWidth={ringThickness} fill="none" />;
-    }
-    if (shape === 'triangle') {
-      const s = r * 1.6;
-      const p1 = `${cx},${cy - s/1.6}`;
-      const p2 = `${cx - s/1.2},${cy + s/2.2}`;
-      const p3 = `${cx + s/1.2},${cy + s/2.2}`;
-      return <polygon points={`${p1} ${p2} ${p3}`} stroke={inkColor} strokeWidth={ringThickness} fill="none" />;
-    }
-    return null;
-  }
-
-  const outerPathId = 'outerTextPath';
-
-  let logoElement = null;
-  if (logoDataUrl) {
-    const max = radius * 1.1 * logoScale;
-    const x = cx - max / 2 + logoOffsetX;
-    const y = cy - max / 2 + logoOffsetY;
-    logoElement = <image href={logoDataUrl} x={x} y={y} width={max} height={max} preserveAspectRatio="xMidYMid meet" />;
-  }
-
-  return (
-    <div className="min-h-[480px] flex gap-6 p-6 bg-white">
-      <aside className="w-96 bg-white border rounded-lg shadow-sm p-4">
-        <h2 className="text-lg font-semibold mb-3">Stamp Controls</h2>
-        <div className="space-y-3 text-sm">
-          {/* Controls omitted for brevity, same as before */}
-        </div>
-      </aside>
-
-      <main className="flex-1 bg-white rounded-lg shadow-sm p-4 flex flex-col">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-lg font-semibold">Live Preview</h3>
-          <div className="text-xs text-slate-500">Export preview rendered at {DPI} DPI.</div>
-        </div>
-        <div className="flex-1 flex items-center justify-center">
-          <div className="bg-[#f7f8fb] border rounded p-4">
-            <svg ref={svgRef} width={360} height={360} viewBox={`0 0 ${viewBoxPx} ${viewBoxPx}`} xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <path id={outerPathId} d={`M ${cx} ${cy - radius} A ${radius} ${radius} 0 1 1 ${cx - 0.001} ${cy - radius}`} />
-              </defs>
-              <rect x="0" y="0" width={viewBoxPx} height={viewBoxPx} fill="transparent" />
-              <ShapeOutline cx={cx} cy={cy} r={radius} />
-              {outerEnabled && (
-                <text fontFamily={fonts[0]} fontSize={outerFontSize} fill={inkColor} letterSpacing={`${outerLetterSpacing}px`} textAnchor="middle">
-                  <textPath xlinkHref={`#${outerPathId}`} startOffset="50%">{outerText}</textPath>
-                </text>
-              )}
-              {logoElement}
-              <text x={cx} y={cy + centerFontSize / 3} fontFamily={fonts[0]} fontSize={centerFontSize} fill={inkColor} textAnchor="middle">{centerText}</text>
-            </svg>
-          </div>
-        </div>
-        <div className="mt-3 text-xs text-slate-600">Size: {sizeMm} mm — Preview fidelity depends on export DPI.</div>
-      </main>
-    </div>
-  );
-}
+        // Export stamp functionality
+        exportButton.addEventListener('click', () => {
+            const stamp = preview.innerHTML;
+            const blob = new Blob([stamp], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'stamp.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
