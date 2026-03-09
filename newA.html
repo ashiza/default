@@ -5,65 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stamp Maker</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        #preview {
-            border: 2px dashed #ccc;
-            width: 300px;
-            height: 150px;
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-        }
-        input, button {
-            margin: 5px;
-            padding: 10px;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #preview { border: 2px dashed black; height: 200px; width: 300px; margin: 20px 0; position: relative; }
+        #stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; }
     </style>
 </head>
 <body>
-    <h1>Stamp Maker</h1>
-    <label for="textInput">Text for Stamp:</label>
-    <input type="text" id="textInput" placeholder="Enter text here" />
+    <h1>Stamp Maker Application</h1>
+    <label for="text-input">Stamp Text:</label>
+    <input type="text" id="text-input" placeholder="Enter text for stamp" />
     <br />
-    <label for="colorInput">Stamp Color:</label>
-    <input type="color" id="colorInput" />
+    <label for="font-size">Font Size:</label>
+    <input type="number" id="font-size" value="24" /> px
     <br />
-    <button id="exportButton">Export Stamp</button>
-    <div id="preview">Live Preview</div>
+    <label for="color-picker">Stamp Color:</label>
+    <input type="color" id="color-picker" value="#000000" />
+    <br />
+    <button id="export-btn">Export Stamp</button>
+    <h2>Live Preview:</h2>
+    <div id="preview">
+        <div id="stamp">Your Stamp</div>
+    </div>
     <script>
-        const textInput = document.getElementById('textInput');
-        const colorInput = document.getElementById('colorInput');
-        const preview = document.getElementById('preview');
-        const exportButton = document.getElementById('exportButton');
+        const textInput = document.getElementById('text-input');
+        const fontSizeInput = document.getElementById('font-size');
+        const colorPicker = document.getElementById('color-picker');
+        const stamp = document.getElementById('stamp');
+        const exportBtn = document.getElementById('export-btn');
 
-        // Update live preview
-        function updatePreview() {
-            preview.innerHTML = textInput.value || 'Live Preview';
-            preview.style.color = colorInput.value;
+        textInput.addEventListener('input', updateStamp);
+        fontSizeInput.addEventListener('input', updateStamp);
+        colorPicker.addEventListener('input', updateStamp);
+
+        function updateStamp() {
+            stamp.textContent = textInput.value || 'Your Stamp';
+            stamp.style.fontSize = fontSizeInput.value + 'px';
+            stamp.style.color = colorPicker.value;
         }
 
-        textInput.addEventListener('input', updatePreview);
-        colorInput.addEventListener('input', updatePreview);
-
-        // Export stamp functionality
-        exportButton.addEventListener('click', () => {
-            const stamp = preview.innerHTML;
-            const blob = new Blob([stamp], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'stamp.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        exportBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'stamp.html';
+            link.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(`<!DOCTYPE html>\n<html lang='en'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Your Stamp</title>\n    <style>\n        body { font-family: Arial, sans-serif; }\n        .stamp { font-size: ${fontSizeInput.value}px; color: ${colorPicker.value}; }\n    </style>\n</head>\n<body>\n    <div class='stamp'>${textInput.value || 'Your Stamp'}</div>\n</body>\n</html>`);
+            link.click();
         });
     </script>
 </body>
