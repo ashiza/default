@@ -322,6 +322,43 @@
 .contact-form button:hover {
     background-color: #c62828;
 }
+
+        /* === ADDED: Mobile hamburger styles (copied from badges.html) === */
+
+/* Mobile hamburger button */
+.mobile-menu-button {
+  display: none;
+  font-size: 1.5rem;
+  color: #e53935;
+  cursor: pointer;
+}
+
+/* Responsive: show hamburger and hide normal nav on small screens */
+@media (max-width: 768px) {
+  .nav-links { display: none; }          /* hide desktop nav on mobile */
+  .mobile-menu-button { display: block; }/* show hamburger */
+  .navbar { justify-content: space-between; }
+}
+
+/* mobile dropdown when active */
+.nav-links.mobile-active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  z-index: 200;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.nav-links.mobile-active li {
+  margin: 0.7rem 0;
+  text-align: center;
+}
+
     </style>
 </head>
 <body>
