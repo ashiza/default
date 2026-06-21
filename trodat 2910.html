@@ -96,6 +96,24 @@
     }
 }
 
+          /* Mobile menu */
+        .nav-links.mobile-active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            width: 100%;
+            z-index: 200;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .nav-links.mobile-active li {
+            margin: 0.7rem 0;
+            text-align: center;
+        }
+
         /* Hero Section */
         .hero {
             background-color: #f8f9fa; /* Removed background image */
@@ -465,12 +483,10 @@
 
                   <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-                      const mobileMenuButton = document.querySelector('.mobile-menu-button');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenuButton.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+                       const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        menuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-active');
     </script>
   
   </body>
