@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Purchase Trodat 2910 rubber stamps, date stamps, teller stamp. Available in Zimbabwe with customization options for logos, dates, and more.">
-  <meta name="keywords" content="trodat 2910, trodat date stamp, date stamp, trodat 2910 dimensions, trodat 2910 rubber stamp, trodat 2910 rubber replacement, teller trodat stamp, bank stamp, office stamp, black stamp">
+  <meta name="keywords" content="trodat 2910, trodat date stamp, date stamp, trodat 2910 dimensions, trodat 2910 rubber stamp, trodat 2910 rubber replacement, teller trodat stamp, bank stamp, offic[...]>
   <title>Trodat 2910 Dater</title>
   <link rel="stylesheet" href="styles.css">
 
@@ -77,6 +77,34 @@
         .nav-links a:hover {
             color: #e53935;
         }
+
+        /* Mobile menu button (hamburger) */
+        .hamburger {
+            display: none; /* shown only on small screens via media query */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 44px;
+            height: 36px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #555;
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
         /* Hero Section */
         .hero {
@@ -322,6 +350,29 @@
 .contact-form button:hover {
     background-color: #c62828;
 }
+
+        /* Responsive adjustments for mobile menu */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .navbar { position: relative; }
+            .nav-links.open {
+                display: flex;
+                position: absolute;
+                top: 56px;
+                right: 20px;
+                background: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 16px;
+                gap: 8px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                border-radius: 8px;
+                z-index: 200;
+            }
+            .nav-links li { margin-left: 0; }
+            .nav-links a { color: #333; padding: 6px 0; }
+        }
     </style>
 </head>
 <body>
@@ -331,6 +382,12 @@
                 <div class="logo">
                     <h1>One Stamp Shop</h1>
                 </div>
+                <!-- Mobile menu button added -->
+                <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-links">
                     <li><a href="http://zvidhindo.co.zw">Home</a></li>
                     <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
@@ -365,7 +422,7 @@
                     <div class="product-info">
                        <section id="home">
     <h2>Trodat 2910</h2>
-    <p>The Trodat 2910 None Self-Inking Stamp is the ideal for a high stamping volume business environment solution for businesses, professionals, and individuals looking to simplify their repetitive stamping tasks. This is the most durable product for everyday stamping. It's perfect for marking documents, bank teller requirements, daily stamping, invoices and personalizing materials. This reliable stamp guarantees a clean, crisp impression with every use. Known for its versatility and metal structure to increase durability, the Trodat 2910 is designed to handle high-volume stamping, making it the go-to choice for anyone who needs frequent, efficient stamping. Trust Trodat to deliver quality and convenience, every time.</p>
+    <p>The Trodat 2910 None Self-Inking Stamp is the ideal for a high stamping volume business environment solution for businesses, professionals, and individuals looking to simplify their repetitive [...]
   </section>
 
   <section id="products">
@@ -401,8 +458,8 @@
         <h2>Get in Touch For a Quote</h2>
         <p>Let us know which choice you prefer!</p>
         <div class="contact-details">
-            <p> <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d47!2m2!1d31.045902!2d-17.8313046?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-            <br> <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065f:0x4242c5a576d1d87a!2m2!1d28.5823972!2d-20.1633195?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"> <i class="fa fa-map-marker"></i> Suite 10, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
+            <p> <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d4[...]
+            <br> <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065[...]
             <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454</a>
             <br><i class="fa fa-envelope"></i> onestampshop@mail.com</p>
         </div>
@@ -443,6 +500,28 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
   
+  <script>
+    // Mobile menu toggle script added
+    (function(){
+      var btn = document.querySelector('.hamburger');
+      var nav = document.querySelector('.nav-links');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function(e){
+        var isOpen = nav.classList.toggle('open');
+        btn.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+      // close menu when clicking outside
+      document.addEventListener('click', function(e){
+        if (!nav.classList.contains('open')) return;
+        if (e.target === btn || btn.contains(e.target) || nav.contains(e.target)) return;
+        nav.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })();
+  </script>
+  
   </body>
 </html>
 
@@ -454,4 +533,3 @@
   </footer>
 
   
- 
