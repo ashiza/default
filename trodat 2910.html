@@ -78,6 +78,23 @@
         .nav-links a:hover {
             color: #e53935;
         }
+        .mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
 
         /* Hero Section */
         .hero {
@@ -341,6 +358,12 @@
                     <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="mobile-menu-button"
+     aria-label="Open navigation menu"
+     role="button"
+     tabindex="0">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+</div>
             </nav>
         </div>
     </header>
@@ -442,6 +465,12 @@
 
                   <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+                      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuButton.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
     </script>
   
   </body>
