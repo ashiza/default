@@ -174,7 +174,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: visible !important;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -187,7 +187,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* Image at top - same as 2910 */
         .product-image-container {
             width: 100%;
             height: 400px;
@@ -214,9 +213,6 @@
             max-width: 900px;
             margin: 0 auto;
             width: 100%;
-            overflow: visible !important;
-            word-wrap: break-word;
-            word-break: break-word;
         }
 
         .product-info h2 {
@@ -242,9 +238,6 @@
             text-align: justify;
             line-height: 1.7;
             max-width: 100%;
-            overflow: visible !important;
-            word-wrap: break-word;
-            word-break: break-word;
         }
 
         .product-info ul {
@@ -253,37 +246,16 @@
             text-align: left;
             max-width: 300px;
             margin: 0 auto;
-            overflow: visible !important;
-            word-wrap: break-word;
-            word-break: break-word;
         }
 
         .product-info ul li {
             padding: 0.3rem 0;
             border-bottom: 1px solid #f0f0f0;
             font-size: 0.9rem;
-            overflow: visible !important;
-            word-wrap: break-word;
-            word-break: break-word;
         }
 
         .product-info ul li:last-child {
             border-bottom: none;
-        }
-
-        /* Bottom image - like cup image on 2910 */
-        .bottom-image-container {
-            text-align: center;
-            padding: 2rem 0 1rem 0;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .bottom-image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         /* Contact Section */
@@ -377,7 +349,7 @@
             opacity: 0.8;
         }
 
-        /* Large screen optimization - text fills screen like 2910 */
+        /* Large screen optimization */
         @media (min-width: 1024px) {
             .product-info {
                 max-width: 1000px;
@@ -439,10 +411,6 @@
                 height: 250px;
             }
 
-            .bottom-image-container {
-                max-width: 300px;
-            }
-
             .product-card {
                 overflow: visible !important;
             }
@@ -492,7 +460,6 @@
     <section class="product-section" id="product-details">
         <div class="container">
             <div class="product-card">
-                <!-- Image at top - same position as 2910 -->
                 <div class="product-image-container">
                     <img src="index_files/4727.jpg" alt="Trodat 4727 Date Stamp" class="product-image">
                 </div>
@@ -516,12 +483,11 @@
                         </ul>
                     </section>
 
-                    <h3>Trodat 4727 Date Stamp</h3>
-                    <p>40*60mm self inking date stamp</p>
+                    
                 </div>
             </div>
 
-            <!-- Bottom image - like cup image on 2910 page -->
+            <!-- Subscribe section - matching 2910 -->
             <div class="w3-container w3-blue w3-padding-32" style="background-color: #e53935; padding: 2rem 0; text-align: center; border-radius: 8px; margin-top: 2rem;">
                 <img src="index_files/cup.png" alt="Cup" style="max-width: 100%; height: auto; border-radius: 8px;">
             </div>
