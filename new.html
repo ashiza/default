@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Purchase Trodat 5460 rubber stamps, big stamps, metal stamp. Available in Zimbabwe with customization options for logos, dates, and more.">
-    <meta name="keywords" content="trodat 5460, trodat professional, 5460 date stamp, trodat 5460 dimensions, trodat 5460 rubber stamp, trodat 5460 rubber replacement, metal trodat stamp, big stamp, professional stamp">
-    <title>Trodat Professional 5460</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Custom Trodat 4913 self-inking stamps with multiple design options. Choose from various sizes, layouts, and styles including seal designs and 10x35mm format without date.">
+    <meta name="keywords" content="Trodat 4913, custom stamp, self-inking stamp, seal stamp, 10x35mm stamp, design options, Zimbabwe">
+    <title>Trodat 4913 Printy - Custom Design Options</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
-    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -46,7 +44,7 @@
         }
 
         .logo h1 {
-            color: #333;
+            color: #1565C0;
             margin: 0;
             font-size: 1rem;
             font-weight: 700;
@@ -71,13 +69,13 @@
         }
 
         .nav-links a:hover {
-            color: #333;
+            color: #1565C0;
         }
 
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: #333;
+            color: #1565C0;
             cursor: pointer;
             background: none;
             border: none;
@@ -87,17 +85,14 @@
             .mobile-menu-button {
                 display: block;
             }
-
             .nav-links {
                 display: none;
             }
-
             .nav-links.active {
                 display: none;
             }
         }
 
-        /* Mobile menu */
         .nav-links.mobile-active {
             display: flex;
             flex-direction: column;
@@ -116,12 +111,12 @@
             text-align: center;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background-color: #f8f9fa;
-            color: #333;
+            background: linear-gradient(135deg, #1565C0, #0D47A1);
+            color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
         }
 
         .hero-content {
@@ -130,10 +125,9 @@
         }
 
         .hero h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
-            color: #333;
         }
 
         .hero p {
@@ -144,182 +138,162 @@
 
         .hero-button {
             display: inline-block;
-            background-color: #555;
-            color: #fff;
-            padding: 0.5rem 1rem;
+            background-color: #FFD700;
+            color: #0D47A1;
+            padding: 0.75rem 2rem;
             text-decoration: none;
             border-radius: 5px;
-            font-weight: 500;
+            font-weight: 700;
             transition: background-color 0.3s ease;
         }
 
         .hero-button:hover {
-            background-color: #333;
+            background-color: #FFC107;
         }
 
-        /* Product Section */
-        .product-section {
-            padding: 2rem 0;
+        /* Design Options Section */
+        .design-section {
+            padding: 3rem 0;
+        }
+
+        .design-section h2 {
+            font-size: 2.2rem;
             text-align: center;
+            color: #1565C0;
+            margin-bottom: 0.5rem;
         }
 
-        .product-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #333;
+        .design-section .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .design-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .design-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .design-card .card-header {
+            background: #1565C0;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .design-card .card-header .badge {
+            background: #FFD700;
+            color: #0D47A1;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 700;
         }
 
-        .product-card {
-            background-color: #fff;
+        .design-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .design-card .card-body .preview {
+            background: #f0f4f8;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .product-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Image at top */
-        .product-image-container {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #333;
+            border: 2px dashed #ccc;
+            margin-bottom: 1rem;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f0f0f0;
-        }
-
-        .product-image {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            object-fit: contain;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
             flex-direction: column;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
         }
 
-        .product-info h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+        .design-card .card-body .preview .date-placeholder {
+            color: #1565C0;
             font-weight: 700;
+            background: #e3f2fd;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0.2rem 0;
         }
 
-        .product-info h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .product-info p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-            text-align: justify;
-            line-height: 1.7;
-            max-width: 100%;
-        }
-
-        .product-info ul {
+        .design-card .card-body ul {
             list-style: none;
             padding: 0;
-            text-align: left;
-            max-width: 300px;
-            margin: 0 auto;
+            margin: 0.5rem 0 0 0;
         }
 
-        .product-info ul li {
+        .design-card .card-body ul li {
             padding: 0.3rem 0;
             border-bottom: 1px solid #f0f0f0;
             font-size: 0.9rem;
+            color: #555;
         }
 
-        .product-info ul li:last-child {
+        .design-card .card-body ul li:last-child {
             border-bottom: none;
         }
 
-        /* Bottom image - grey section like 2910 cup */
-        .bottom-image-container {
-            text-align: center;
-            padding: 2rem 0 1rem 0;
-            max-width: 400px;
-            margin: 0 auto;
+        .design-card .card-body ul li i {
+            color: #1565C0;
+            margin-right: 8px;
         }
 
-        .bottom-image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .design-card .card-footer {
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
         }
 
-        .grey-section {
-            background-color: #555;
-            padding: 2rem 0;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 2rem;
+        .design-card .card-footer .btn {
+            display: inline-block;
+            background: #1565C0;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
         }
 
-        .grey-section img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .design-card .card-footer .btn:hover {
+            background: #0D47A1;
         }
 
-        /* Contact Section */
+        /* Contact */
         .contact {
             padding: 3rem 0;
             text-align: center;
+            background: #e3f2fd;
         }
 
         .contact h2 {
             font-size: 2rem;
+            color: #1565C0;
             margin-bottom: 1.5rem;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .contact-info {
-            margin-top: 2rem;
-        }
-
-        .contact-info p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #555;
         }
 
         .contact-form {
@@ -342,7 +316,7 @@
         }
 
         .contact-form button {
-            background-color: #555;
+            background: #1565C0;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -351,12 +325,21 @@
         }
 
         .contact-form button:hover {
-            background-color: #333;
+            background: #0D47A1;
+        }
+
+        .contact-info a {
+            color: #1565C0;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
         .footer {
-            background-color: #333;
+            background: #333;
             color: #fff;
             padding: 2rem 0;
             text-align: center;
@@ -371,65 +354,25 @@
         }
 
         .footer a:hover {
-            color: #aaa;
-        }
-
-        .footer p {
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
-
-        /* Large screen optimization */
-        @media (min-width: 1024px) {
-            .product-info {
-                max-width: 1000px;
-                padding: 2rem 3rem;
-            }
-
-            .product-info p {
-                font-size: 1.05rem;
-                line-height: 1.8;
-                max-width: 100%;
-            }
-
-            .product-section {
-                padding: 3rem 0;
-            }
-
-            .hero h2 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.3rem;
-            }
-
-            .product-image-container {
-                height: 500px;
-            }
+            color: #1565C0;
         }
 
         @media (max-width: 768px) {
-            .product-info {
-                padding: 1rem;
+            .hero h2 {
+                font-size: 1.8rem;
             }
-
-            .product-info p {
-                font-size: 0.95rem;
-                text-align: left;
+            .design-grid {
+                grid-template-columns: 1fr;
             }
-
-            .product-image-container {
-                height: 250px;
-            }
-
-            .bottom-image-container {
-                max-width: 300px;
+            .design-card .card-header {
+                font-size: 1rem;
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -438,11 +381,9 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="http://zvidhindo.co.zw">Home</a></li>
-                    <li><a href="http://zvidhindo.co.zw/banner.html">Digital Printing</a></li>
-                    <li><a href="http://zvidhindo.co.zw/Engraving.html">Engraving</a></li>
-                    <li><a href="http://zvidhindo.co.zw/mugs">Mugs</a></li>
-                    <li><a href="http://zvidhindo.co.zw/gift">Corporate Gifts</a></li>
-                    <li><a href="http://zvidhindo.co.zw/badges.html">Badges</a></li>
+                    <li><a href="http://zvidhindo.co.zw/4913">4913</a></li>
+                    <li><a href="http://zvidhindo.co.zw/4727">4727</a></li>
+                    <li><a href="http://zvidhindo.co.zw/seal">Seals</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-button" aria-label="Open navigation menu" role="button" tabindex="0">
@@ -454,106 +395,202 @@
 
     <section class="hero">
         <div class="container hero-content">
-            <h2>Discover more about the Trodat 5460 professional stamp</h2>
-            <p>Your features check-point for what to expect.</p>
-            <a href="#product-details" class="hero-button">About the Trodat 5460</a>
+            <h2><i class="fas fa-stamp"></i> Trodat 4913 Custom Design Options</h2>
+            <p>Choose from multiple layout options for your self-inking stamp. Maximum area, recommended lines, seal designs, and more.</p>
+            <a href="#designs" class="hero-button"><i class="fas fa-arrow-down"></i> View Designs</a>
         </div>
     </section>
 
-    <section class="product-section" id="product-details">
+    <section class="design-section" id="designs">
         <div class="container">
-            <div class="product-card">
-                <!-- Image at top -->
-                <div class="product-image-container">
-                    <img src="index_files/5460.jpg" alt="Trodat 5460 Professional Stamp" class="product-image">
-                </div>
-                <div class="product-info">
-                    <section id="home">
-                        <h2>Trodat Professional 5460</h2>
-                        <p>The Trodat 5460 self-inking stamp is the perfect solution for businesses, professionals, and individuals who need to streamline repetitive stamping tasks. Whether you're marking documents, invoices, or personalizing materials, this reliable, eco-friendly stamp ensures a clean, clear impression every time. The Trodat 5460 model is versatile, durable, and built for high-volume use, making it the ideal choice for anyone who requires frequent stamping.</p>
-                    </section>
+            <h2>Available Design Options</h2>
+            <p class="subtitle">Select the layout that best fits your stamping needs. All designs can be customized with your text and logo.</p>
 
-                    <section id="products">
-                        <h3>Trodat 5460 Specification</h3>
+            <div class="design-grid">
+
+                <!-- Design 1: Maximum Area (Full Width) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-expand"></i> Maximum Area</span>
+                        <span class="badge">Popular</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview">
+                            <div style="font-size: 1.2rem; font-weight: 700; color: #1565C0;">COMPANY NAME</div>
+                            <div style="font-size: 0.9rem;">123 Street Name, Harare</div>
+                            <div style="font-size: 0.9rem;">+263 719 455 454</div>
+                            <div style="font-size: 0.8rem; color: #888;">info@company.co.zw</div>
+                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">www.company.co.zw</div>
+                        </div>
                         <ul>
-                            <li>Max size: 56 x 33 mm</li>
-                            <li>Date size: 4 mm</li>
-                            <li>Self-inking stamp</li>
-                            <li>Professional Range</li>
-                            <li>Self inking stamps</li>
-                            <li>Clear and Sharp Impressions</li>
-                            <li>Eco-Friendly and Refillable</li>
-                            <li>Long-Lasting and Durable</li>
+                            <li><i class="fas fa-check-circle"></i> Max size: 58 x 22 mm</li>
+                            <li><i class="fas fa-check-circle"></i> 4-6 lines of text or logo</li>
+                            <li><i class="fas fa-check-circle"></i> Full width impression</li>
+                            <li><i class="fas fa-check-circle"></i> No date portion</li>
                         </ul>
-                    </section>
-
-                    <section>
-                        <h3>Why the Trodat 5460</h3>
-                        <p>The Trodat 5460 Self-Inking Stamp is an essential tool for businesses and professionals who require efficiency, reliability, and a high-quality impression. Known for its durable design, it provides crisp, clean, and consistent stamps with every use, making it ideal for documents, forms, and correspondence. Its self-inking mechanism eliminates the need for separate ink pads, offering a cleaner, more eco-friendly solution while reducing waste. Customizable with logos, text, or other personalizations, the Trodat 5460 allows businesses to add a professional touch to their paperwork. Compact, easy to use, and made from 50% recycled materials, it delivers time-saving benefits and cost-effective performance, making it a trusted choice for offices and individuals alike.</p>
-                    </section>
-
-                    <section>
-                        <h3>Customization Options</h3>
-                        <p>We recommend 2 lines of text on the top of the date and a maximum of 3 lines under the date. The more the information required, the busier the printing will look.</p>
-                        <ul>
-                            <li>Company Stamp</li>
-                            <li>Professional Stamping</li>
-                            <li>Metal Stamp</li>
-                            <li>Multi-color Stamps</li>
-                            <li>Self inking stamps</li>
-                            <li>Lawyer Stamps</li>
-                            <li>Boss Stamp</li>
-                            <li>Top Range</li>
-                        </ul>
-                    </section>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Bottom image - grey section like cup image on 2910 page -->
-            <div class="grey-section">
-                <img src="index_files/cup.png" alt="One Stamp Shop">
+                <!-- Design 2: Recommended Lines (Standard Layout) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-align-left"></i> Recommended Lines</span>
+                        <span class="badge">Standard</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview">
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565C0;">COMPANY NAME</div>
+                            <div style="font-size: 0.85rem;">123 Street Name</div>
+                            <div style="font-size: 0.85rem;">Harare, Zimbabwe</div>
+                            <div style="font-size: 0.85rem;">+263 719 455 454</div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Max size: 58 x 22 mm</li>
+                            <li><i class="fas fa-check-circle"></i> 4 lines of text recommended</li>
+                            <li><i class="fas fa-check-circle"></i> Clean, balanced layout</li>
+                            <li><i class="fas fa-check-circle"></i> No date portion</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Design 3: Seal Style (Circular/Round) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-circle"></i> Seal / Round Style</span>
+                        <span class="badge">Seal</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview" style="font-family: 'Times New Roman', serif;">
+                            <div style="font-size: 0.9rem; letter-spacing: 1px;">✦</div>
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565C0;">COMPANY SEAL</div>
+                            <div style="font-size: 0.8rem;">• Established 2017 •</div>
+                            <div style="font-size: 0.8rem;">Harare, Zimbabwe</div>
+                            <div style="font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 4px;">✧ ✧ ✧</div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Circular seal design</li>
+                            <li><i class="fas fa-check-circle"></i> 58 x 22 mm or custom size</li>
+                            <li><i class="fas fa-check-circle"></i> Logo + text combinations</li>
+                            <li><i class="fas fa-check-circle"></i> No date portion</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Design 4: 4727 Style (Date Stamp Alternative) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-calendar-alt"></i> 4727 Style</span>
+                        <span class="badge">Alternative</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview">
+                            <div style="font-size: 1.1rem; font-weight: 700; color: #1565C0;">COMPANY</div>
+                            <div style="font-size: 0.9rem;">123 Street Name</div>
+                            <div style="font-size: 0.9rem;">Harare, Zimbabwe</div>
+                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">+263 719 455 454</div>
+                            <div style="font-size: 0.75rem; color: #1565C0; background: #e3f2fd; padding: 0.2rem 0.8rem; border-radius: 4px; display: inline-block; margin-top: 4px;">[No Date]</div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> 4727-inspired layout</li>
+                            <li><i class="fas fa-check-circle"></i> No date portion</li>
+                            <li><i class="fas fa-check-circle"></i> 58 x 22 mm size</li>
+                            <li><i class="fas fa-check-circle"></i> Clean, professional look</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Design 5: 10 x 35 mm (Compact Style) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-compress-alt"></i> 10 x 35 mm</span>
+                        <span class="badge">Compact</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview" style="max-width: 150px; margin: 0 auto;">
+                            <div style="font-size: 0.75rem; font-weight: 700; color: #1565C0;">COMPANY</div>
+                            <div style="font-size: 0.7rem;">123 Street</div>
+                            <div style="font-size: 0.7rem;">Harare</div>
+                            <div style="font-size: 0.7rem;">+263 719</div>
+                            <div style="font-size: 0.6rem; color: #888; border-top: 1px solid #ddd; padding-top: 3px;">info@co.zw</div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Size: 10 x 35 mm</li>
+                            <li><i class="fas fa-check-circle"></i> Compact, narrow design</li>
+                            <li><i class="fas fa-check-circle"></i> No date portion</li>
+                            <li><i class="fas fa-check-circle"></i> Ideal for smaller spaces</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Design 6: Custom Layout (Full Customization) -->
+                <div class="design-card">
+                    <div class="card-header">
+                        <span><i class="fas fa-pencil-alt"></i> Custom Layout</span>
+                        <span class="badge">Flexible</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview">
+                            <div style="font-size: 0.9rem; font-weight: 700; color: #1565C0;">[YOUR TEXT]</div>
+                            <div style="font-size: 0.85rem;">[Your Address]</div>
+                            <div style="font-size: 0.85rem;">[Your Contact]</div>
+                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">[Logo / Additional Info]</div>
+                            <div style="font-size: 0.7rem; color: #1565C0; background: #e3f2fd; padding: 0.2rem 0.8rem; border-radius: 4px; display: inline-block; margin-top: 4px;">[No Date]</div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Any size (max 58 x 22 mm)</li>
+                            <li><i class="fas fa-check-circle"></i> Any number of lines</li>
+                            <li><i class="fas fa-check-circle"></i> Logo integration available</li>
+                            <li><i class="fas fa-check-circle"></i> Date optional (can be omitted)</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Custom Order</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2>Get a Quote for Your Custom Stamp</h2>
+            <p>Let us know which design you prefer and your text requirements.</p>
             <div class="contact-info">
-                <section class="contact-form-section">
-                    <h2>Get in Touch For a Quote</h2>
-                    <p>Let us know which choice you prefer!</p>
-                    <div class="contact-details">
-                        <p>
-                            <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/@-17.831222,30.9635002,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1931a5c8df61ab35:0xbf7b4d548b9c5d47!2m2!1d31.045902!2d-17.8313046?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">
-                                <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-                            </a>
-                            <br>
-                            <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/@-20.1633003,28.4999955,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x1eb55584435c065f:0x4242c5a576d1d87a!2m2!1d28.5823972!2d-20.1633195?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D">
-                                <i class="fa fa-map-marker"></i> Suite 10, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
-                            </a>
-                            <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454</a>
-                            <br><i class="fa fa-envelope"></i> onestampshop@mail.com
-                        </p>
-                    </div>
-                    <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="Email" placeholder="Your Email" required>
-                        <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
-                        <button type="submit">SEND ENQUIRY</button>
-                    </form>
-                    <div class="w3-col s4 w3-justify">
-                        <h4>Find Us</h4>
-                        <p><i class="fa fa-fw fa-map-marker"></i>One Stamp Shop</p>
-                        <p><i class="fa fa-fw fa-phone"></i>+263 719 455 454</p>
-                        <p><i class="fa fa-fw fa-envelope"></i>onestampshop@gmail.com</p>
-                        <h4>We accept</h4>
-                        <p><i class="fa fa-fw fa-sack-dollar"></i>Cash</p>
-                        <p><i class="fa fa-fw fa-credit-card"></i>Bank Transfers</p>
-                        <br>
-                    </div>
-                </section>
+                <p>
+                    <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/">
+                        <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
+                    </a>
+                    <br>
+                    <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/">
+                        <i class="fa fa-map-marker"></i> Suite 10, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
+                    </a>
+                    <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454</a>
+                    <br><i class="fa fa-envelope"></i> onestampshop@mail.com
+                </p>
             </div>
+            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="4" placeholder="Tell us your preferred design, text requirements, and any special requests."></textarea>
+                <button type="submit">SEND ENQUIRY</button>
+            </form>
         </div>
     </section>
 
@@ -577,5 +614,6 @@
             navLinks.classList.toggle('mobile-active');
         });
     </script>
+
 </body>
 </html>
