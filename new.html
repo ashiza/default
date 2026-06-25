@@ -3,617 +3,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Custom Trodat 4913 self-inking stamps with multiple design options. Choose from various sizes, layouts, and styles including seal designs and 10x35mm format without date.">
-    <meta name="keywords" content="Trodat 4913, custom stamp, self-inking stamp, seal stamp, 10x35mm stamp, design options, Zimbabwe">
-    <title>Trodat 4913 Printy - Custom Design Options</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
-    <link rel="manifest" href="index_files/site.webmanifest">
+    <meta name="description" content="Design your custom rubber stamp online. Choose text, font, color, upload images, and preview in real-time. Free proof before ordering.">
+    <title>Custom Rubber Stamp Maker | The Stampmaker</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+        /* ===== RESET & BASE ===== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif; 
+            background: #f0f4f8; 
+            color: #1e293b; 
+            line-height: 1.6; 
+            padding: 1rem;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1.5rem; 
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* ===== TYPOGRAPHY ===== */
+        h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            margin-bottom: 0.25rem; 
+            grid-column: 1 / -1; 
+            color: #0f172a;
+            letter-spacing: -0.02em;
+        }
+        .subhead { 
+            color: #475569; 
+            margin-bottom: 1.5rem; 
+            grid-column: 1 / -1; 
+            font-size: 1.1rem;
+        }
+        .step-indicator { 
+            font-size: 0.8rem; 
+            color: #2563eb; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.08em; 
+            margin-bottom: 0.75rem; 
         }
 
-        /* Header */
-        .header {
-            background-color: #fff;
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* ===== CARDS ===== */
+        .card { 
+            background: white; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
+            padding: 1.75rem; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid #e9edf2;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+        .preview-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 1.75rem;
             position: sticky;
-            top: 0;
-            z-index: 100;
+            top: 1.5rem;
+            height: fit-content;
+            border: 1px solid #e9edf2;
         }
 
-        .navbar {
+        /* ===== NOTE / ALERT ===== */
+        .note { 
+            font-size: 0.875rem; 
+            background: #fffbeb; 
+            padding: 0.75rem 1rem; 
+            border-radius: 8px; 
+            border-left: 4px solid #f59e0b; 
+            margin: 0 0 1.25rem 0; 
+            color: #92400e;
+        }
+        .note strong { color: #78350f; }
+
+        /* ===== FORM ELEMENTS ===== */
+        .form-group { margin-bottom: 1.25rem; }
+        label { 
+            display: block; 
+            font-weight: 600; 
+            margin-bottom: 0.35rem; 
+            font-size: 0.9rem; 
+            color: #1e293b;
+        }
+        input, textarea, select { 
+            width: 100%; 
+            padding: 0.7rem 0.9rem; 
+            border: 1.5px solid #dce2ea; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            background: #fafbfc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus, textarea:focus, select:focus { 
+            outline: none; 
+            border-color: #2563eb; 
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+            background: white;
+        }
+        select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+        small { color: #64748b; font-size: 0.8rem; }
+        .small-error { color: #b91c1c; display: block; margin-top: 0.25rem; }
+
+        /* ===== BUTTONS ===== */
+        button { 
+            background: #2563eb; 
+            color: white; 
+            border: none; 
+            padding: 0.65rem 1.4rem; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            cursor: pointer; 
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s; 
+        }
+        button:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        button:active { transform: scale(0.97); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+        .btn-secondary { 
+            background: white; 
+            color: #1e293b; 
+            border: 1.5px solid #dce2ea; 
+            box-shadow: none;
+        }
+        .btn-secondary:hover { background: #f8fafc; border-color: #b9c3d0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+        .btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
+
+        /* ===== COLOR PICKER ===== */
+        .color-picker-grid {
             display: flex;
-            justify-content: space-between;
+            gap: 0.6rem;
+            flex-wrap: wrap;
             align-items: center;
         }
-
-        .logo h1 {
-            color: #1565C0;
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #1565C0;
-        }
-
-        .mobile-menu-button {
-            display: none;
-            font-size: 1.5rem;
-            color: #1565C0;
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
             cursor: pointer;
-            background: none;
-            border: none;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            position: relative;
         }
-
-        @media (max-width: 768px) {
-            .mobile-menu-button {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-links.active {
-                display: none;
-            }
-        }
-
-        .nav-links.mobile-active {
-            display: flex;
-            flex-direction: column;
+        .color-btn:hover { transform: scale(1.08); }
+        .color-btn.active { border-color: #1e293b; box-shadow: 0 0 0 2px white, 0 0 0 4px #2563eb; }
+        .color-btn .check {
             position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #fff;
-            width: 100%;
-            z-index: 200;
-            padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
+        .color-btn.active .check { opacity: 1; }
+        .color-btn[data-color="#000000"] .check { color: white; }
+        .color-btn[data-color="#ffffff"] { border-color: #dce2ea; }
+        .color-btn[data-color="#ffffff"] .check { color: #1e293b; }
 
-        .nav-links.mobile-active li {
-            margin: 0.7rem 0;
-            text-align: center;
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #1565C0, #0D47A1);
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .hero-button {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #0D47A1;
-            padding: 0.75rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: background-color 0.3s ease;
-        }
-
-        .hero-button:hover {
-            background-color: #FFC107;
-        }
-
-        /* Design Options Section */
-        .design-section {
-            padding: 3rem 0;
-        }
-
-        .design-section h2 {
-            font-size: 2.2rem;
-            text-align: center;
-            color: #1565C0;
-            margin-bottom: 0.5rem;
-        }
-
-        .design-section .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .design-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .design-card {
-            background: #fff;
+        /* ===== PREVIEW AREA ===== */
+        .preview-area {
+            background: #f8fafc;
+            border: 2px dashed #dce2ea;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .design-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .design-card .card-header {
-            background: #1565C0;
-            color: #fff;
-            padding: 1rem 1.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .design-card .card-header .badge {
-            background: #FFD700;
-            color: #0D47A1;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .design-card .card-body {
-            padding: 1.5rem;
-        }
-
-        .design-card .card-body .preview {
-            background: #f0f4f8;
-            border-radius: 8px;
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            color: #333;
-            border: 2px dashed #ccc;
-            margin-bottom: 1rem;
-            min-height: 100px;
+            min-height: 260px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+            margin: 1rem 0;
+            transition: border-color 0.3s;
         }
+        .preview-area.drag-over { border-color: #2563eb; background: #eff6ff; }
 
-        .design-card .card-body .preview .date-placeholder {
-            color: #1565C0;
-            font-weight: 700;
-            background: #e3f2fd;
-            padding: 0.2rem 0.8rem;
+        .stamp-preview {
+            display: inline-block;
+            padding: 1.5rem 2.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
             border-radius: 4px;
-            display: inline-block;
-            margin: 0.2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            font-family: 'Courier New', monospace;
+            position: relative;
+            transition: all 0.25s ease;
+            max-width: 100%;
+        }
+        .stamp-preview.with-border {
+            border: 3px solid #2563eb;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #2563eb;
+        }
+        .stamp-preview .preview-text {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+            transition: color 0.2s;
+        }
+        .stamp-preview .preview-image {
+            max-width: 100%;
+            max-height: 120px;
+            display: block;
+            margin: 0 auto 0.5rem auto;
+            transition: transform 0.3s;
         }
 
-        .design-card .card-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0.5rem 0 0 0;
+        /* ===== PREVIEW DETAILS ===== */
+        .preview-details {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
         }
-
-        .design-card .card-body ul li {
-            padding: 0.3rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .design-card .card-body ul li:last-child {
-            border-bottom: none;
-        }
-
-        .design-card .card-body ul li i {
-            color: #1565C0;
-            margin-right: 8px;
-        }
-
-        .design-card .card-footer {
-            padding: 1rem 1.5rem;
-            background: #f8f9fa;
-            border-top: 1px solid #eee;
-        }
-
-        .design-card .card-footer .btn {
-            display: inline-block;
-            background: #1565C0;
-            color: #fff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .design-card .card-footer .btn:hover {
-            background: #0D47A1;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 3rem 0;
-            text-align: center;
-            background: #e3f2fd;
-        }
-
-        .contact h2 {
-            font-size: 2rem;
-            color: #1565C0;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-form {
+        .preview-details .detail-item {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .preview-details .detail-item:last-child { border-bottom: none; }
+        .preview-details .detail-label { color: #475569; font-size: 0.85rem; }
+        .preview-details .detail-value { font-weight: 500; font-size: 0.85rem; }
+        .color-swatch {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            margin-right: 0.3rem;
+            vertical-align: middle;
+            border: 1px solid #dce2ea;
         }
 
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form button {
-            padding: 0.75rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+        /* ===== LAYOUT HELPERS ===== */
+        .flex-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+        .mt-1 { margin-top: 0.75rem; }
+        .mb-1 { margin-bottom: 0.75rem; }
+        .text-center { text-align: center; }
+        .text-muted { color: #94a3b8; font-size: 0.8rem; }
+        .gap-1 { gap: 0.75rem; }
 
-        .contact-form button {
-            background: #1565C0;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact-form button:hover {
-            background: #0D47A1;
-        }
-
-        .contact-info a {
-            color: #1565C0;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
+        /* ===== BORDER LOADER ===== */
+        .loader { display: none; }
+        .loader-spinner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #475569;
             font-size: 0.9rem;
         }
+        .loader-spinner .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid #e2e8f0;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+        /* ===== LAZY CONTENT ===== */
+        #lazy-content-container {
+            min-height: 40px;
+            transition: all 0.3s;
+        }
+        .lazy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        .lazy-item {
+            background: #f1f5f9;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            border: 2px solid transparent;
+        }
+        .lazy-item:hover { background: #dbeafe; transform: scale(1.05); border-color: #2563eb; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .container { grid-template-columns: 1fr; }
+            .preview-card { position: relative; top: 0; }
+            .stamp-preview { padding: 1rem 1.5rem; }
+            .stamp-preview .preview-text { font-size: 1rem; }
+            .preview-details { grid-template-columns: 1fr; }
+            .lazy-grid { grid-template-columns: repeat(3, 1fr); }
+            h1 { font-size: 1.7rem; }
+            .card, .preview-card { padding: 1.25rem; }
+            .color-btn { width: 36px; height: 36px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 0.5rem; }
+            .container { gap: 1rem; }
+            .card, .preview-card { padding: 1rem; border-radius: 12px; }
+            .flex-row { flex-direction: column; align-items: stretch; }
+            .lazy-grid { grid-template-columns: repeat(3, 1fr); }
+            .stamp-preview { padding: 0.75rem 1rem; }
+            .stamp-preview .preview-text { font-size: 0.85rem; }
+            .preview-area { min-height: 180px; padding: 1rem; }
+            h1 { font-size: 1.4rem; }
         }
 
-        .footer a:hover {
-            color: #1565C0;
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            .design-grid {
-                grid-template-columns: 1fr;
-            }
-            .design-card .card-header {
-                font-size: 1rem;
-                flex-wrap: wrap;
-            }
+        /* ===== UTILITY ===== */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+        .divider { border: none; border-top: 1px solid #e9edf2; margin: 1.25rem 0; }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 </head>
 <body>
+    <div class="container">
+        <!-- Header -->
+        <h1>✏️ Design a Custom Rubber Stamp</h1>
+        <div class="subhead">Create your perfect stamp in minutes — changes update instantly. <span class="badge">Live Preview</span></div>
 
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <h1>One Stamp Shop</h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="http://zvidhindo.co.zw">Home</a></li>
-                    <li><a href="http://zvidhindo.co.zw/4913">4913</a></li>
-                    <li><a href="http://zvidhindo.co.zw/4727">4727</a></li>
-                    <li><a href="http://zvidhindo.co.zw/seal">Seals</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu-button" aria-label="Open navigation menu" role="button" tabindex="0">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container hero-content">
-            <h2><i class="fas fa-stamp"></i> Trodat 4913 Custom Design Options</h2>
-            <p>Choose from multiple layout options for your self-inking stamp. Maximum area, recommended lines, seal designs, and more.</p>
-            <a href="#designs" class="hero-button"><i class="fas fa-arrow-down"></i> View Designs</a>
-        </div>
-    </section>
-
-    <section class="design-section" id="designs">
-        <div class="container">
-            <h2>Available Design Options</h2>
-            <p class="subtitle">Select the layout that best fits your stamping needs. All designs can be customized with your text and logo.</p>
-
-            <div class="design-grid">
-
-                <!-- Design 1: Maximum Area (Full Width) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-expand"></i> Maximum Area</span>
-                        <span class="badge">Popular</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview">
-                            <div style="font-size: 1.2rem; font-weight: 700; color: #1565C0;">COMPANY NAME</div>
-                            <div style="font-size: 0.9rem;">123 Street Name, Harare</div>
-                            <div style="font-size: 0.9rem;">+263 719 455 454</div>
-                            <div style="font-size: 0.8rem; color: #888;">info@company.co.zw</div>
-                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">www.company.co.zw</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Max size: 58 x 22 mm</li>
-                            <li><i class="fas fa-check-circle"></i> 4-6 lines of text or logo</li>
-                            <li><i class="fas fa-check-circle"></i> Full width impression</li>
-                            <li><i class="fas fa-check-circle"></i> No date portion</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
-                    </div>
+        <!-- ===== LEFT COLUMN: DESIGN TOOLS ===== -->
+        <div>
+            <div class="step-indicator">Step 1 of 3 — Design Your Stamp</div>
+            
+            <div class="card">
+                <div class="note">
+                    <strong>📏 Size limit:</strong> Stamp designs cannot exceed <strong>9.5" x 7.5"</strong>
                 </div>
 
-                <!-- Design 2: Recommended Lines (Standard Layout) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-align-left"></i> Recommended Lines</span>
-                        <span class="badge">Standard</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview">
-                            <div style="font-size: 1rem; font-weight: 700; color: #1565C0;">COMPANY NAME</div>
-                            <div style="font-size: 0.85rem;">123 Street Name</div>
-                            <div style="font-size: 0.85rem;">Harare, Zimbabwe</div>
-                            <div style="font-size: 0.85rem;">+263 719 455 454</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Max size: 58 x 22 mm</li>
-                            <li><i class="fas fa-check-circle"></i> 4 lines of text recommended</li>
-                            <li><i class="fas fa-check-circle"></i> Clean, balanced layout</li>
-                            <li><i class="fas fa-check-circle"></i> No date portion</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
-                    </div>
+                <!-- Text Input -->
+                <div class="form-group">
+                    <label for="stamp-text">✏️ Add text to your stamp</label>
+                    <input type="text" id="stamp-text" placeholder="Enter your text here..." maxlength="200" value="One Stamp Shop">
+                    <small>Maximum 200 characters — updates live</small>
                 </div>
 
-                <!-- Design 3: Seal Style (Circular/Round) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-circle"></i> Seal / Round Style</span>
-                        <span class="badge">Seal</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview" style="font-family: 'Times New Roman', serif;">
-                            <div style="font-size: 0.9rem; letter-spacing: 1px;">✦</div>
-                            <div style="font-size: 1rem; font-weight: 700; color: #1565C0;">COMPANY SEAL</div>
-                            <div style="font-size: 0.8rem;">• Established 2017 •</div>
-                            <div style="font-size: 0.8rem;">Harare, Zimbabwe</div>
-                            <div style="font-size: 0.8rem; border-top: 1px solid #ddd; padding-top: 4px;">✧ ✧ ✧</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Circular seal design</li>
-                            <li><i class="fas fa-check-circle"></i> 58 x 22 mm or custom size</li>
-                            <li><i class="fas fa-check-circle"></i> Logo + text combinations</li>
-                            <li><i class="fas fa-check-circle"></i> No date portion</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
-                    </div>
+                <!-- Font Selector -->
+                <div class="form-group">
+                    <label for="font-select">🔤 Font style</label>
+                    <select id="font-select">
+                        <option value="'Courier New', monospace">Courier (classic stamp)</option>
+                        <option value="Arial, sans-serif" selected>Arial (clean)</option>
+                        <option value="'Times New Roman', serif">Times (traditional)</option>
+                        <option value="'Georgia', serif">Georgia (elegant)</option>
+                        <option value="'Impact', sans-serif">Impact (bold)</option>
+                        <option value="'Comic Sans MS', cursive">Comic (friendly)</option>
+                    </select>
                 </div>
 
-                <!-- Design 4: 4727 Style (Date Stamp Alternative) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-calendar-alt"></i> 4727 Style</span>
-                        <span class="badge">Alternative</span>
+                <!-- Color Picker -->
+                <div class="form-group">
+                    <label>🎨 Text color</label>
+                    <div class="color-picker-grid">
+                        <button class="color-btn active" data-color="#000000" style="background: #000000;" aria-label="Black"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#2563eb" style="background: #2563eb;" aria-label="Blue"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#dc2626" style="background: #dc2626;" aria-label="Red"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#16a34a" style="background: #16a34a;" aria-label="Green"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#9333ea" style="background: #9333ea;" aria-label="Purple"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b;" aria-label="Gold"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#ef4444" style="background: #ef4444;" aria-label="Bright Red"><span class="check">✓</span></button>
+                        <button class="color-btn" data-color="#0891b2" style="background: #0891b2;" aria-label="Cyan"><span class="check">✓</span></button>
                     </div>
-                    <div class="card-body">
-                        <div class="preview">
-                            <div style="font-size: 1.1rem; font-weight: 700; color: #1565C0;">COMPANY</div>
-                            <div style="font-size: 0.9rem;">123 Street Name</div>
-                            <div style="font-size: 0.9rem;">Harare, Zimbabwe</div>
-                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">+263 719 455 454</div>
-                            <div style="font-size: 0.75rem; color: #1565C0; background: #e3f2fd; padding: 0.2rem 0.8rem; border-radius: 4px; display: inline-block; margin-top: 4px;">[No Date]</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> 4727-inspired layout</li>
-                            <li><i class="fas fa-check-circle"></i> No date portion</li>
-                            <li><i class="fas fa-check-circle"></i> 58 x 22 mm size</li>
-                            <li><i class="fas fa-check-circle"></i> Clean, professional look</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
-                    </div>
+                    <input type="hidden" id="text-color" value="#000000">
                 </div>
 
-                <!-- Design 5: 10 x 35 mm (Compact Style) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-compress-alt"></i> 10 x 35 mm</span>
-                        <span class="badge">Compact</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview" style="max-width: 150px; margin: 0 auto;">
-                            <div style="font-size: 0.75rem; font-weight: 700; color: #1565C0;">COMPANY</div>
-                            <div style="font-size: 0.7rem;">123 Street</div>
-                            <div style="font-size: 0.7rem;">Harare</div>
-                            <div style="font-size: 0.7rem;">+263 719</div>
-                            <div style="font-size: 0.6rem; color: #888; border-top: 1px solid #ddd; padding-top: 3px;">info@co.zw</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Size: 10 x 35 mm</li>
-                            <li><i class="fas fa-check-circle"></i> Compact, narrow design</li>
-                            <li><i class="fas fa-check-circle"></i> No date portion</li>
-                            <li><i class="fas fa-check-circle"></i> Ideal for smaller spaces</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Enquire Now</a>
-                    </div>
+                <!-- Border Toggle -->
+                <div class="form-group flex-row">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin: 0;">
+                        <input type="checkbox" id="add-border" style="width: auto; width: 18px; height: 18px; accent-color: #2563eb;">
+                        <span>Add a decorative border</span>
+                    </label>
+                    <span class="badge" style="background: #f1f5f9; color: #475569;">Optional</span>
+                </div>
+                <div id="border-loader" class="loader">
+                    <span class="loader-spinner">
+                        <span class="spinner"></span>
+                        Applying border...
+                    </span>
                 </div>
 
-                <!-- Design 6: Custom Layout (Full Customization) -->
-                <div class="design-card">
-                    <div class="card-header">
-                        <span><i class="fas fa-pencil-alt"></i> Custom Layout</span>
-                        <span class="badge">Flexible</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="preview">
-                            <div style="font-size: 0.9rem; font-weight: 700; color: #1565C0;">[YOUR TEXT]</div>
-                            <div style="font-size: 0.85rem;">[Your Address]</div>
-                            <div style="font-size: 0.85rem;">[Your Contact]</div>
-                            <div style="font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 4px;">[Logo / Additional Info]</div>
-                            <div style="font-size: 0.7rem; color: #1565C0; background: #e3f2fd; padding: 0.2rem 0.8rem; border-radius: 4px; display: inline-block; margin-top: 4px;">[No Date]</div>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Any size (max 58 x 22 mm)</li>
-                            <li><i class="fas fa-check-circle"></i> Any number of lines</li>
-                            <li><i class="fas fa-check-circle"></i> Logo integration available</li>
-                            <li><i class="fas fa-check-circle"></i> Date optional (can be omitted)</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Custom Order</a>
-                    </div>
+                <hr class="divider">
+
+                <!-- Image Upload -->
+                <div class="form-group">
+                    <label for="image-upload">🖼️ Upload an image</label>
+                    <input type="file" id="image-upload" accept=".pdf,.jpg,.jpeg,.gif,.png,.bmp,.tiff,.eps,.svg">
+                    <small>Accepted: PDF, JPG, GIF, PNG, BMP, TIFF, EPS, SVG • 300 DPI B&W recommended</small>
+                    <span class="small-error">⚠️ Avoid black backgrounds with white text/images</span>
                 </div>
 
+                <!-- Resize Slider -->
+                <div class="form-group">
+                    <div class="flex-between">
+                        <label for="image-scale">📐 Resize image</label>
+                        <span id="scale-percent" style="font-weight: 600; color: #2563eb;">100%</span>
+                    </div>
+                    <input type="range" id="image-scale" min="10" max="200" value="100" style="width: 100%; accent-color: #2563eb;">
+                    <small>Proportions locked — affects uploaded image only</small>
+                </div>
+
+                <!-- Lazy-loaded sections -->
+                <div class="flex-row" style="margin: 0.5rem 0;">
+                    <button class="btn-secondary btn-sm" id="browse-clipart-btn">🖼️ Browse Clipart</button>
+                    <button class="btn-secondary btn-sm" id="browse-myimages-btn">📁 My Images</button>
+                </div>
+
+                <div id="lazy-content-container"></div>
+
+                <small style="color: #94a3b8; display: block; margin: 0.5rem 0;">
+                    📁 Unused images are removed from your library after 12 months.
+                </small>
+
+                <hr class="divider">
+
+                <!-- Navigation -->
+                <div class="flex-between">
+                    <a href="#" style="color: #2563eb; text-decoration: none; font-weight: 500;">← Back</a>
+                    <button id="continue-btn">Continue to Step 2 →</button>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Get a Quote for Your Custom Stamp</h2>
-            <p>Let us know which design you prefer and your text requirements.</p>
-            <div class="contact-info">
-                <p>
-                    <a href="https://www.google.com/maps/dir//82+Rezende+Cnr+Rezende+%26,+Jason+Moyo+Ave,+Harare/">
-                        <i class="fa fa-map-marker"></i> 4th floor Equity Building, Rezende, Harare CBD
-                    </a>
-                    <br>
-                    <a href="https://www.google.com/maps/dir//Suite+5,+Sunninghill+Building+Fife+Avenue,+Fourteenth+Ave,+Bulawayo/">
-                        <i class="fa fa-map-marker"></i> Suite 10, Sunninghill Building, Cnr 14th Avenue & Fife Street, Bulawayo CBD
-                    </a>
-                    <br><i class="fa fa-phone"></i> <a href="tel:+263719455454">+263719455454</a>
-                    <br><i class="fa fa-envelope"></i> onestampshop@mail.com
+        <!-- ===== RIGHT COLUMN: LIVE PREVIEW ===== -->
+        <div>
+            <div class="preview-card">
+                <div class="flex-between" style="margin-bottom: 0.25rem;">
+                    <h2 style="font-size: 1.3rem; font-weight: 600;">👁️ Live Preview</h2>
+                    <span class="badge" style="background: #dbeafe; color: #1d4ed8;">Auto-update</span>
+                </div>
+                <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.9rem;">Your stamp design updates automatically</p>
+                
+                <!-- Preview Area -->
+                <div class="preview-area" id="preview-area">
+                    <div class="stamp-preview" id="stamp-preview">
+                        <div id="preview-image-container"></div>
+                        <div class="preview-text" id="preview-text">One Stamp Shop</div>
+                    </div>
+                </div>
+
+                <!-- Stamp Details -->
+                <div class="preview-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Dimensions</span>
+                        <span class="detail-value" id="preview-dimensions">3.5" x 1.5"</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Colors</span>
+                        <span class="detail-value" id="preview-colors">
+                            <span class="color-swatch" style="background: #000000;"></span> Black
+                        </span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Font</span>
+                        <span class="detail-value" id="preview-font">Arial</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Border</span>
+                        <span class="detail-value" id="preview-border">None</span>
+                    </div>
+                </div>
+
+                <!-- Download Options -->
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                    <button class="btn-secondary" style="flex: 1;" id="preview-download-png">📥 Download PNG</button>
+                    <button class="btn-secondary" style="flex: 1;" id="preview-download-pdf">📥 Download PDF</button>
+                </div>
+                <p class="text-muted text-center" style="margin-top: 0.75rem;">
+                    Final production stamp may vary slightly from preview
                 </p>
             </div>
-            <form action="https://formsubmit.co/zvidhindo@gmail.com" method="post" class="contact-form">
-                <input type="text" name="Name" placeholder="Your Name" required>
-                <input type="email" name="Email" placeholder="Your Email" required>
-                <textarea name="Message" rows="4" placeholder="Tell us your preferred design, text requirements, and any special requests."></textarea>
-                <button type="submit">SEND ENQUIRY</button>
-            </form>
         </div>
-    </section>
 
-    <footer class="footer">
-        <a href="https://www.facebook.com/onestampshop"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/1stampshop"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://wa.me/+263719455454"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.pinterest.com/1stampshop/"><i class="fa-brands fa-pinterest-p"></i></a>
-        <a href="https://www.linkedin.com/company/one-stamp-shop"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://twitter.com/1stampshop"><i class="fa-brands fa-x-twitter"></i></a>
-        <p>© <span id="currentYear"></span> One Stamp Shop (zvidhindo.co.zw). All rights reserved. Bulawayo/ Harare, Zimbabwe.</p>
-    </footer>
+        <!-- Footer -->
+        <p style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 1.5rem; grid-column: 1 / -1; border-top: 1px solid #e9edf2; padding-top: 1.5rem;">
+            🔒 Secure checkout • ✅ Satisfaction guaranteed • 📋 Free proof before ordering
+        </p>
+    </div>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        (function() {
+            'use strict';
 
-        const menuButton = document.querySelector('.mobile-menu-button');
-        const navLinks = document.querySelector('.nav-links');
+            // ===== DOM REFS =====
+            const textInput = document.getElementById('stamp-text');
+            const previewText = document.getElementById('preview-text');
+            const fontSelect = document.getElementById('font-select');
+            const textColorInput = document.getElementById('text-color');
+            const colorBtns = document.querySelectorAll('.color-btn');
+            const borderCheck = document.getElementById('add-border');
+            const stampPreview = document.getElementById('stamp-preview');
+            const imageUpload = document.getElementById('image-upload');
+            const imageScale = document.getElementById('image-scale');
+            const scalePercent = document.getElementById('scale-percent');
+            const previewImgContainer = document.getElementById('preview-image-container');
+            const previewDimensions = document.getElementById('preview-dimensions');
+            const previewColors = document.getElementById('preview-colors');
+            const previewBorder = document.getElementById('preview-border');
+            const previewFont = document.getElementById('preview-font');
+            const borderLoader = document.getElementById('border-loader');
+            const previewArea = document.getElementById('preview-area');
+            const lazyContainer = document.getElementById('lazy-content-container');
 
-        menuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
-        });
-    </script>
+            // ===== STATE =====
+            let uploadedImageUrl = null;
+            let currentImageScale = 100;
 
-</body>
-</html>
+            // ===== FONT NAMES FOR DISPLAY =====
+            const fontNames = {
+                "'Courier New', monospace": 'Courier',
+                "Arial, sans-serif": 'Arial',
+                "'Times New Roman', serif": 'Times New Roman',
+                "'Georgia', serif": 'Georgia',
+                "'Impact', sans-serif": 'Impact',
+                "'Comic Sans MS', cursive": 'Comic Sans'
+            };
+
+            // ===== UPDATE PREVIEW =====
+            function updatePreview() {
+                // Text
+                previewText.textContent = textInput.value || '(no text)';
+                
+                // Font
+                stampPreview.style.fontFamily = fontSelect.value;
+                previewFont.textContent = fontNames[fontSelect.value] || fontSelect.value;
+                
+                // Color
+                const color = textColorInput.value;
+                previewText.style.color = color;
+                
+                // Border
+                if (borderCheck.checked) {
+                    stampPreview.classList.add('with-border');
+                    previewBorder.textContent = 'Blue decorative';
+                } else {
+                    stampPreview.classList.remove('with-border');
+                    previewBorder.textContent = 'None';
+                }
+                
+                // Image
+                if (uploadedImageUrl) {
+                    let img = previewImgContainer.querySelector('img');
+                    if (!img) {
+                        img = document.createElement('img');
+                        img.className = 'preview-image';
+                        img.alt = 'Uploaded stamp image';
+                        previewImgContainer.appendChild(img);
+                    }
+                    img.src = uploadedImageUrl;
+                    img.style.transform = `scale(${currentImageScale / 100})`;
+                    img.style.transformOrigin = 'center';
+                } else {
+                    previewImgContainer.innerHTML = '';
+                }
+                
+                // Colors display
+                const colorHex = textColorInput.value;
+                const colorName = {
+                    '#000000': 'Black',
+                    '#2563eb': 'Blue',
+                    '#dc2626': 'Red',
+                    '#16a34a': 'Green',
+                    '#9333ea': 'Purple',
+                    '#f59e0b': 'Gold',
+                    '#ef4444': 'Bright Red',
+                    '#0891b2': 'Cyan'
+                }[colorHex] || 'Custom';
+                previewColors.innerHTML = `<span class="color-swatch" style="background: ${colorHex};"></span> ${colorName}`;
+                
+                // Dimensions (simulated)
+                const textLength = textInput.value.length || 1;
+                let width = 2.5 + (textLength * 0.08);
+                let height = 1.2 + (Math.floor(textLength / 20) * 0.25);
+                width = Math.min(9.5, Math.max(1.5, width));
+                height = Math.min(7.5, Math.max(0.75, height));
+                previewDimensions.textContent = `${width.toFixed(1)}" x ${height.toFixed(1)}"`;
+            }
+
+            // ===== EVENT: TEXT INPUT =====
+            textInput.addEventListener('input', updatePreview);
+
+            // ===== EVENT: FONT CHANGE =====
+            fontSelect.addEventListener('change', updatePreview);
+
+            // ===== EVENT: COLOR SELECTION =====
+            colorBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const color = this.dataset.color;
+                    textColorInput.value = color;
+                    colorBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    updatePreview();
+                });
+            });
+
+            // ===== EVENT: BORDER TOGGLE =====
+            borderCheck.addEventListener('change', function(e) {
+                if (e.target.checked) {
+                    borderLoader.style.display = 'block';
+                    setTimeout(() => {
+                        borderLoader.style.display = 'none';
+                        updatePreview();
+                    }, 400);
+                } else {
+                    updatePreview();
+                }
+            });
+
+            // ===== EVENT: IMAGE UPLOAD =====
+            imageUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        uploadedImageUrl = event.target.result;
+                        currentImageScale = 100;
+                        imageScale.value = 100;
+                        scalePercent.textContent = '100%';
+                        updatePreview();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    uploadedImageUrl = null;
+                    updatePreview();
+                }
+            });
+
+            // ===== EVENT: IMAGE SCALE =====
+            imageScale.addEventListener('input', function() {
+                currentImageScale = parseInt(this.value);
+                scalePercent.textContent = currentImageScale + '%';
+                if (uploadedImageUrl) {
+                    const img = previewImgContainer.querySelector('img');
+                    if (img) {
+                        img.style.transform = `scale(${currentImageScale / 100})`;
+                    }
+                }
+            });
+
+            // ===== DRAG & DROP SUPPORT =====
+            previewArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('drag-over');
+            });
+            previewArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+            });
+            previewArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    const file = files[0];
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            uploadedImageUrl = event.target.result;
+                            currentImageScale = 100;
+                            imageScale.value = 100;
+                            scalePercent.textContent = '100%';
+                            updatePreview();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            // ===== LAZY LOAD: CLIPART =====
+            document.getElementById('browse-clipart-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                lazyContainer.innerHTML = '<div class="loader" style="display:block;"><span class="loader-spinner"><span class="spinner"></span> Loading clipart...</span></div>';
+                
+                setTimeout(() => {
+                    lazyContainer.innerHTML = `
+                        <div style="border: 1px solid #e9edf2; border-radius: 10px; padding: 1rem; background: #fafbfc;">
+                            <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Common symbols</p>
+                            <div class="lazy-grid">
+                                <div class="lazy-item" data-symbol="★">★</div>
+                                <div class="lazy-item" data-symbol="⚡">⚡</div>
+                                <div class="lazy-item" data-symbol="☎">☎</div>
+                                <div class="lazy-item" data-symbol="✉">✉</div>
+                                <div class="lazy-item" data-symbol="✓">✓</div>
+                                <div class="lazy-item" data-symbol="©">©</div>
+                                <div class="lazy-item" data-symbol="®">®</div>
+                                <div class="lazy-item" data-symbol="™">™</div>
+                                <div class="lazy-item" data-symbol="✪">✪</div>
+                                <div class="lazy-item" data-symbol="✦">✦</div>
+                                <div class="lazy-item" data-symbol="▶">▶</div>
+                                <div class="lazy-item" data-symbol="◆">◆</div>
+                            </div>
+                            <p style="text-align: center; margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">Click any symbol to insert into your text</p>
+                        </div>
+                    `;
+                    // Add click handlers for symbols
+                    document.querySelectorAll('.lazy-item[data-symbol]').forEach(el => {
+                        el.addEventListener('click', function() {
+                            const symbol = this.dataset.symbol;
+                            textInput.value += symbol;
+                            updatePreview();
+                            // Flash effect
+                            this.style.borderColor = '#2563eb';
+                            setTimeout(() => { this.style.borderColor = 'transparent'; }, 300);
+                        });
+                    });
+                }, 500);
+            });
+
+            // ===== LAZY LOAD: MY IMAGES =====
+            document.getElementById('browse-myimages-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                lazyContainer.innerHTML = '<div class="loader" style="display:block;"><span class="loader-spinner"><span class="spinner"></span> Loading your images...</span></div>';
+                
+                setTimeout(() => {
+                    lazyContainer.innerHTML = `
+                        <div style="border: 1px solid #e9edf2; border-radius: 10px; padding: 1rem; background: #fafbfc;">
+                            <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">📁 Your uploaded images</p>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                                <div style="background: #dbeafe; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #1d4ed8; border: 2px dashed #93c5fd;">Logo</div>
+                                <div style="background: #dbeafe; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #1d4ed8; border: 2px dashed #93c5fd;">Stamp</div
