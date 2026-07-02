@@ -1,876 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Design your own custom rubber stamp online for free. Choose from round, oval, rectangular, or triangular stamps. Add text, logo, and download in PNG, SVG, EPS, PDF, or DOCX.">
-    <meta name="keywords" content="custom stamp maker, rubber stamp design, stamp generator, create stamp online, seal maker, free stamp designer">
-    <title>Stamp Studio — Design Your Own Stamps</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stamp Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&family=Oswald:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&family=Oswald:wght@400;600&family=IM+Fell+English&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0ece3;
+  --panel:#ffffff;
+  --border:#d4ccbc;
+  --ink:#1c1c1c;
+  --muted:#888070;
+  --accent:#c0281a;
+  --accent2:#1a3a8f;
+  --radius:8px;
+}
+body{font-family:'Oswald',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* HEADER */
+header{background:var(--ink);color:#fff;padding:14px 28px;display:flex;align-items:center;gap:14px;}
+header h1{font-family:'Special Elite',serif;font-size:1.55rem;letter-spacing:2px;}
+header .sub{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:#aaa;margin-top:2px;}
 
-  :root {
-    --ink-black: #1a1a1a;
-    --paper: #f5f0e8;
-    --paper-dark: #e8e0d0;
-    --accent: #8b2635;
-    --muted: #7a7060;
-    --border: #c8bea8;
-    --panel: #ffffff;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
+/* LAYOUT */
+.app{display:grid;grid-template-columns:300px 1fr;flex:1;min-height:calc(100vh - 56px);}
 
-  body {
-    background: var(--paper);
-    color: var(--ink-black);
-    font-family: 'Oswald', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+/* SIDEBAR */
+.sidebar{background:var(--panel);border-right:1px solid var(--border);overflow-y:auto;padding:0;}
+.sidebar-inner{display:flex;flex-direction:column;gap:0;}
 
-  header {
-    background: var(--ink-black);
-    color: white;
-    padding: 18px 32px;
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
-  header h1 {
-    font-family: 'Special Elite', serif;
-    font-size: 1.7rem;
-    letter-spacing: 2px;
-    color: #fff;
-  }
-  header span {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.78rem;
-    color: #aaa;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
+.section{padding:16px 18px;border-bottom:1px solid var(--border);}
+.section-title{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:11px;font-weight:700;}
 
-  .layout {
-    display: grid;
-    grid-template-columns: 310px 1fr;
-    flex: 1;
-    gap: 0;
-    min-height: calc(100vh - 62px);
-  }
+/* Stamp type cards */
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;}
+.type-card{border:2px solid var(--border);border-radius:var(--radius);padding:10px 6px 8px;cursor:pointer;text-align:center;transition:.15s;background:var(--bg);user-select:none;}
+.type-card:hover{border-color:#999;}
+.type-card.active{border-color:var(--accent);background:#fdf4f3;}
+.type-card svg{display:block;margin:0 auto 6px;}
+.type-card span{font-size:.63rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.type-card.active span{color:var(--accent);font-weight:700;}
 
-  /* ── CONTROLS PANEL ── */
-  .controls {
-    background: var(--panel);
-    border-right: 1px solid var(--border);
-    padding: 24px 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
+/* Font buttons */
+.font-list{display:flex;flex-direction:column;gap:6px;}
+.font-btn{border:2px solid var(--border);border-radius:var(--radius);padding:9px 12px;cursor:pointer;background:var(--bg);text-align:left;transition:.15s;font-size:.88rem;color:var(--ink);}
+.font-btn:hover{border-color:#999;}
+.font-btn.active{border-color:var(--accent);background:#fdf4f3;}
+.font-btn[data-f="Courier Prime"]{font-family:'Courier Prime',monospace;}
+.font-btn[data-f="Special Elite"]{font-family:'Special Elite',serif;}
+.font-btn[data-f="Oswald"]{font-family:'Oswald',sans-serif;letter-spacing:1px;}
+.font-btn[data-f="IM Fell English"]{font-family:'IM Fell English',serif;font-style:italic;}
 
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 10px;
-  }
+/* Color swatches */
+.color-row{display:flex;gap:10px;align-items:center;}
+.swatch{width:32px;height:32px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:.12s;}
+.swatch:hover{transform:scale(1.12);}
+.swatch.active{border-color:var(--ink);box-shadow:0 0 0 2px white inset;}
 
-  /* Stamp type cards */
-  .type-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .type-card {
-    border: 2px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-    background: var(--paper);
-    font-size: 0.72rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .type-card:hover { border-color: #888; color: var(--ink-black); }
-  .type-card.active {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: #fdf5f6;
-    font-weight: 700;
-  }
-  .type-card svg { display: block; margin: 0 auto 6px; opacity: 0.5; }
-  .type-card.active svg { opacity: 1; }
+/* Slider */
+.slider-row{display:flex;align-items:center;gap:10px;}
+.slider-row input{flex:1;accent-color:var(--accent);}
+.slider-val{font-family:'Courier Prime',monospace;font-size:1rem;font-weight:700;min-width:38px;text-align:right;}
 
-  /* Font selector */
-  .font-row {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .font-btn {
-    border: 1.5px solid var(--border);
-    background: var(--paper);
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.15s;
-    font-size: 0.92rem;
-    color: var(--ink-black);
-  }
-  .font-btn:hover { border-color: #888; }
-  .font-btn.active { border-color: var(--accent); background: #fdf5f6; }
-  .font-btn[data-font="Courier Prime"] { font-family: 'Courier Prime', monospace; }
-  .font-btn[data-font="Special Elite"] { font-family: 'Special Elite', serif; }
-  .font-btn[data-font="Oswald"] { font-family: 'Oswald', sans-serif; }
-  .font-btn[data-font="IM Fell English"] { font-family: 'IM Fell English', serif; font-style: italic; }
+/* Border style */
+.border-row{display:flex;gap:6px;flex-wrap:wrap;}
+.border-btn{border:2px solid var(--border);border-radius:var(--radius);padding:6px 11px;cursor:pointer;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--bg);transition:.15s;}
+.border-btn:hover{border-color:#999;color:var(--ink);}
+.border-btn.active{border-color:var(--accent);color:var(--accent);background:#fdf4f3;font-weight:700;}
 
-  /* Colors */
-  .color-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .color-swatch {
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    cursor: pointer;
-    transition: transform 0.12s, border-color 0.12s;
-  }
-  .color-swatch:hover { transform: scale(1.12); }
-  .color-swatch.active { border-color: var(--ink-black); transform: scale(1.12); }
+/* Text inputs */
+.field-group{display:flex;flex-direction:column;gap:7px;}
+.field-group label{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.field-group input{border:2px solid var(--border);border-radius:var(--radius);padding:8px 10px;font-size:.88rem;font-family:'Oswald',sans-serif;background:var(--bg);color:var(--ink);width:100%;transition:.15s;}
+.field-group input:focus{outline:none;border-color:var(--accent);}
+.hint{font-size:.6rem;color:var(--muted);margin-top:4px;line-height:1.5;letter-spacing:.5px;}
 
-  /* Font size */
-  .size-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .size-row input[type=range] {
-    flex: 1;
-    accent-color: var(--accent);
-  }
-  .size-val {
-    font-family: 'Courier Prime', monospace;
-    font-size: 1rem;
-    font-weight: 700;
-    min-width: 40px;
-    text-align: right;
-  }
+/* Action buttons */
+.actions{display:flex;flex-direction:column;gap:8px;}
+.btn-dl{background:var(--accent);color:#fff;border:none;padding:12px;border-radius:var(--radius);font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.15s;}
+.btn-dl:hover{background:#9e2016;}
+.btn-reset{background:transparent;border:2px solid var(--border);padding:10px;border-radius:var(--radius);font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--ink);transition:.15s;}
+.btn-reset:hover{border-color:#888;}
 
-  /* Text fields */
-  .text-fields { display: flex; flex-direction: column; gap: 8px; }
-  .text-fields label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
-  .text-fields input, .text-fields select {
-    border: 1.5px solid var(--border);
-    border-radius: 5px;
-    padding: 8px 10px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    background: var(--paper);
-    color: var(--ink-black);
-    width: 100%;
-    transition: border-color 0.15s;
-  }
-  .text-fields input:focus, .text-fields select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
+/* CANVAS AREA */
+.canvas-area{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;background:var(--bg);gap:20px;position:relative;}
+.canvas-label{position:absolute;top:14px;right:18px;font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);}
 
-  /* Buttons */
-  .action-btns { display: flex; flex-direction: column; gap: 8px; }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 11px 16px;
-    border-radius: 5px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .btn-primary:hover { background: #6e1d28; }
-  .btn-secondary {
-    background: transparent;
-    color: var(--ink-black);
-    border: 1.5px solid var(--border);
-    padding: 10px 16px;
-    border-radius: 5px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-secondary:hover { border-color: #888; }
+#stamp-svg-wrap{background:#fff;box-shadow:0 4px 30px rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.07);display:flex;align-items:center;justify-content:center;padding:36px;}
 
-  /* Shape / border style */
-  .shape-row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .shape-btn {
-    border: 1.5px solid var(--border);
-    background: var(--paper);
-    border-radius: 5px;
-    padding: 7px 12px;
-    cursor: pointer;
-    font-size: 0.72rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    transition: all 0.15s;
-  }
-  .shape-btn:hover { border-color: #888; color: var(--ink-black); }
-  .shape-btn.active { border-color: var(--accent); color: var(--accent); background: #fdf5f6; }
+#stamp-svg{display:block;}
 
-  /* ── CANVAS AREA ── */
-  .canvas-area {
-    background: var(--paper-dark);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 24px;
-    gap: 24px;
-    position: relative;
-  }
+footer{background:var(--ink);color:#888;text-align:center;padding:9px;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;}
 
-  .canvas-hint {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* The preview canvas container */
-  #stamp-preview {
-    background: white;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  /* ── STAMP TYPES ── */
-
-  /* 1. RECTANGLE STAMP — 40×60mm */
-  .stamp-rect {
-    width: 226px; /* 60mm @ 96dpi */
-    height: 151px; /* 40mm */
-    border: 3px solid currentColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    position: relative;
-  }
-  .stamp-rect-inner-text {
-    width: 100%;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  /* 2. ROUND STAMP — 50mm diameter */
-  .stamp-round {
-    width: 189px;
-    height: 189px;
-    border-radius: 50%;
-    border: 3px solid currentColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .stamp-round .curved-text-placeholder {
-    width: 100%;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  /* 3. DATE STAMP — outer 40×60mm, inner date section 10×35mm */
-  .stamp-date-wrap {
-    position: relative;
-    /* outer box: 60mm wide, 40mm tall */
-    width: 226px;
-    height: 151px;
-    border: 3px solid currentColor;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .stamp-date-text-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 6px 8px 2px;
-    gap: 2px;
-  }
-  .stamp-date-text-area .line {
-    width: 100%;
-    text-align: center;
-    word-break: break-word;
-    white-space: pre-wrap;
-    outline: none;
-    background: transparent;
-    border: none;
-    caret-color: currentColor;
-  }
-  .stamp-date-text-area .line:focus {
-    text-decoration: underline dotted 1px;
-  }
-  /* Inner date box — 35mm wide × 10mm tall, centred horizontally */
-  .stamp-date-inner {
-    border-top: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    /* 35mm = ~132px, 10mm = ~38px */
-    height: 38px;
-    width: 132px;
-    align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    opacity: 0.55;
-    flex-shrink: 0;
-    margin: 2px 0;
-    pointer-events: none;
-    user-select: none;
-  }
-  .stamp-date-text-bottom {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 8px 6px;
-  }
-  .stamp-date-text-bottom .line {
-    width: 100%;
-    text-align: center;
-    word-break: break-word;
-    white-space: pre-wrap;
-    outline: none;
-    background: transparent;
-    border: none;
-    caret-color: currentColor;
-  }
-  .stamp-date-text-bottom .line:focus {
-    text-decoration: underline dotted 1px;
-  }
-
-  /* 4. OVAL STAMP */
-  .stamp-oval {
-    width: 226px;
-    height: 132px;
-    border-radius: 50%;
-    border: 3px solid currentColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 30px;
-  }
-  .stamp-oval .curved-text-placeholder {
-    width: 100%;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  /* Double border for round/oval */
-  .double-border {
-    outline: 5px solid currentColor;
-    outline-offset: 4px;
-  }
-
-  /* Editable spans */
-  [contenteditable] {
-    cursor: text;
-    min-width: 20px;
-  }
-  [contenteditable]:empty::before {
-    content: attr(data-placeholder);
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  /* Diagonal VOID watermark option */
-  .stamp-void::after {
-    content: 'VOID';
-    position: absolute;
-    font-size: 2.4rem;
-    font-weight: 900;
-    opacity: 0.08;
-    transform: rotate(-25deg);
-    letter-spacing: 8px;
-    pointer-events: none;
-  }
-
-  /* ── PRINT/EXPORT canvas ── */
-  #export-canvas { display: none; }
-
-  /* Dashed hover lines on editable */
-  [contenteditable]:focus-visible { outline: 1px dashed currentColor; outline-offset: 2px; }
-
-  footer {
-    background: var(--ink-black);
-    color: #888;
-    text-align: center;
-    padding: 10px;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .tooltip {
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 1px;
-    margin-top: 2px;
-  }
-
-  /* Responsive */
-  @media (max-width: 720px) {
-    .layout { grid-template-columns: 1fr; }
-    .controls { border-right: none; border-bottom: 1px solid var(--border); }
-  }
+@media(max-width:680px){.app{grid-template-columns:1fr;}.sidebar{border-right:none;border-bottom:1px solid var(--border);}}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Stamp Studio</h1>
-  <span>Design · Preview · Export</span>
+  <div>
+    <h1>Stamp Studio</h1>
+    <div class="sub">Design · Preview · Export</div>
+  </div>
 </header>
 
-<div class="layout">
+<div class="app">
 
-  <!-- ── CONTROLS ── -->
-  <aside class="controls">
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    <div>
-      <div class="section-label">Stamp Type</div>
-      <div class="type-grid">
-        <div class="type-card active" data-type="rect" onclick="setType('rect',this)">
-          <svg width="28" height="20" viewBox="0 0 28 20"><rect x="1" y="1" width="26" height="18" rx="1" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-          Rectangle
+      <!-- Stamp type -->
+      <div class="section">
+        <div class="section-title">Stamp Shape</div>
+        <div class="type-grid">
+
+          <div class="type-card active" data-type="rect" onclick="pick('type',this)">
+            <svg width="36" height="24" viewBox="0 0 36 24"><rect x="1.5" y="1.5" width="33" height="21" rx="1" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+            <span>Rectangle</span>
+          </div>
+
+          <div class="type-card" data-type="date" onclick="pick('type',this)">
+            <svg width="36" height="24" viewBox="0 0 36 24"><rect x="1.5" y="1.5" width="33" height="21" rx="1" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="6" y="9.5" width="24" height="6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            <span>Date Stamp</span>
+          </div>
+
+          <div class="type-card" data-type="round" onclick="pick('type',this)">
+            <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2.5" fill="none"/><circle cx="14" cy="14" r="8" stroke="currentColor" stroke-width="1" fill="none" opacity=".35"/></svg>
+            <span>Round Seal</span>
+          </div>
+
+          <div class="type-card" data-type="oval" onclick="pick('type',this)">
+            <svg width="36" height="24" viewBox="0 0 36 24"><ellipse cx="18" cy="12" rx="16" ry="10" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+            <span>Oval</span>
+          </div>
+
         </div>
-        <div class="type-card" data-type="date" onclick="setType('date',this)">
-          <svg width="28" height="20" viewBox="0 0 28 20"><rect x="1" y="1" width="26" height="18" rx="1" stroke="currentColor" stroke-width="2" fill="none"/><rect x="5" y="8" width="18" height="5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-          Date Stamp
+      </div>
+
+      <!-- Border style -->
+      <div class="section">
+        <div class="section-title">Border Style</div>
+        <div class="border-row">
+          <div class="border-btn active" data-border="solid" onclick="pick('border',this)">Solid</div>
+          <div class="border-btn" data-border="thick" onclick="pick('border',this)">Thick</div>
+          <div class="border-btn" data-border="dashed" onclick="pick('border',this)">Dashed</div>
+          <div class="border-btn" data-border="dotted" onclick="pick('border',this)">Dotted</div>
         </div>
-        <div class="type-card" data-type="round" onclick="setType('round',this)">
-          <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-          Round
+      </div>
+
+      <!-- Font -->
+      <div class="section">
+        <div class="section-title">Font</div>
+        <div class="font-list">
+          <button class="font-btn active" data-f="Courier Prime" onclick="pick('font',this)">Courier Prime</button>
+          <button class="font-btn" data-f="Special Elite" onclick="pick('font',this)">Special Elite</button>
+          <button class="font-btn" data-f="Oswald" onclick="pick('font',this)">Oswald</button>
+          <button class="font-btn" data-f="IM Fell English" onclick="pick('font',this)">IM Fell English</button>
         </div>
-        <div class="type-card" data-type="oval" onclick="setType('oval',this)">
-          <svg width="28" height="20" viewBox="0 0 28 20"><ellipse cx="14" cy="10" rx="12" ry="8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-          Oval
+      </div>
+
+      <!-- Color -->
+      <div class="section">
+        <div class="section-title">Ink Colour</div>
+        <div class="color-row">
+          <div class="swatch active" style="background:#1c1c1c" data-color="#1c1c1c" onclick="pick('color',this)" title="Black"></div>
+          <div class="swatch" style="background:#1a3a8f" data-color="#1a3a8f" onclick="pick('color',this)" title="Blue"></div>
+          <div class="swatch" style="background:#c0281a" data-color="#c0281a" onclick="pick('color',this)" title="Red"></div>
+          <div class="swatch" style="background:#6b2fa0" data-color="#6b2fa0" onclick="pick('color',this)" title="Purple"></div>
         </div>
       </div>
-    </div>
 
-    <!-- Border style -->
-    <div id="border-style-section">
-      <div class="section-label">Border Style</div>
-      <div class="shape-row">
-        <div class="shape-btn active" data-border="single" onclick="setBorder('single',this)">Single</div>
-        <div class="shape-btn" data-border="double" onclick="setBorder('double',this)">Double</div>
-        <div class="shape-btn" data-border="thick" onclick="setBorder('thick',this)">Thick</div>
-        <div class="shape-btn" data-border="dashed" onclick="setBorder('dashed',this)">Dashed</div>
+      <!-- Font size -->
+      <div class="section">
+        <div class="section-title">Font Size</div>
+        <div class="slider-row">
+          <input type="range" id="fs-slider" min="7" max="30" value="13" oninput="setFS(+this.value)">
+          <span class="slider-val" id="fs-val">13pt</span>
+        </div>
+        <div class="hint">Min 7pt — text must fit inside the stamp boundary</div>
       </div>
-    </div>
 
-    <!-- Font -->
-    <div>
-      <div class="section-label">Font</div>
-      <div class="font-row">
-        <button class="font-btn active" data-font="Courier Prime" onclick="setFont('Courier Prime',this)">Courier Prime — Typewriter</button>
-        <button class="font-btn" data-font="Special Elite" onclick="setFont('Special Elite',this)">Special Elite — Worn Type</button>
-        <button class="font-btn" data-font="Oswald" onclick="setFont('Oswald',this)">Oswald — Clean Sans</button>
-        <button class="font-btn" data-font="IM Fell English" onclick="setFont('IM Fell English',this)">IM Fell English — Formal Italic</button>
+      <!-- Text fields — rect/oval -->
+      <div class="section" id="sec-text">
+        <div class="section-title">Stamp Text</div>
+        <div class="field-group">
+          <label>Line 1</label>
+          <input id="t1" type="text" maxlength="40" value="APPROVED" oninput="render()">
+          <label>Line 2</label>
+          <input id="t2" type="text" maxlength="40" value="" placeholder="Optional" oninput="render()">
+          <label>Line 3</label>
+          <input id="t3" type="text" maxlength="40" value="" placeholder="Optional" oninput="render()">
+        </div>
       </div>
-    </div>
 
-    <!-- Color -->
-    <div>
-      <div class="section-label">Ink Color</div>
-      <div class="color-row">
-        <div class="color-swatch active" style="background:#1a1a1a" data-color="#1a1a1a" onclick="setColor('#1a1a1a',this)" title="Black"></div>
-        <div class="color-swatch" style="background:#1a3a8f" data-color="#1a3a8f" onclick="setColor('#1a3a8f',this)" title="Blue"></div>
-        <div class="color-swatch" style="background:#c0281a" data-color="#c0281a" onclick="setColor('#c0281a',this)" title="Red"></div>
-        <div class="color-swatch" style="background:#6b2fa0" data-color="#6b2fa0" onclick="setColor('#6b2fa0',this)" title="Purple"></div>
+      <!-- Round seal fields -->
+      <div class="section" id="sec-round" style="display:none">
+        <div class="section-title">Seal Text</div>
+        <div class="field-group">
+          <label>Outer ring text (top arc)</label>
+          <input id="r-outer" type="text" maxlength="50" value="OFFICIAL SEAL · COMPANY NAME ·" oninput="render()">
+          <label>Centre text (line 1)</label>
+          <input id="r-c1" type="text" maxlength="25" value="APPROVED" oninput="render()">
+          <label>Centre text (line 2)</label>
+          <input id="r-c2" type="text" maxlength="25" value="2025" oninput="render()">
+        </div>
+        <div class="hint">Text curves around the outer ring automatically.</div>
       </div>
-    </div>
 
-    <!-- Font size -->
-    <div>
-      <div class="section-label">Font Size</div>
-      <div class="size-row">
-        <input type="range" id="font-size-slider" min="7" max="28" value="13" oninput="setFontSize(this.value)">
-        <span class="size-val" id="font-size-display">13pt</span>
+      <!-- Date stamp fields -->
+      <div class="section" id="sec-date" style="display:none">
+        <div class="section-title">Date Stamp Text</div>
+        <div class="field-group">
+          <label>Top text</label>
+          <input id="d-top" type="text" maxlength="40" value="RECEIVED" oninput="render()">
+          <label>Bottom text</label>
+          <input id="d-bot" type="text" maxlength="40" value="Admin Office" oninput="render()">
+        </div>
+        <div class="hint">The date box (10×35mm) is fixed and cannot be typed into.</div>
       </div>
-      <div class="tooltip">Minimum 7pt — all text must fit within the stamp boundary</div>
-    </div>
 
-    <!-- Text inputs (shown for rect / round / oval) -->
-    <div id="text-section">
-      <div class="section-label">Stamp Text</div>
-      <div class="text-fields">
-        <label>Line 1</label>
-        <input type="text" id="line1" maxlength="40" placeholder="e.g. APPROVED" oninput="syncText()" value="APPROVED">
-        <label>Line 2</label>
-        <input type="text" id="line2" maxlength="40" placeholder="Second line (optional)" oninput="syncText()" value="">
-        <label>Line 3</label>
-        <input type="text" id="line3" maxlength="40" placeholder="Third line (optional)" oninput="syncText()" value="">
+      <!-- Actions -->
+      <div class="section">
+        <div class="actions">
+          <button class="btn-dl" onclick="downloadSVG()">⬇ Save as SVG</button>
+          <button class="btn-dl" style="background:#2a5a2a" onclick="downloadPNG()">⬇ Save as PNG</button>
+          <button class="btn-reset" onclick="resetAll()">↺ Reset</button>
+        </div>
       </div>
-    </div>
 
-    <!-- Date stamp text inputs -->
-    <div id="date-text-section" style="display:none;">
-      <div class="section-label">Date Stamp Text</div>
-      <div class="text-fields">
-        <label>Top line (above date box)</label>
-        <input type="text" id="date-top" maxlength="40" placeholder="e.g. RECEIVED" oninput="syncDateText()" value="RECEIVED">
-        <label>Bottom line (below date box)</label>
-        <input type="text" id="date-bottom" maxlength="40" placeholder="e.g. Department Name" oninput="syncDateText()" value="Admin Office">
-      </div>
-      <div class="tooltip" style="margin-top:6px;">The date box is fixed (10×35mm) — click the stamp to type into the text areas above and below it.</div>
     </div>
-
-    <!-- Actions -->
-    <div class="action-btns">
-      <button class="btn-primary" onclick="downloadPNG()">⬇ Save as Image</button>
-      <button class="btn-secondary" onclick="resetStamp()">↺ Reset</button>
-    </div>
-
   </aside>
 
-  <!-- ── CANVAS ── -->
+  <!-- ═══ CANVAS ═══ -->
   <main class="canvas-area">
-    <div class="canvas-hint">Preview — actual stamp ink may vary</div>
-
-    <div id="stamp-preview">
-      <!-- injected by JS -->
+    <div class="canvas-label">Live Preview</div>
+    <div id="stamp-svg-wrap">
+      <svg id="stamp-svg" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
-
-    <canvas id="export-canvas"></canvas>
   </main>
 
 </div>
 
-<footer>Stamp Studio · School Coding Project · For Educational Use</footer>
+<footer>Stamp Studio · School Coding Project · Educational Use Only</footer>
 
+<!-- ════ SCRIPT ════ -->
 <script>
 /* ── STATE ── */
-let state = {
-  type: 'rect',
-  font: 'Courier Prime',
-  color: '#1a1a1a',
-  fontSize: 13,
-  border: 'single',
-  line1: 'APPROVED',
-  line2: '',
-  line3: '',
-  dateTop: 'RECEIVED',
-  dateBottom: 'Admin Office',
+const S = {
+  type:'rect', border:'solid', font:'Courier Prime',
+  color:'#1c1c1c', fs:13,
+  t1:'APPROVED', t2:'', t3:'',
+  rOuter:'OFFICIAL SEAL · COMPANY NAME ·', rC1:'APPROVED', rC2:'2025',
+  dTop:'RECEIVED', dBot:'Admin Office',
 };
 
-/* ── RENDER ── */
-function render() {
-  const preview = document.getElementById('stamp-preview');
-  const fs = state.fontSize;
-  const color = state.color;
-  const font = `'${state.font}', ${state.font === 'Courier Prime' ? 'monospace' : 'serif'}`;
+/* ── FONT FAMILY CSS strings ── */
+const FONTS = {
+  'Courier Prime':"'Courier Prime', Courier, monospace",
+  'Special Elite':"'Special Elite', serif",
+  'Oswald':"'Oswald', sans-serif",
+  'IM Fell English':"'IM Fell English', Georgia, serif",
+};
 
-  const borderStyle = getBorderStyle();
+/* ── DIMENSIONS (px at 3.7795px/mm) ── */
+const PX = v => Math.round(v * 3.7795);
+// Outer stamp: 60mm × 40mm
+const OW = PX(60), OH = PX(40);
+// Date inner box: 35mm × 10mm
+const DIW = PX(35), DIH = PX(10);
+// Round: 50mm diameter
+const RD = PX(50);
+// Oval: 60mm × 40mm
+const EW = PX(60), EH = PX(40);
 
-  let html = '';
-
-  if (state.type === 'rect') {
-    html = `
-      <div class="stamp-rect ${state.border==='double'?'double-border':''}"
-        style="color:${color}; font-family:${font}; ${borderStyle}">
-        <div class="stamp-rect-inner-text">
-          ${stampLines()}
-        </div>
-      </div>`;
-  }
-  else if (state.type === 'round') {
-    html = `
-      <div class="stamp-round ${state.border==='double'?'double-border':''}"
-        style="color:${color}; font-family:${font}; ${borderStyle}">
-        <div class="curved-text-placeholder">
-          ${stampLines()}
-        </div>
-      </div>`;
-  }
-  else if (state.type === 'oval') {
-    html = `
-      <div class="stamp-oval ${state.border==='double'?'double-border':''}"
-        style="color:${color}; font-family:${font}; ${borderStyle}">
-        <div class="curved-text-placeholder">
-          ${stampLines()}
-        </div>
-      </div>`;
-  }
-  else if (state.type === 'date') {
-    html = `
-      <div class="stamp-date-wrap ${state.border==='double'?'double-border':''}"
-        style="color:${color}; font-family:${font}; ${borderStyle}">
-        <div class="stamp-date-text-area">
-          <div class="line" style="font-size:${fs}pt;">${escHtml(state.dateTop)}</div>
-        </div>
-        <div class="stamp-date-inner" style="font-family:'Courier Prime',monospace; font-size:9pt; color:${color};">
-          DD / MM / YYYY
-        </div>
-        <div class="stamp-date-text-bottom">
-          <div class="line" style="font-size:${fs}pt;">${escHtml(state.dateBottom)}</div>
-        </div>
-      </div>`;
-  }
-
-  preview.innerHTML = html;
+/* ── STROKE CONFIG ── */
+function strokeAttrs(color){
+  const w = S.border==='thick'?5:2.5;
+  const dash = S.border==='dashed' ? `stroke-dasharray="10,6"` :
+               S.border==='dotted' ? `stroke-dasharray="2,5"` : '';
+  return `stroke="${color}" stroke-width="${w}" fill="none" ${dash}`;
 }
 
-function stampLines() {
-  const lines = [state.line1, state.line2, state.line3].filter(l => l.trim() !== '');
-  if (lines.length === 0) lines.push('YOUR TEXT');
-  const fs = state.fontSize;
-  return lines.map(l =>
-    `<div style="font-size:${fs}pt; line-height:1.3; letter-spacing:1px;">${escHtml(l)}</div>`
-  ).join('');
+/* ── SVG NAMESPACE HELPER ── */
+const ns = 'http://www.w3.org/2000/svg';
+
+/* ── MAIN RENDER ── */
+function render(){
+  // Sync state from inputs
+  S.t1 = v('t1'); S.t2 = v('t2'); S.t3 = v('t3');
+  S.rOuter = v('r-outer'); S.rC1 = v('r-c1'); S.rC2 = v('r-c2');
+  S.dTop = v('d-top'); S.dBot = v('d-bot');
+
+  const svg = buildSVG();
+  const el = document.getElementById('stamp-svg');
+  el.innerHTML = svg.innerHTML;
+  el.setAttribute('viewBox', svg.getAttribute('viewBox'));
+  el.setAttribute('width', svg.getAttribute('width'));
+  el.setAttribute('height', svg.getAttribute('height'));
 }
 
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function v(id){ const el=document.getElementById(id); return el?el.value:''; }
 
-function getBorderStyle() {
-  const color = state.color;
-  switch(state.border) {
-    case 'single': return `border-color:${color}; border-width:3px; border-style:solid;`;
-    case 'double': return `border-color:${color}; border-width:3px; border-style:double; outline-color:${color};`;
-    case 'thick':  return `border-color:${color}; border-width:6px; border-style:solid;`;
-    case 'dashed': return `border-color:${color}; border-width:3px; border-style:dashed;`;
-    default: return '';
-  }
-}
+/* ── BUILD SVG ELEMENT ── */
+function buildSVG(){
+  const color = S.color;
+  const ff = FONTS[S.font];
+  const fs = S.fs;
+  const sa = strokeAttrs(color);
 
-/* ── SETTERS ── */
-function setType(type, el) {
-  state.type = type;
-  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
-  el.classList.add('active');
+  const svg = document.createElementNS(ns,'svg');
+  svg.setAttribute('xmlns', ns);
 
-  // Toggle text section vs date section
-  const isDate = type === 'date';
-  document.getElementById('text-section').style.display = isDate ? 'none' : '';
-  document.getElementById('date-text-section').style.display = isDate ? '' : 'none';
+  if(S.type==='rect'){
+    svg.setAttribute('width', OW);
+    svg.setAttribute('height', OH);
+    svg.setAttribute('viewBox', `0 0 ${OW} ${OH}`);
 
-  render();
-}
-
-function setFont(font, el) {
-  state.font = font;
-  document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  render();
-}
-
-function setColor(color, el) {
-  state.color = color;
-  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-  render();
-}
-
-function setFontSize(val) {
-  val = Math.max(7, parseInt(val));
-  state.fontSize = val;
-  document.getElementById('font-size-display').textContent = val + 'pt';
-  render();
-}
-
-function setBorder(border, el) {
-  state.border = border;
-  document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  render();
-}
-
-function syncText() {
-  state.line1 = document.getElementById('line1').value;
-  state.line2 = document.getElementById('line2').value;
-  state.line3 = document.getElementById('line3').value;
-  render();
-}
-
-function syncDateText() {
-  state.dateTop    = document.getElementById('date-top').value;
-  state.dateBottom = document.getElementById('date-bottom').value;
-  render();
-}
-
-function resetStamp() {
-  state = {
-    type: 'rect', font: 'Courier Prime', color: '#1a1a1a',
-    fontSize: 13, border: 'single',
-    line1: 'APPROVED', line2: '', line3: '',
-    dateTop: 'RECEIVED', dateBottom: 'Admin Office',
-  };
-  // Reset UI
-  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-type="rect"]').classList.add('active');
-  document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('[data-font="Courier Prime"]').classList.add('active');
-  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-  document.querySelector('[data-color="#1a1a1a"]').classList.add('active');
-  document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('[data-border="single"]').classList.add('active');
-  document.getElementById('font-size-slider').value = 13;
-  document.getElementById('font-size-display').textContent = '13pt';
-  document.getElementById('line1').value = 'APPROVED';
-  document.getElementById('line2').value = '';
-  document.getElementById('line3').value = '';
-  document.getElementById('date-top').value = 'RECEIVED';
-  document.getElementById('date-bottom').value = 'Admin Office';
-  document.getElementById('text-section').style.display = '';
-  document.getElementById('date-text-section').style.display = 'none';
-  render();
-}
-
-/* ── PNG EXPORT via html2canvas-style manual canvas drawing ── */
-async function downloadPNG() {
-  const stampEl = document.getElementById('stamp-preview').firstElementChild;
-  if (!stampEl) return;
-
-  // Use canvas to draw the stamp
-  const rect = stampEl.getBoundingClientRect();
-  const scale = 3; // high-res
-  const canvas = document.getElementById('export-canvas');
-  canvas.width  = rect.width  * scale;
-  canvas.height = rect.height * scale;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(scale, scale);
-  ctx.clearRect(0,0, rect.width, rect.height);
-
-  const color = state.color;
-  const font = state.font;
-  const fs = state.fontSize;
-
-  // Background white
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, rect.width, rect.height);
-
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-
-  // Border width
-  const bw = state.border === 'thick' ? 6 : 3;
-  ctx.lineWidth = bw;
-  if (state.border === 'dashed') ctx.setLineDash([8, 5]);
-  else ctx.setLineDash([]);
-
-  const w = rect.width;
-  const h = rect.height;
-
-  if (state.type === 'rect' || state.type === 'date') {
-    ctx.strokeRect(bw/2, bw/2, w - bw, h - bw);
-    if (state.border === 'double') {
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([]);
-      const gap = 5;
-      ctx.strokeRect(bw/2 + gap, bw/2 + gap, w - bw - gap*2, h - bw - gap*2);
-    }
-  } else if (state.type === 'round') {
-    ctx.beginPath();
-    ctx.arc(w/2, h/2, (Math.min(w,h) - bw) / 2, 0, Math.PI * 2);
-    ctx.stroke();
-  } else if (state.type === 'oval') {
-    ctx.beginPath();
-    ctx.ellipse(w/2, h/2, (w - bw)/2, (h - bw)/2, 0, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-
-  // Text
-  const cssFontMap = {
-    'Courier Prime': 'Courier Prime, Courier, monospace',
-    'Special Elite':  'Special Elite, serif',
-    'Oswald':         'Oswald, sans-serif',
-    'IM Fell English':'IM Fell English, Georgia, serif',
-  };
-
-  ctx.fillStyle = color;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  const style = state.font === 'IM Fell English' ? 'italic ' : '';
-
-  if (state.type !== 'date') {
-    const lines = [state.line1, state.line2, state.line3].filter(l => l.trim());
-    if (lines.length === 0) lines.push('YOUR TEXT');
-    const lineH = fs * 1.5;
-    const totalH = lineH * lines.length;
-    const startY = h/2 - totalH/2 + lineH/2;
-    lines.forEach((line, i) => {
-      ctx.font = `${style}${fs}pt ${cssFontMap[font] || 'monospace'}`;
-      ctx.fillText(line, w/2, startY + i * lineH);
+    // border rect
+    const bw = S.border==='thick'?5:2.5;
+    const inset = bw/2;
+    addEl(svg,'rect',{x:inset,y:inset,width:OW-bw,height:OH-bw,stroke:color,'stroke-width':bw,fill:'none',
+      ...(S.border==='dashed'?{'stroke-dasharray':'10,6'}:{}),
+      ...(S.border==='dotted'?{'stroke-dasharray':'2,5'}:{})
     });
-  } else {
-    // Date stamp layout
-    // Top text
-    ctx.font = `${style}${fs}pt ${cssFontMap[font] || 'monospace'}`;
-    ctx.fillText(state.dateTop, w/2, h * 0.22);
 
-    // Date box: 132px wide, 38px tall, centred
-    const dbW = 132, dbH = 38;
-    const dbX = (w - dbW)/2;
-    const dbY = (h - dbH)/2;
-    ctx.setLineDash([]);
-    ctx.lineWidth = 2;
-    ctx.strokeRect(dbX, dbY, dbW, dbH);
-
-    // Date text inside
-    ctx.font = `9pt Courier New, monospace`;
-    ctx.globalAlpha = 0.45;
-    ctx.fillText('DD / MM / YYYY', w/2, dbY + dbH/2);
-    ctx.globalAlpha = 1;
-
-    // Bottom text
-    ctx.font = `${style}${fs}pt ${cssFontMap[font] || 'monospace'}`;
-    ctx.fillText(state.dateBottom, w/2, h * 0.82);
+    // text lines
+    const lines = [S.t1,S.t2,S.t3].filter(l=>l.trim());
+    if(!lines.length) lines.push('YOUR TEXT');
+    const lineH = fs*1.5;
+    const totalH = lineH*(lines.length-1);
+    const midY = OH/2;
+    lines.forEach((l,i)=>{
+      addText(svg,OW/2, midY - totalH/2 + i*lineH, l, {
+        'font-family':ff,'font-size':fs,'fill':color,'text-anchor':'middle','dominant-baseline':'middle',
+        'letter-spacing':'1'
+      });
+    });
   }
 
-  // Download
-  const link = document.createElement('a');
-  link.download = `stamp-${state.type}-${Date.now()}.png`;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  else if(S.type==='date'){
+    svg.setAttribute('width', OW);
+    svg.setAttribute('height', OH);
+    svg.setAttribute('viewBox', `0 0 ${OW} ${OH}`);
+
+    const bw = S.border==='thick'?5:2.5;
+    const inset = bw/2;
+    // outer box
+    addEl(svg,'rect',{x:inset,y:inset,width:OW-bw,height:OH-bw,stroke:color,'stroke-width':bw,fill:'none',
+      ...(S.border==='dashed'?{'stroke-dasharray':'10,6'}:{}),
+      ...(S.border==='dotted'?{'stroke-dasharray':'2,5'}:{})
+    });
+
+    // inner date box (centred)
+    const dX = (OW-DIW)/2, dY = (OH-DIH)/2;
+    addEl(svg,'rect',{x:dX,y:dY,width:DIW,height:DIH,stroke:color,'stroke-width':1.8,fill:'none'});
+
+    // date placeholder text inside box
+    addText(svg,OW/2,dY+DIH/2,'DD / MM / YYYY',{
+      'font-family':"'Courier Prime', monospace",'font-size':7,'fill':color,
+      'text-anchor':'middle','dominant-baseline':'middle','opacity':'0.45'
+    });
+
+    // top text (between outer border top and date box top)
+    const topZone = dY - inset - bw;
+    addText(svg, OW/2, inset+bw + topZone/2, S.dTop,{
+      'font-family':ff,'font-size':fs,'fill':color,'text-anchor':'middle','dominant-baseline':'middle','letter-spacing':'1'
+    });
+
+    // bottom text
+    const botStart = dY+DIH;
+    const botZone = OH - botStart - inset - bw;
+    addText(svg, OW/2, botStart + botZone/2, S.dBot,{
+      'font-family':ff,'font-size':fs,'fill':color,'text-anchor':'middle','dominant-baseline':'middle','letter-spacing':'1'
+    });
+  }
+
+  else if(S.type==='round'){
+    const sz = RD;
+    svg.setAttribute('width', sz);
+    svg.setAttribute('height', sz);
+    svg.setAttribute('viewBox', `0 0 ${sz} ${sz}`);
+    const cx=sz/2, cy=sz/2, bw=S.border==='thick'?5:2.5;
+    const outerR = sz/2 - bw/2;
+
+    // outer circle
+    addEl(svg,'circle',{cx,cy,r:outerR,stroke:color,'stroke-width':bw,fill:'none',
+      ...(S.border==='dashed'?{'stroke-dasharray':'10,6'}:{}),
+      ...(S.border==='dotted'?{'stroke-dasharray':'2,5'}:{})
+    });
+    // inner ring (decorative)
+    const innerR = outerR - 8;
+    addEl(svg,'circle',{cx,cy,r:innerR,stroke:color,'stroke-width':1,fill:'none','opacity':'0.4'});
+
+    // curved outer text using textPath
+    const textR = outerR - 6;
+    const pathId = 'arcPath';
+    const defs = document.createElementNS(ns,'defs');
+    const path = document.createElementNS(ns,'path');
+    // arc path: start at left (180°), go clockwise — so text reads on top arc
+    const startX = cx - textR, startY = cy;
+    const endX   = cx + textR, endY   = cy;
+    path.setAttribute('id', pathId);
+    path.setAttribute('d', `M ${startX},${startY} A ${textR},${textR} 0 1 1 ${endX},${endY}`);
+    path.setAttribute('fill','none');
+    defs.appendChild(path);
+    svg.appendChild(defs);
+
+    const textPath = document.createElementNS(ns,'text');
+    textPath.setAttribute('font-family', ff);
+    textPath.setAttribute('font-size', Math.max(7,fs-1));
+    textPath.setAttribute('fill', color);
+    textPath.setAttribute('letter-spacing','1.5');
+    textPath.setAttribute('text-anchor','middle');
+    const tp = document.createElementNS(ns,'textPath');
+    tp.setAttribute('href','#arcPath');
+    tp.setAttribute('startOffset','50%');
+    tp.textContent = S.rOuter;
+    textPath.appendChild(tp);
+    svg.appendChild(textPath);
+
+    // centre text
+    const lines = [S.rC1,S.rC2].filter(l=>l.trim());
+    const lh = (fs+2)*1.3;
+    const startTextY = cy - ((lines.length-1)*lh)/2;
+    lines.forEach((l,i)=>{
+      addText(svg,cx,startTextY+i*lh,l,{
+        'font-family':ff,'font-size':fs+2,'fill':color,
+        'text-anchor':'middle','dominant-baseline':'middle',
+        'font-weight':'700','letter-spacing':'2'
+      });
+    });
+  }
+
+  else if(S.type==='oval'){
+    svg.setAttribute('width', EW);
+    svg.setAttribute('height', EH);
+    svg.setAttribute('viewBox', `0 0 ${EW} ${EH}`);
+    const bw = S.border==='thick'?5:2.5;
+    const inset=bw/2;
+    addEl(svg,'ellipse',{cx:EW/2,cy:EH/2,rx:(EW-bw)/2,ry:(EH-bw)/2,stroke:color,'stroke-width':bw,fill:'none',
+      ...(S.border==='dashed'?{'stroke-dasharray':'10,6'}:{}),
+      ...(S.border==='dotted'?{'stroke-dasharray':'2,5'}:{})
+    });
+
+    const lines=[S.t1,S.t2,S.t3].filter(l=>l.trim());
+    if(!lines.length)lines.push('YOUR TEXT');
+    const lh=S.fs*1.45;
+    const tot=(lines.length-1)*lh;
+    lines.forEach((l,i)=>{
+      addText(svg,EW/2,EH/2-tot/2+i*lh,l,{
+        'font-family':ff,'font-size':fs,'fill':color,
+        'text-anchor':'middle','dominant-baseline':'middle','letter-spacing':'1'
+      });
+    });
+  }
+
+  return svg;
+}
+
+function addEl(parent,tag,attrs){
+  const el=document.createElementNS(ns,tag);
+  Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
+  parent.appendChild(el);
+  return el;
+}
+
+function addText(parent,x,y,text,attrs){
+  const el=document.createElementNS(ns,'text');
+  el.setAttribute('x',x); el.setAttribute('y',y);
+  Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
+  el.textContent=text;
+  parent.appendChild(el);
+  return el;
+}
+
+/* ── PICKERS ── */
+function pick(group, el){
+  if(group==='type'){
+    document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('active'));
+    el.classList.add('active');
+    S.type = el.dataset.type;
+    // toggle sidebar sections
+    document.getElementById('sec-text').style.display  = ['rect','oval'].includes(S.type)?'':'none';
+    document.getElementById('sec-round').style.display = S.type==='round'?'':'none';
+    document.getElementById('sec-date').style.display  = S.type==='date'?'':'none';
+  }
+  else if(group==='border'){
+    document.querySelectorAll('.border-btn').forEach(b=>b.classList.remove('active'));
+    el.classList.add('active');
+    S.border = el.dataset.border;
+  }
+  else if(group==='font'){
+    document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('active'));
+    el.classList.add('active');
+    S.font = el.dataset.f;
+  }
+  else if(group==='color'){
+    document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+    el.classList.add('active');
+    S.color = el.dataset.color;
+  }
+  render();
+}
+
+function setFS(val){
+  val = Math.max(7,val);
+  S.fs = val;
+  document.getElementById('fs-val').textContent = val+'pt';
+  render();
+}
+
+/* ── DOWNLOAD SVG ── */
+function downloadSVG(){
+  const svg = buildSVG();
+  // Add white background rect for clean file
+  const bg = document.createElementNS(ns,'rect');
+  bg.setAttribute('width',svg.getAttribute('width'));
+  bg.setAttribute('height',svg.getAttribute('height'));
+  bg.setAttribute('fill','white');
+  svg.insertBefore(bg,svg.firstChild);
+
+  const str = new XMLSerializer().serializeToString(svg);
+  const blob = new Blob([str],{type:'image/svg+xml'});
+  dl(URL.createObjectURL(blob),`stamp-${S.type}.svg`);
+}
+
+/* ── DOWNLOAD PNG (renders SVG to canvas) ── */
+async function downloadPNG(){
+  const svg = buildSVG();
+  const bg = document.createElementNS(ns,'rect');
+  bg.setAttribute('width',svg.getAttribute('width'));
+  bg.setAttribute('height',svg.getAttribute('height'));
+  bg.setAttribute('fill','white');
+  svg.insertBefore(bg,svg.firstChild);
+
+  const str = new XMLSerializer().serializeToString(svg);
+  const w = +svg.getAttribute('width');
+  const h = +svg.getAttribute('height');
+  const scale = 4; // 4× for high-res
+
+  const canvas = document.createElement('canvas');
+  canvas.width  = w*scale;
+  canvas.height = h*scale;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(scale,scale);
+
+  const img = new Image();
+  const blob = new Blob([str],{type:'image/svg+xml;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  img.onload = ()=>{
+    ctx.drawImage(img,0,0);
+    URL.revokeObjectURL(url);
+    dl(canvas.toDataURL('image/png'),`stamp-${S.type}.png`);
+  };
+  img.src = url;
+}
+
+function dl(href,name){
+  const a=document.createElement('a');
+  a.href=href; a.download=name; a.click();
+}
+
+/* ── RESET ── */
+function resetAll(){
+  Object.assign(S,{
+    type:'rect',border:'solid',font:'Courier Prime',color:'#1c1c1c',fs:13,
+    t1:'APPROVED',t2:'',t3:'',
+    rOuter:'OFFICIAL SEAL · COMPANY NAME ·',rC1:'APPROVED',rC2:'2025',
+    dTop:'RECEIVED',dBot:'Admin Office'
+  });
+  // reset UI
+  ['type-card','border-btn','font-btn','swatch'].forEach(cls=>{
+    document.querySelectorAll('.'+cls).forEach(el=>el.classList.remove('active'));
+  });
+  document.querySelector('[data-type="rect"]').classList.add('active');
+  document.querySelector('[data-border="solid"]').classList.add('active');
+  document.querySelector('[data-f="Courier Prime"]').classList.add('active');
+  document.querySelector('[data-color="#1c1c1c"]').classList.add('active');
+  document.getElementById('fs-slider').value=13;
+  document.getElementById('fs-val').textContent='13pt';
+  ['t1','t2','t3','r-outer','r-c1','r-c2','d-top','d-bot'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value=S[id.replace('-','')]||S[{'r-outer':'rOuter','r-c1':'rC1','r-c2':'rC2','d-top':'dTop','d-bot':'dBot'}[id]||id]||'';
+  });
+  // fix the ones with dashes
+  document.getElementById('r-outer').value=S.rOuter;
+  document.getElementById('r-c1').value=S.rC1;
+  document.getElementById('r-c2').value=S.rC2;
+  document.getElementById('d-top').value=S.dTop;
+  document.getElementById('d-bot').value=S.dBot;
+  document.getElementById('sec-text').style.display='';
+  document.getElementById('sec-round').style.display='none';
+  document.getElementById('sec-date').style.display='none';
+  render();
 }
 
 /* ── INIT ── */
