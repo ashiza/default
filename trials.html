@@ -1,43 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Something went terribly wrong - The page you requested has not been found</title>
+    <meta charset="utf-8">
+    <title>Engraving - HD Printing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Meta tags start here: Just copy and paste these lines -->
+    <meta name="description" content="HD Printing is a Windhoek-based laser engraving company.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Meta tags end here -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
+        :root {
+            --brown-main: #8d5524;
+            --brown-dark: #5c2e0a;
+            --brown-light: #e0c7a1;
+            --brown-accent: #b18052;
+        }
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f6f8fa;
-            color: #24292e;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
+
         .container {
-            max-width: 600px;
-            margin: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        h1 {
-            font-size: 50px;
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        p {
-            font-size: 20px;
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        a {
-            color: #0366d6;
+
+        .logo h1 {
+            color: var(--brown-main);
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .nav-links a:hover {
+            color: var(--brown-main);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--brown-main);
+            cursor: pointer;
+        }
+
+        /* Engraving Section with LESS TOP SPACE */
+        .engraving-section {
+            padding: 1.5rem 0 4rem 0; /* reduced top padding from 4rem to 1.5rem */
+            text-align: center;
+        }
+
+        .engraving-section h2:first-of-type {
+            margin-top: 0.5rem; /* reduce top margin above "Timeless Engraving" */
+        }
+
+        .engraving-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem; /* slightly less space below "Timeless Engraving" and "Featured Engraved Gifts" */
+            color: var(--brown-main);
+            font-weight: 700;
+            text-shadow: 1px 2px 7px var(--brown-light);
+        }
+        .engraving-section p {
+            margin-top: 0.2rem;     /* reduce space above "Engraving is more than art" */
+            margin-bottom: 1.3rem;  /* reduce space below this paragraph */
+        }
+        .engraving-section .w3-opacity {
+            color: var(--brown-accent);
+            margin-top: 0.5rem;   /* reduce space above "We are more than stamps!!" */
+            margin-bottom: 1.2rem;
+        }
+
+        .engraving-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 2rem;
+        }
+
+        .engraving-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(141,85,36,0.10);
+            padding: 1.5rem 1rem 1.5rem 1rem;
+            text-align: center;
+        }
+        .engraving-card img {
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            width: 85%;
+            max-width: 270px;
+        }
+        .engraving-card p {
+            margin: 0 0 1rem 0;
+            color: var(--brown-main);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--brown-light);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--brown-main);
+            font-weight: 700;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: var(--brown-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--brown-dark);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #b18052;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            grid-column: 1 / 3;
+        }
+
+        .contact-form button {
+            background-color: var(--brown-main);
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            grid-column: 1 / 3;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--brown-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--brown-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.6rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--brown-dark);
+        }
+
+        .footer p {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .engraving-section h2 {
+                font-size: 2.1rem;
+            }
+            .engraving-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea {
+                grid-column: 1;
+            }
+            .contact-form button {
+                grid-column: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ERROR!</h1>
-        <p><strong>Oops! This page doesn't exist.</strong></p>
-        <p>The page you are looking for might have been removed, renamed, or is temporarily unavailable.</p>
-        <p><a href="https://www.hd.com.na/">Go back to Homepage</a></p>
-    </div>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>OHD Printing</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="http://hd.com.na">Home</a></li>
+                    <li><a href="http://hd.com.na/banner.html">Digital Printing</a></li>
+                    <li> <a href="https://hd.com.na/misc">Miscellaneous</a></li>
+                    <li><a href="http://hd.com.na/mugs">Mugs</a></li>
+                    <li><a href="http://hd.com.na/HDStamps">Stamps</a></li>
+                    <li><a href="http://hd.com.na/badges.html">Badges</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+      <section class="engraving-section" id="engraving">
+     <div class="container">
+            <h2>Timeless Engraving</h2>
+            <p>
+                Engraving is more than art—it's a personal message etched in time. Share your words, love, and meaning on objects that last a lifetime.
+            </p>
+           
+            <h2>Featured Engraved Gifts</h2>
+            <p class="w3-opacity"><i>We are more than stamps!!</i></p>
+            <div class="engraving-grid">
+                <div class="engraving-card">
+                    <img src="Engraving_files/Ring.jpg" alt="Ring holder">
+                    <p>Ring holder</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/welcome.jpg" alt="Home Greeting">
+                    <p>Home Greeting</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" alt="Family collection">
+                    <p>Family collection</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/set.jpg" alt="Key Holders">
+                    <p>Key Holders</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/Table_Runner_Stack_750x500.webp" alt="Table Runner Rack">
+                    <p>Table runner rack</p>
+                </div>
+                <div class="engraving-card">
+                    <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" alt="Timeless Message">
+                    <p>Timeless Message</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us for Custom Engraving</h2>
+            <div class="contact-details">
+                <p>
+                     <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.304189620326952%26panoid%3D71oJKJjRwK8RF1bupf4UzA%26yaw%3D193.41847426878684!7i16384!8i8192!4m14!1m7!3m6!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!2sHD+Prining+and+Signs!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b!3m5!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b?hl=en&entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D">
+                                <i class="fa fa-map-marker"></i> 41 Handelinge street, Corner Hebdrik Isaak Street, Soweto, Katutura, Windhoek, Namibia
+                            </a>
+                    
+                    <br><i class="fa fa-phone"></i> +264 814 705 563
+                    <br><i class="fa fa-envelope"></i> info@hd.com.na 
+                </p>
+            </div>
+            <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required></textarea>
+                <button type="submit">SEND ENQUIRY</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="https://www.facebook.com/HDPrinting.na"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/+264814705563"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+        <p>© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved. Windhoek Namibia.</p>
+    </footer>
+
+
+
+
+<a href="https://wa.me/+264814705563"
+    class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat with us on WhatsApp">
+   <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<style>
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    font-size: 32px;
+    color: white;
+text-decoration: none !important;  
+}
+.whatsapp-float:hover {
+    background-color: #20b955;
+}
+</style>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+        });
+    </script>
 </body>
 </html>
