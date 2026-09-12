@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Engraving - HD Printing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- Meta tags start here: Just copy and paste these lines -->
-    <meta name="description" content="HD Printing is a Windhoek-based laser engraving company.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Meta tags end here -->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Purchase Trodat 4727 self-inking rubber stamps, date stamps, red stamp. Available in Zimbabwe with customization options for logos, dates, and more.">
+    <meta name="keywords" content="trodat 4727, trodat date stamp, self inking date stamp, trodat 4727 dimensions, trodat 4727 rubber stamp, trodat 4727 rubber replacement, red trodat stamp, black stamp, office stamp">
+    <title>Trodat 4727 Dater</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
@@ -16,15 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
     <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
-        :root {
-            --brown-main: #8d5524;
-            --brown-dark: #5c2e0a;
-            --brown-light: #e0c7a1;
-            --brown-accent: #b18052;
-        }
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
@@ -42,7 +32,7 @@
         /* Header */
         .header {
             background-color: #fff;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -56,11 +46,10 @@
         }
 
         .logo h1 {
-            color: var(--brown-main);
+            color: #e53935;
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 700;
-            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -82,148 +71,257 @@
         }
 
         .nav-links a:hover {
-            color: var(--brown-main);
+            color: #e53935;
         }
 
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: var(--brown-main);
+            color: #e53935;
             cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        /* Engraving Section with LESS TOP SPACE */
-        .engraving-section {
-            padding: 1.5rem 0 4rem 0; /* reduced top padding from 4rem to 1.5rem */
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: none;
+            }
+        }
+
+        /* Mobile menu */
+        .nav-links.mobile-active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            width: 100%;
+            z-index: 200;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.mobile-active li {
+            margin: 0.7rem 0;
             text-align: center;
         }
 
-        .engraving-section h2:first-of-type {
-            margin-top: 0.5rem; /* reduce top margin above "Timeless Engraving" */
+        /* Hero Section */
+        .hero {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 1rem 0;
         }
 
-        .engraving-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.2rem; /* slightly less space below "Timeless Engraving" and "Featured Engraved Gifts" */
-            color: var(--brown-main);
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
-            text-shadow: 1px 2px 7px var(--brown-light);
-        }
-        .engraving-section p {
-            margin-top: 0.2rem;     /* reduce space above "Engraving is more than art" */
-            margin-bottom: 1.3rem;  /* reduce space below this paragraph */
-        }
-        .engraving-section .w3-opacity {
-            color: var(--brown-accent);
-            margin-top: 0.5rem;   /* reduce space above "We are more than stamps!!" */
-            margin-bottom: 1.2rem;
+            color: #e53935;
         }
 
-        .engraving-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 2rem;
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
 
-        .engraving-card {
+        .hero-button {
+            display: inline-block;
+            background-color: #e53935;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #c62828;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .product-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #e53935;
+            font-weight: 700;
+        }
+
+        .product-card {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(141,85,36,0.10);
-            padding: 1.5rem 1rem 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 1.5rem;
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
         }
-        .engraving-card img {
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            width: 85%;
-            max-width: 270px;
+
+        .product-info h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #e53935;
+            font-weight: 700;
         }
-        .engraving-card p {
-            margin: 0 0 1rem 0;
-            color: var(--brown-main);
+
+        .product-info h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            color: #333;
             font-weight: 500;
+        }
+
+        .product-info p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            text-align: justify;
+            line-height: 1.7;
+            max-width: 100%;
+        }
+
+        .product-info ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .product-info ul li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .product-info ul li:last-child {
+            border-bottom: none;
         }
 
         /* Contact Section */
         .contact {
-            padding: 4rem 0;
-            background-color: var(--brown-light);
+            padding: 3rem 0;
             text-align: center;
         }
 
         .contact h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--brown-main);
+            color: #e53935;
             font-weight: 700;
         }
 
-        .contact-details {
-            margin-bottom: 2rem;
+        .contact-info {
+            margin-top: 2rem;
         }
 
-        .contact-details p {
-            font-size: 1.1rem;
+        .contact-info p {
+            font-size: 1rem;
             color: #555;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .contact-details a {
-            color: var(--brown-main);
+        .contact-info a {
+            color: #e53935;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .contact-details a:hover {
-            color: var(--brown-dark);
+        .contact-info a:hover {
+            color: #c62828;
         }
 
         .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
-            max-width: 600px;
+            max-width: 400px;
             margin: 0 auto;
         }
 
-        .contact-form div {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-form label {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form button {
             padding: 0.75rem;
-            border: 1px solid #b18052;
-            border-radius: 5px;
             font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            grid-column: 1 / 3;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .contact-form button {
-            background-color: var(--brown-main);
+            background-color: #e53935;
             color: #fff;
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
             transition: background-color 0.3s ease;
-            grid-column: 1 / 3;
         }
 
         .contact-form button:hover {
-            background-color: var(--brown-dark);
+            background-color: #c62828;
         }
 
         /* Footer */
@@ -236,15 +334,14 @@
         }
 
         .footer a {
-            color: var(--brown-main);
+            color: #fff;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.6rem;
+            margin: 0 10px;
             transition: color 0.3s ease;
         }
 
         .footer a:hover {
-            color: var(--brown-dark);
+            color: #e53935;
         }
 
         .footer p {
@@ -252,34 +349,79 @@
             opacity: 0.8;
         }
 
-        /* Responsive Design */
+        /* Large screen optimization */
+        @media (min-width: 1024px) {
+            .product-info {
+                max-width: 1000px;
+                padding: 2rem 3rem;
+            }
+
+            .product-info p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+                max-width: 100%;
+            }
+
+            .product-section {
+                padding: 3rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .product-image-container {
+                height: 500px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .product-info {
+                padding: 1rem;
+                overflow: visible !important;
             }
-            .mobile-menu-button {
-                display: block;
+
+            .product-info p {
+                font-size: 0.95rem;
+                text-align: left !important;
+                overflow: visible !important;
+                word-wrap: break-word !important;
+                word-break: break-word !important;
             }
-            .navbar {
-                justify-content: space-between;
+
+            .product-info ul {
+                max-width: 100% !important;
+                padding-left: 1.5rem !important;
+                overflow: visible !important;
+                word-wrap: break-word !important;
+                word-break: break-word !important;
             }
-            .logo h1 {
-                font-size: 1.2rem;
+
+            .product-info li {
+                overflow: visible !important;
+                word-wrap: break-word !important;
+                word-break: break-word !important;
             }
-            .engraving-section h2 {
-                font-size: 2.1rem;
+
+            .product-image-container {
+                height: 250px;
             }
-            .engraving-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            .product-card {
+                overflow: visible !important;
             }
-            .contact-form {
-                grid-template-columns: 1fr;
+
+            .w3-container.w3-blue.w3-padding-32 {
+                overflow: visible !important;
             }
-            .contact-form textarea {
-                grid-column: 1;
-            }
-            .contact-form button {
-                grid-column: 1;
+
+            .w3-container.w3-blue.w3-padding-32 img {
+                max-width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -289,88 +431,105 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <h1>OHD Printing</h1>
+                    <h1>HD Printing</h1>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="http://hd.com.na">Home</a></li>
-                    <li><a href="http://hd.com.na/banner.html">Digital Printing</a></li>
-                    <li> <a href="https://hd.com.na/misc">Miscellaneous</a></li>
-                    <li><a href="http://hd.com.na/mugs">Mugs</a></li>
-                    <li><a href="http://hd.com.na/HDStamps">Stamps</a></li>
-                    <li><a href="http://hd.com.na/badges.html">Badges</a></li>
+                    <li><a href="hd.com.na">Home</a></li>
+                    <li><a href="hd.com.na/banner.html">Digital Printing</a></li>
+                    <li><a href="hhd.com.na/Engraving.html">Engraving</a></li>
+                    <li><a href="hd.com.na/mugs">Mugs</a></li>
+                    <li><a href="hd.com.na/gift">Corporate Gifts</a></li>
+                    <li><a href="hd.com.na/badges.html">Badges</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu-button">
-                    <i class="fa fa-bars"></i>
+                <div class="mobile-menu-button" aria-label="Open navigation menu" role="button" tabindex="0">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
             </nav>
         </div>
     </header>
 
-      <section class="engraving-section" id="engraving">
-     <div class="container">
-            <h2>Timeless Engraving</h2>
-            <p>
-                Engraving is more than art—it's a personal message etched in time. Share your words, love, and meaning on objects that last a lifetime.
-            </p>
-           
-            <h2>Featured Engraved Gifts</h2>
-            <p class="w3-opacity"><i>We are more than stamps!!</i></p>
-            <div class="engraving-grid">
-                <div class="engraving-card">
-                    <img src="Engraving_files/Ring.jpg" alt="Ring holder">
-                    <p>Ring holder</p>
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Discover more about the Trodat 4727 date stamp</h2>
+            <p>Your features check-point for what to expect.</p>
+            <a href="#product-details" class="hero-button">About the Trodat 4727</a>
+        </div>
+    </section>
+
+    <section class="product-section" id="product-details">
+        <div class="container">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="index_files/4727.jpg" alt="Trodat 4727 Date Stamp" class="product-image">
                 </div>
-                <div class="engraving-card">
-                    <img src="Engraving_files/welcome.jpg" alt="Home Greeting">
-                    <p>Home Greeting</p>
+                <div class="product-info">
+                    <section id="home">
+                        <h2>Trodat 4727</h2>
+                        <p>The Trodat 4727 Self-Inking Stamp is the ultimate solution for businesses, professionals, and individuals looking to simplify their repetitive stamping tasks. This is the globally most sought after product. It's perfect for marking documents, invoices, and personalizing materials, this reliable and eco-friendly stamp guarantees a clean, crisp impression with every use. Known for its versatility and durability, the Trodat 4727 is designed to handle high-volume stamping, making it the go-to choice for anyone who needs frequent, efficient stamping. Trust Trodat to deliver quality and convenience, every time.</p>
+                    </section>
+
+                    <section id="products">
+                        <h3>Trodat 4727 Specification</h3>
+                        <ul>
+                            <li>Max size: 60 x 40 mm</li>
+                            <li>Date size: 4 mm</li>
+                            <li>Self-inking stamp</li>
+                            <li>3 Lines of text on top of the date and below the date</li>
+                            <li>Self inking stamps</li>
+                            <li>Clear and Sharp Impressions</li>
+                            <li>Best Seller Date Stamp</li>
+                            <li>Long-Lasting and Durable</li>
+                        </ul>
+                    </section>
+
+                    
                 </div>
-                <div class="engraving-card">
-                    <img src="Engraving_files/laser-cutting-engraving-idea-4.jpg" alt="Family collection">
-                    <p>Family collection</p>
-                </div>
-                <div class="engraving-card">
-                    <img src="Engraving_files/set.jpg" alt="Key Holders">
-                    <p>Key Holders</p>
-                </div>
-                <div class="engraving-card">
-                    <img src="Engraving_files/Table_Runner_Stack_750x500.webp" alt="Table Runner Rack">
-                    <p>Table runner rack</p>
-                </div>
-                <div class="engraving-card">
-                    <img src="Engraving_files/22.1-D1-Website-ValentinesDayFreeEngraving-Tier4-A-1406x106.webp" alt="Timeless Message">
-                    <p>Timeless Message</p>
-                </div>
+            </div>
+
+            <!-- Subscribe section - matching 2910 -->
+            <div class="w3-container w3-blue w3-padding-32" style="background-color: #e53935; padding: 2rem 0; text-align: center; border-radius: 8px; margin-top: 2rem;">
+                <img src="index_files/cup.png" alt="Cup" style="max-width: 100%; height: auto; border-radius: 8px;">
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Contact Us for Custom Engraving</h2>
-            <div class="contact-details">
-                <p>
-                     <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.304189620326952%26panoid%3D71oJKJjRwK8RF1bupf4UzA%26yaw%3D193.41847426878684!7i16384!8i8192!4m14!1m7!3m6!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!2sHD+Prining+and+Signs!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b!3m5!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b?hl=en&entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <section class="contact-form-section">
+                    <h2>Get in Touch For a Quote</h2>
+                    <p>Let us know which choice you prefer!</p>
+                    <div class="contact-details">
+                        <p>
+                            <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.304189620326952%26panoid%3D71oJKJjRwK8RF1bupf4UzA%26yaw%3D193.41847426878684!7i16384!8i8192!4m14!1m7!3m6!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!2sHD+Prining+and+Signs!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b!3m5!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b?hl=en&entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D">
                                 <i class="fa fa-map-marker"></i> 41 Handelinge street, Corner Hebdrik Isaak Street, Soweto, Katutura, Windhoek, Namibia
                             </a>
-                    
-                    <br><i class="fa fa-phone"></i> +264 814 705 563
-                    <br><i class="fa fa-envelope"></i> info@hd.com.na 
-                </p>
+                            <br>
+                            
+                            <br><i class="fa fa-phone"></i> <a href="tel:+264814705563">+264 814 705 563"</a>
+                            <br><i class="fa fa-envelope"></i>info@hd.com.na
+                        </p>
+                    </div>
+                    <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
+                        <button type="submit">SEND ENQUIRY</button>
+                    </form>
+                    <div class="w3-col s4 w3-justify">
+                        <h4>Find Us</h4>
+                        <p><i class="fa fa-fw fa-map-marker"></i>HD Printing</p>
+                        <p><i class="fa fa-fw fa-phone"></i>+264 814 705 563"</p>
+                        <p><i class="fa fa-fw fa-envelope"></i>info@hd.com.na</p>
+                        <h4>We accept</h4>
+                        <p><i class="fa fa-fw fa-sack-dollar"></i>Cash</p>
+                        <p><i class="fa fa-fw fa-credit-card"></i>Bank Transfers</p>
+                        <br>
+                    </div>
+                </section>
             </div>
-            <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="Name" required>
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
-                <label for="message">Message</label>
-                <textarea id="message" name="Message" rows="5" required></textarea>
-                <button type="submit">SEND ENQUIRY</button>
-            </form>
         </div>
     </section>
 
@@ -384,52 +543,14 @@
         <p>© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved. Windhoek Namibia.</p>
     </footer>
 
-
-
-
-<a href="https://wa.me/+264814705563"
-    class="whatsapp-float"
-   target="_blank"
-   aria-label="Chat with us on WhatsApp">
-   <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<style>
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
-    font-size: 32px;
-    color: white;
-text-decoration: none !important;  
-}
-.whatsapp-float:hover {
-    background-color: #20b955;
-}
-</style>
-
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         const menuButton = document.querySelector('.mobile-menu-button');
         const navLinks = document.querySelector('.nav-links');
+
         menuButton.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.backgroundColor = '#fff';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.right = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.padding = '1rem';
+            navLinks.classList.toggle('mobile-active');
         });
     </script>
 </body>
