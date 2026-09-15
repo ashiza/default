@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD Printing - Mugs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+        }
+
+        .navbar nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #007bff;
+        }
+
+        .page-header {
+            background-color: #e9ecef;
+            color: #333;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero img {
+            width: 100%;
+            display: block;
+            animation: kenburns 10s infinite alternate ease-out;
+        }
+
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(5%, 5%); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+        }
+
+        .mugs-section {
+            padding: 2rem;
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .mugs-section h2 {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .mugs-section p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+
+        .mugs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .mug-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mug-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .mug-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mug-card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .mug-card-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+
+        .mug-card-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .contact-section {
+            background-color: #007bff;
+            color: white;
+            padding: 2rem 1rem; /* Reduced padding */
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 1.75rem; /* Slightly smaller heading */
+            margin-bottom: 0.75rem; /* Reduced margin */
+        }
+
+        .contact-section p {
+            font-size: 1rem; /* Slightly smaller paragraph */
+            opacity: 0.9;
+            margin-bottom: 1rem; /* Reduced margin */
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem; /* Reduced gap */
+            margin-bottom: 1.5rem; /* Reduced margin */
+            font-size: 0.9rem; /* Slightly smaller font */
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-details i {
+            margin-right: 0.3rem; /* Reduced margin */
+        }
+
+        .contact-form {
+            max-width: 400px; /* Reduced max-width */
+            margin: 0 auto;
+            display: grid;
+            gap: 0.75rem; /* Reduced gap */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.6rem; /* Reduced padding */
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem; /* Reduced padding */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem; /* Reduced font size */
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+        }
+
+        .footer p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://zvidhindo.co.zw/">
+                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
+            </a>
+        </div>
+        <nav>
+            <a href="https://hd.com.na">Home</a>
+            <a href="https://hd.com.na/gift">Gifts</a>
+            <a href="https://hd.com.na/Engraving">Engraving</a>
+            <a href="https://hd.com.na/banner">Digital Printing</a>
+            <a href="https://hd.com.na/badges">Badges</a>
+            <a href="https://zhd.com.na/misc">Miscellaneous</a>
+            <a href="https://zhd.com.na/HDStamps">Stamps</a>
+            <a href="https://hd.com.na/contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Custom & Unique Mugs</h1>
+        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. <br> Call us: +264 814 705 563</p>
+        <h2>Explore Our Mug Collection</h2>
+        <p>Whether you need a mug with a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
+        <div class="mugs-grid">
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs-1.webp" alt="Custom Printed Mug">
+                <div class="mug-card-content">
+                    <h3>Personalized Photo Mugs</h3>
+                    <p>Print your favorite memories on a high-quality mug.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs-2_1.webp" alt="Mug with Text">
+                <div class="mug-card-content">
+                    <h3>Quote & Message Mugs</h3>
+                    <p>Start your day with inspiration or share a laugh.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" alt="Color Changing Mug">
+                <div class="mug-card-content">
+                    <h3>Color Changing Mugs</h3>
+                    <p>Watch your design appear as you pour in hot liquid!</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/blackk.webp" alt="Black Custom Mug">
+                <div class="mug-card-content">
+                    <h3>Elegant Black Mugs</h3>
+                    <p>Sleek and stylish for a sophisticated look.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/custom-mugs.webp" alt="Mug Design Ideas">
+                <div class="mug-card-content">
+                    <h3>Design Your Own Mug</h3>
+                    <p>Let your creativity flow and design the perfect mug.</p>
+                </div>
+            </div>
+            <div class="mug-card">
+                <img src="mugs_files/mug.gif" alt="Enjoy Your Coffee Mug">
+                <div class="mug-card-content">
+                    <h3>Gift Mugs</h3>
+                    <p>A thoughtful and practical gift for any occasion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Get Your Custom Mug Today!</h2>
+        <p>Have a design in mind or need a quote? Contact us now!</p>
+        <div class="contact-details">
+            <p><i class="fa fa-map-marker"></i> 41 Handelinge street, Corner Hebdrik Isaak Street, Soweto, Katutura, Windhoek, Namibia
+            <br><i class="fa fa-phone"></i> +264 814 705 563
+            <br><i class="fa fa-envelope"></i>info@hd.com.na</p>
+        </div>
+        <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
+            <button type="submit">SEND ENQUIRY</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <a href="https://www.facebook.com/HDPrinting.na"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/+264814705563"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+        <p>© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved. Windhoek Namibia.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
