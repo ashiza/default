@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HD Printing - Mugs</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap">
+    <title>Gazebos - HD Printing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
         body {
             margin: 0;
@@ -19,334 +22,490 @@
             line-height: 1.6;
         }
 
-        .navbar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
             background-color: #fff;
-            padding: 1rem 2rem;
+            padding: 1rem 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar .logo img {
-            height: 40px;
+        .logo h1 {
+            color: #1565c0;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
-        .navbar nav a {
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
             margin-left: 20px;
+        }
+
+        .nav-links a {
             text-decoration: none;
             color: #555;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .navbar nav a:hover {
-            color: #007bff;
+        .nav-links a:hover {
+            color: #1565c0;
         }
 
-        .page-header {
-            background-color: #e9ecef;
-            color: #333;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
+        .mobile-menu-button {
+            display: none;
+            font-size: 1.5rem;
+            color: #1565c0;
+            cursor: pointer;
         }
 
-        .page-header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 600;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
+        /* Hero Section */
         .hero {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .hero img {
-            width: 100%;
-            display: block;
-            animation: kenburns 10s infinite alternate ease-out;
-        }
-
-        @keyframes kenburns {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.1) translate(5%, 5%); }
-            100% { transform: scale(1) translate(0, 0); }
+            background-color: #e3f2fd;
+            color: #333;
+            text-align: center;
+            padding: 2rem 0 1rem 0;
         }
 
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-        }
-
-        .mugs-section {
-            padding: 2rem;
-            text-align: center;
-            max-width: 960px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .mugs-section h2 {
-            font-size: 2rem;
-            color: #007bff;
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: #1565c0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
             margin-bottom: 1rem;
         }
 
-        .mugs-section p {
-            color: #6c757d;
-            margin-bottom: 1.5rem;
+        .hero-button {
+            display: inline-block;
+            background-color: #1565c0;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
         }
 
-        .mugs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .hero-button:hover {
+            background-color: #0d47a1;
         }
 
-        .mug-card {
-            background-color: #fff;
+        .hero-image {
+            max-width: 60%;
+            margin-top: 1rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Printing Solutions Section */
+        .printing-solutions {
+            padding: 1rem 0 0.5rem 0;
+            text-align: center;
+        }
+
+        .printing-solutions h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1565c0;
+            font-weight: 700;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 1rem;
+        }
+
+        .solution-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .mug-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .solution-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .mug-card img {
+        .solution-image-container {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            overflow: hidden;
             background-color: #f0f0f0;
-            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .mug-card-content {
-            padding: 1rem;
+        .solution-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .solution-info {
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .mug-card-content h3 {
+        .solution-info h3 {
             margin-top: 0;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            color: #1565c0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 4px #e3f2fd;
+        }
+
+        .solution-info p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f1f5fb;
+            padding: 4rem 0 2rem 0;
+        }
+        .gallery h2 {
+            font-size: 2rem;
+            color: #1565c0;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item p {
+            margin: 1rem 0 0 0;
+            color: #1565c0;
+            font-weight: 500;
             font-size: 1.1rem;
-            color: #343a40;
         }
 
-        .mug-card-content p {
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-
-        .contact-section {
-            background-color: #007bff;
-            color: white;
-            padding: 2rem 1rem; /* Reduced padding */
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: #e3f2fd;
             text-align: center;
         }
 
-        .contact-section h2 {
-            font-size: 1.75rem; /* Slightly smaller heading */
-            margin-bottom: 0.75rem; /* Reduced margin */
-        }
-
-        .contact-section p {
-            font-size: 1rem; /* Slightly smaller paragraph */
-            opacity: 0.9;
-            margin-bottom: 1rem; /* Reduced margin */
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1565c0;
+            font-weight: 700;
         }
 
         .contact-details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem; /* Reduced gap */
-            margin-bottom: 1.5rem; /* Reduced margin */
-            font-size: 0.9rem; /* Slightly smaller font */
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
         }
 
         .contact-details a {
-            color: white;
+            color: #1565c0;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            opacity: 0.8;
-        }
-
-        .contact-details i {
-            margin-right: 0.3rem; /* Reduced margin */
+            color: #0d47a1;
         }
 
         .contact-form {
-            max-width: 400px; /* Reduced max-width */
-            margin: 0 auto;
             display: grid;
-            gap: 0.75rem; /* Reduced gap */
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 0.6rem; /* Reduced padding */
-            border: none;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            grid-column: 1 / 3;
         }
 
         .contact-form button {
-            background-color: #28a745;
-            color: white;
+            background-color: #1565c0;
+            color: #fff;
             border: none;
-            padding: 0.6rem 1.2rem; /* Reduced padding */
+            padding: 1rem 2rem;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem; /* Reduced font size */
+            font-weight: 600;
             transition: background-color 0.3s ease;
+            grid-column: 1 / 3;
         }
 
         .contact-form button:hover {
-            background-color: #218838;
+            background-color: #0d47a1;
         }
 
+        /* Footer */
         .footer {
-            background-color: #343a40;
-            color: white;
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            font-size: 0.9rem;
         }
 
-        .footer a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.5rem;
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #fff;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            margin: 0 15px;
+            transition: color 0.3s ease;
         }
 
-        .footer a:hover {
+        .footer-links a:hover {
+            color: #1565c0;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
             opacity: 0.8;
         }
 
-        .footer p {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-image {
+                max-width: 100%;
+            }
+            .solution-grid, .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea {
+                grid-column: 1;
+            }
+            .contact-form button {
+                grid-column: 1;
+            }
         }
     </style>
 </head>
 <body>
-
-    <header class="navbar">
-        <div class="logo">
-            <a href="https://zvidhindo.co.zw/">
-                <img src="index_files/icon.png" alt="One Stamp Shop Logo">
-            </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>HD Printing</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="http://hd.com.na">Home</a></li>
+                    <li><a href="https://hd.com.na/Teardrops">Teardrops</a></li>
+                    <li><a href="https://hd.com.na/Flags">Flags</a></li>
+                    <li><a href="https://hd.com.na/Table">Table Throws</a></li>
+                    <li><a href="https://hd.com.na/pullup">Pull Up</a></li>
+                    <li><a href="https://hd.com.na/barrier">Barrier Covers</a></li>
+                    <li><a href="https://hd.com.na/Arch">Entrance Arch</a></li>
+                    <li><a href="https://hd.com.na/contact">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
         </div>
-        <nav>
-            <a href="https://hd.com.na">Home</a>
-            <a href="https://hd.com.na/gift">Gifts</a>
-            <a href="https://hd.com.na/Engraving">Engraving</a>
-            <a href="https://hd.com.na/banner">Digital Printing</a>
-            <a href="https://hd.com.na/badges">Badges</a>
-            <a href="https://zhd.com.na/misc">Miscellaneous</a>
-            <a href="https://zhd.com.na/HDStamps">Stamps</a>
-            <a href="https://hd.com.na/contact">Contact Us</a>
-        </nav>
     </header>
 
-    <section class="page-header">
-        <h1>Custom & Unique Mugs</h1>
-        <p>Express yourself with a personalized mug for home, work, or as a thoughtful gift. <br> Call us: +264 814 705 563</p>
-        <h2>Explore Our Mug Collection</h2>
-        <p>Whether you need a mug with a custom print, a funny quote, or a color-changing surprise, we've got you covered. Perfect for personal use, gifts, or corporate branding. Start Your Day with a Smile. Get a memorable and unique mug that speaks to you!</p>
-        <div class="mugs-grid">
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs-1.webp" alt="Custom Printed Mug">
-                <div class="mug-card-content">
-                    <h3>Personalized Photo Mugs</h3>
-                    <p>Print your favorite memories on a high-quality mug.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Gazebo Printing Solutions</h2>
+            <p>
+                HD Printing creates premium custom gazebo canopies and branded shelter solutions that keep your business visible at events, markets, exhibitions, and outdoor promotions. From corporate activations to personalised event spaces, our gazebos help you stand out in high-traffic areas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Printing Solutions Section -->
+    <section class="printing-solutions" id="printing-solutions">
+        <div class="container">
+            <h2>Our Gazebo Banner Services</h2>
+            <p>We design and print premium gazebo canopies for businesses that want a strong, professional presence in busy outdoor spaces. <br> Built for durability, visibility, and impact, our gazebo branding solutions are ideal for events, promotions, and display areas.</p>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/gazebo.jpg" alt="Storefront Gazebos" class="solution-image">
+                    </div>
+                    <div class="solution-info">
+                        <h3>Storefront Gazebos</h3>
+                        <p>Bold custom gazebo canopies that boost visibility outside shops, entrances, and retail spaces.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs-2_1.webp" alt="Mug with Text">
-                <div class="mug-card-content">
-                    <h3>Quote & Message Mugs</h3>
-                    <p>Start your day with inspiration or share a laugh.</p>
+
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/gazebo 2.jpg" alt="Event Gazebos" class="solution-image">
+                    </div>
+                    <div class="solution-info">
+                        <h3>Event Gazebos</h3>
+                        <p>Eye-catching branded gazebo shelters designed to make your business stand out at markets, fairs, and promotional events.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/412-YQiRX-L._SR600,315_PIWhiteStrip,BottomLeft,0,35_PIStarRa.png" alt="Color Changing Mug">
-                <div class="mug-card-content">
-                    <h3>Color Changing Mugs</h3>
-                    <p>Watch your design appear as you pour in hot liquid!</p>
-                </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/blackk.webp" alt="Black Custom Mug">
-                <div class="mug-card-content">
-                    <h3>Elegant Black Mugs</h3>
-                    <p>Sleek and stylish for a sophisticated look.</p>
-                </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/custom-mugs.webp" alt="Mug Design Ideas">
-                <div class="mug-card-content">
-                    <h3>Design Your Own Mug</h3>
-                    <p>Let your creativity flow and design the perfect mug.</p>
-                </div>
-            </div>
-            <div class="mug-card">
-                <img src="mugs_files/mug.gif" alt="Enjoy Your Coffee Mug">
-                <div class="mug-card-content">
-                    <h3>Gift Mugs</h3>
-                    <p>A thoughtful and practical gift for any occasion.</p>
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/gazebos3.jpg" alt="Outdoor Gazebos" class="solution-image">
+                    </div>
+                    <div class="solution-info">
+                        <h3>Outdoor Gazebos</h3>
+                        <p>Weather-resistant, high-visibility gazebo covers built for outdoor advertising, roadside visibility, and community events.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact-section">
-        <h2>Get Your Custom Mug Today!</h2>
-        <p>Have a design in mind or need a quote? Contact us now!</p>
-        <div class="contact-details">
-            <p><i class="fa fa-map-marker"></i> 41 Handelinge street, Corner Hebdrik Isaak Street, Soweto, Katutura, Windhoek, Namibia
-            <br><i class="fa fa-phone"></i> +264 814 705 563
-            <br><i class="fa fa-envelope"></i>info@hd.com.na</p>
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2>What gazebo style are you after?</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <p>Retail Gazebos</p>
+            </div>
+            <div class="gallery-item">
+                <p>Festival Gazebos</p>
+            </div>
+            <div class="gallery-item">
+                <p>Promotional Gazebos</p>
+            </div>
+            <div class="gallery-item">
+                <p>Street Gazebos</p>
+            </div>
         </div>
-        <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email" required>
-            <textarea name="Message" rows="3" placeholder="Your Message"></textarea>
-            <button type="submit">SEND ENQUIRY</button>
-        </form>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-details">
+                <p> <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstree...">HD Printing & Signs, Windhoek, Namibia</a>
+                <br><i class="fa fa-phone"></i> +264 814 705 563
+                <br><i class="fa fa-envelope"></i> info@hd.com.na 
+            </div>
+            <form action="https://formspree.io/f/mrgnbgwl" method="post" class="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required></textarea>
+                <button type="submit">SEND ENQUIRY</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <a href="https://www.facebook.com/HDPrinting.na"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
@@ -360,6 +519,21 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
+    <script>
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
 
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
+        });
+    </script>
 </body>
 </html>
