@@ -1,143 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Badges - HD Printing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Throws - HD Printing</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
-        :root {
-            --blue-main: #2962FF;
-            --blue-dark: #0D47A1;
-            --blue-light: #BBDEFB;
-            --grey-bg: #f8f9fa;
-            --text-dark: #333;
-        }
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--grey-bg);
-            color: var(--text-dark);
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
         /* Header */
         .header {
             background-color: #fff;
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo h1 {
-            color: var(--blue-main);
+            color: #1565c0;
             margin: 0;
-            font-size: 1.rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
+
         .nav-links {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
         }
+
         .nav-links li {
             margin-left: 20px;
         }
+
         .nav-links a {
             text-decoration: none;
             color: #555;
             font-weight: 500;
             transition: color 0.3s ease;
         }
+
         .nav-links a:hover {
-            color: var(--blue-main);
+            color: #1565c0;
         }
+
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: var(--blue-main);
+            color: #1565c0;
             cursor: pointer;
         }
+
         /* Hero Section */
         .hero {
-            background-color: var(--grey-bg);
-            color: var(--text-dark);
+            background-color: #e3f2fd;
+            color: #333;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0 1rem 0;
         }
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
+
         .hero h2 {
             font-size: 3rem;
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
-            color: var(--blue-main);
+            color: #1565c0;
         }
+
         .hero p {
             font-size: 1.2rem;
             opacity: 0.9;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
+
         .hero-button {
             display: inline-block;
-            background-color: var(--blue-main);
+            background-color: #1565c0;
             color: #fff;
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
             transition: background-color 0.3s ease;
         }
+
         .hero-button:hover {
-            background-color: var(--blue-dark);
+            background-color: #0d47a1;
         }
+
         .hero-image {
             max-width: 60%;
-            margin-top: 0.6rem;
+            margin-top: 1rem;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Badges Section */
-        .badges-section {
-            padding: 1rem 0;
+        /* Printing Solutions Section */
+        .printing-solutions {
+            padding: 1rem 0 0.5rem 0;
             text-align: center;
         }
 
-        .badges-section h2 {
-            font-size: 0.5rem;
+        .printing-solutions h2 {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: var(--blue-main);
+            color: #1565c0;
             font-weight: 700;
         }
 
-        .badges-grid {
+        .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 1rem;
         }
 
-        .badges-card {
+        .solution-card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -145,14 +157,14 @@
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .badges-card:hover {
+        .solution-card:hover {
             transform: scale(1.03);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .badges-image-container {
+        .solution-image-container {
             width: 100%;
-            height: 250px;
+            height: 200px;
             overflow: hidden;
             background-color: #f0f0f0;
             display: flex;
@@ -160,48 +172,90 @@
             justify-content: center;
         }
 
-        .badges-image {
+        .solution-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             display: block;
         }
 
-        .badges-info {
+        .solution-info {
             padding: 1.5rem;
             text-align: center;
         }
 
-        .badges-info h3 {
+        .solution-info h3 {
             margin-top: 0;
             margin-bottom: 0.75rem;
             font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: 500;
+            color: #1565c0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 4px #e3f2fd;
         }
 
-        .badges-info p {
+        .solution-info p {
             font-size: 1rem;
-            color: #777;
+            color: #555;
             margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f1f5fb;
+            padding: 4rem 0 2rem 0;
+        }
+        .gallery h2 {
+            font-size: 2rem;
+            color: #1565c0;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item p {
+            margin: 1rem 0 0 0;
+            color: #1565c0;
+            font-weight: 500;
+            font-size: 1.1rem;
         }
 
         /* Contact Section */
         .contact {
-            padding: 2rem 0;
-            background-color: #e9ecef;
+            padding: 4rem 0;
+            background-color: #e3f2fd;
             text-align: center;
         }
 
         .contact h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--blue-main);
+            margin-bottom: 1.5rem;
+            color: #1565c0;
             font-weight: 700;
         }
 
         .contact-details {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .contact-details p {
@@ -211,14 +265,14 @@
         }
 
         .contact-details a {
-            color: var(--blue-main);
+            color: #1565c0;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            color: var(--blue-dark);
+            color: #0d47a1;
         }
 
         .contact-form {
@@ -252,7 +306,7 @@
         }
 
         .contact-form button {
-            background-color: var(--blue-main);
+            background-color: #1565c0;
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -264,7 +318,7 @@
         }
 
         .contact-form button:hover {
-            background-color: var(--blue-dark);
+            background-color: #0d47a1;
         }
 
         /* Footer */
@@ -288,7 +342,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--blue-main);
+            color: #1565c0;
         }
 
         .footer-bottom {
@@ -319,8 +373,8 @@
             .hero-image {
                 max-width: 100%;
             }
-            .badges-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            .solution-grid, .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
             .contact-form {
                 grid-template-columns: 1fr;
@@ -331,23 +385,6 @@
             .contact-form button {
                 grid-column: 1;
             }
-        }
-        /* Mobile menu */
-        .nav-links.mobile-active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #fff;
-            width: 100%;
-            z-index: 200;
-            padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .nav-links.mobile-active li {
-            margin: 0.7rem 0;
-            text-align: center;
         }
     </style>
 </head>
@@ -361,13 +398,13 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="http://hd.com.na">Home</a></li>
-                    <li><a href="http://hd.com.na/banner.html">Digital Printing</a></li>
-                    <li><a href="http://hd.com.na/Engraving.html">Engraving</a></li>
-                    <li><a href="http://hd.com.na/mugs">Mugs</a></li>
-                    <li><a href="http://hd.com.na/HDStamps">Stamps</a></li>
-                     <li><a href="http://hd.com.na/misc">Miscellaneous</a></li>
-                    <li><a href="http://hd.com.na/gift">Corporate Gifts</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://hd.com.na/Teardrops">Teardrops</a></li>
+                    <li><a href="https://hd.com.na/Gazebos">Gazebos</a></li>
+                    <li><a href="https://hd.com.na/Flags">Flags</a></li>
+                    <li><a href="https://hd.com.na/pullup">Pull Up</a></li>
+                    <li><a href="https://hd.com.na/barrier">Barrier Covers</a></li>
+                    <li><a href="https://hd.com.na/Arch">Entrance Arch</a></li>
+                    <li><a href="https://hd.com.na/contact">Contact Us</a></li>
                 </ul>
                 <div class="mobile-menu-button">
                     <i class="fa fa-bars"></i>
@@ -379,48 +416,66 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Get Noticed with Custom Badges</h2>
-            <p>High-quality badges for every organization and event.</p>
-       
-            <h2>Explore Our Badge Options</h2>
-            <p>Durable, customizable, and perfect for identification and promotion.</p>
-            <div class="badges-grid">
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/badge%201.webp" alt="Button Badges" class="badges-image">
+            <h2>Custom Table Throw Solutions</h2>
+            <p>
+                HD Printing creates premium custom table throws inspired by your brand, styling but fully customised to your theme, event, or message. From corporate branding to trade shows and promotional events, our table throws deliver impact and professionalism.
+            </p>
+        </div>
+    </section>
+
+    <!-- Printing Solutions Section -->
+    <section class="printing-solutions" id="printing-solutions">
+        <div class="container">
+            <h2>Our Table Throw Services</h2>
+            <p>We design and print premium custom table throws tailored to your business, organisation, or event. Built for visibility and durability, our table throws transform any table into a branded marketing asset. <br> Ideal for exhibitions, conferences, product launches, and corporate events.
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/tablethrow2.jpg" alt="Company Table Throws" class="solution-image">
                     </div>
-                    <div class="badges-info">
-                        <h3>Button Badges</h3>
-                        <p>Classic and versatile badges for any occasion.</p>
-                    </div>
-                </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/badges2.jpg" alt="Pin/Magnetic Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Pin/Magnetic Badges</h3>
-                        <p>Secure and easy-to-use badges with pin or magnetic attachments.</p>
+                    <div class="solution-info">
+                        <h3>Company Table Throws</h3>
+                        <p>Custom table throws adapted to showcase your brand, colours, and corporate identity with professional finishes.</p>
                     </div>
                 </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/product-jpeg.jpg" alt="Laser Printed Badges" class="badges-image">
+
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/table throw.jpg" alt="Event Table Throws" class="solution-image">
                     </div>
-                    <div class="badges-info">
-                        <h3>Laser Printed Badges</h3>
-                        <p>High-resolution badges with precise laser printing.</p>
-                    </div>
-                </div>
-                <div class="badges-card">
-                    <div class="badges-image-container">
-                        <img src="badges_files/src.png" alt="Doom Decorated Badges" class="badges-image">
-                    </div>
-                    <div class="badges-info">
-                        <h3>Doom Decorated Badges</h3>
-                        <p>Unique and durable badges with doom decoration.</p>
+                    <div class="solution-info">
+                        <h3>Event Table Throws</h3>
+                        <p>High-impact table throws designed for trade shows, exhibitions, conferences, product launches, and promotional events.</p>
                     </div>
                 </div>
+                <div class="solution-card">
+                    <div class="solution-image-container">
+                        <img src="church-stamp-seal_files/tablethrow2.jpg" alt="Custom Table Throws" class="solution-image">
+                    </div>
+                    <div class="solution-info">
+                        <h3>Custom Table Throws</h3>
+                        <p>Durable, high-quality custom table throws built for maximum brand visibility at any business event or community gathering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2>What table throw style are you after?</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <p>Conference Table Throws</p>
+            </div>
+            <div class="gallery-item">
+                <p>Events Table Throws</p>
+            </div>
+            <div class="gallery-item">
+                <p>Promotional Table Throws</p>
+            </div>
+            <div class="gallery-item">
+                <p>Trade Show Table Throws</p>
             </div>
         </div>
     </section>
@@ -430,16 +485,11 @@
         <div class="container">
             <h2>Contact Us</h2>
             <div class="contact-details">
-                <p>
-                    <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.304189620326952%26panoid%3D71oJKJjRwK8RF1bupf4UzA%26yaw%3D193.41847426878684!7i16384!8i8192!4m14!1m7!3m6!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!2sHD+Prining+and+Signs!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b!3m5!1s0x1c0b1c505ba37d09:0xefa52db4095d7617!8m2!3d-22.5151063!4d17.0445683!16s%2Fg%2F11c5_tln3b?hl=en&entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D">
-                                <i class="fa fa-map-marker"></i> 41 Handelinge street, Corner Hebdrik Isaak Street, Soweto, Katutura, Windhoek, Namibia
-                            </a>
-                    
-                    <br><i class="fa fa-phone"></i> +264 814 705 563
-                    <br><i class="fa fa-envelope"></i> info@hd.com.na 
-                </p>
+                <p> <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstree...">Visit our HD Printing studio in Windhoek</a>
+                <br><i class="fa fa-phone"></i> +264 814 705 563
+                <br><i class="fa fa-envelope"></i> info@hd.com.na 
             </div>
-            <form action="https://formsubmit.co/info@hd.com.na" method="post" class="contact-form">
+            <form action="https://formspree.io/f/mrgnbgwl" method="post" class="contact-form">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="Name" required>
@@ -468,10 +518,21 @@
 
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script>
         const menuButton = document.querySelector('.mobile-menu-button');
         const navLinks = document.querySelector('.nav-links');
+
         menuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
         });
     </script>
 </body>
