@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Backdrops - HD Printing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="index_files/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
+    <link rel="manifest" href="index_files/site.webmanifest">
+    <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: #1565c0;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1565c0;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            font-size: 1.5rem;
+            color: #1565c0;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #1565c0;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background-color: #f0f0f0;
+        }
+
+        .backdrop-intro {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: #f1f5fb;
+        }
+
+        .backdrop-intro h2 {
+            font-size: 2.5rem;
+            color: #1565c0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .backdrop-intro p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(21, 101, 192, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #1565c0;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #1565c0;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .backdrop-types {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .backdrop-types h2 {
+            font-size: 2.5rem;
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .backdrop-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .backdrop-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .backdrop-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(21, 101, 192, 0.2);
+        }
+
+        .backdrop-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #1565c0;
+        }
+
+        .backdrop-info {
+            padding: 1.5rem;
+        }
+
+        .backdrop-info h3 {
+            color: #1565c0;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .backdrop-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .applications {
+            padding: 4rem 0;
+            background-color: #f1f5fb;
+            text-align: center;
+        }
+
+        .applications h2 {
+            font-size: 2.5rem;
+            color: #1565c0;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .app-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .app-item:hover {
+            background-color: #1565c0;
+            color: #fff;
+        }
+
+        .app-item i {
+            font-size: 2.5rem;
+            color: #1565c0;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .app-item:hover i {
+            color: #fff;
+        }
+
+        .app-item h3 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .process {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .process h2 {
+            font-size: 2.5rem;
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background-color: #1565c0;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            color: #1565c0;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .contact {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-form textarea {
+            grid-column: 1 / 3;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #fff;
+            color: #1565c0;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            grid-column: 1 / 3;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #1565c0;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .backdrop-intro h2,
+            .backdrop-types h2,
+            .applications h2,
+            .process h2 {
+                font-size: 2rem;
+            }
+            .features-grid,
+            .backdrop-showcase,
+            .application-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .contact-form textarea,
+            .contact-form button {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>HD Printing</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="http://hd.com.na">Home</a></li>
+                    <li><a href="https://hd.com.na/Teardrops">Teardrops</a></li>
+                    <li><a href="https://hd.com.na/Gazebos">Gazebos</a></li>
+                    <li><a href="https://hd.com.na/Flags">Flags</a></li>
+                    <li><a href="https://hd.com.na/Table">Table Throws</a></li>
+                    <li><a href="https://hd.com.na/pull">Pull Ups</a></li>
+                    <li><a href="https://hd.com.na/Arch">Entrance Arch</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Professional Backdrops</h2>
+                <p>Premium custom-printed backdrops for events, exhibitions, corporate functions, and photoshoots</p>
+                <a href="#contact" class="hero-button">Get Your Custom Backdrop</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="backdrop-intro">
+        <div class="container">
+            <h2>Why Choose HD Printing Backdrops?</h2>
+            <p>
+                Transform your event space with stunning custom-printed backdrops. Whether you're hosting a corporate event, exhibition, product launch, or photoshoot, our high-quality backdrops deliver vibrant colors, professional finishes, and maximum brand impact.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>HD Quality Printing</h3>
+                    <p>Crystal-clear resolution with vibrant colors that grab attention and showcase your brand perfectly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Custom Sizing</h3>
+                    <p>Design backdrops in any size you need—from intimate photoshoots to large-scale event spaces.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Durable Materials</h3>
+                    <p>Professional-grade fabrics and finishes built to withstand multiple uses and varied conditions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Quick production and delivery timelines to meet your event deadlines with confidence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Full Design Support</h3>
+                    <p>Work with our design team to bring your vision to life or customize our templates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Professional Results</h3>
+                    <p>Elevate your brand presentation with exhibition-quality backdrops at competitive prices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="backdrop-types">
+        <div class="container">
+            <h2>Our Backdrop Styles</h2>
+            <div class="backdrop-showcase">
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Fabric Backdrops</h3>
+                        <p>Wrinkle-free, reusable fabric backdrops perfect for professional photography and events. Easy to store and transport.</p>
+                    </div>
+                </div>
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Corporate Backdrops</h3>
+                        <p>Professional branded backdrops for corporate events, conferences, trade shows, and press conferences with your logo and messaging.</p>
+                    </div>
+                </div>
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Photo Booth Backdrops</h3>
+                        <p>Eye-catching backdrops designed specifically for photo booths and selfie stations at events and weddings.</p>
+                    </div>
+                </div>
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Event Backdrops</h3>
+                        <p>Custom-designed backdrops for weddings, product launches, exhibitions, and special occasion celebrations.</p>
+                    </div>
+                </div>
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Stage Backdrops</h3>
+                        <p>Large-format stage and presentation backdrops for conferences, concerts, award ceremonies, and performances.</p>
+                    </div>
+                </div>
+                <div class="backdrop-card">
+                    <div class="backdrop-image">
+                        <i class="fas fa-shop"></i>
+                    </div>
+                    <div class="backdrop-info">
+                        <h3>Retail Display Backdrops</h3>
+                        <p>High-impact retail and promotional backdrops for store displays, product showcases, and point-of-purchase advertising.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="applications">
+        <div class="container">
+            <h2>Perfect For Any Occasion</h2>
+            <div class="application-grid">
+                <div class="app-item">
+                    <i class="fas fa-ring"></i>
+                    <h3>Weddings</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Corporate Events</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Theatrical Shows</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Trade Shows</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-gift"></i>
+                    <h3>Celebrations</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Graduations</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-music"></i>
+                    <h3>Concerts</h3>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Conferences</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2>Our Simple Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Discuss your vision, event details, size requirements, and design preferences with our team.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design</h3>
+                    <p>We create a custom design mockup for your approval, incorporating your branding and messaging.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Production</h3>
+                    <p>Your backdrop is professionally printed using our high-resolution HD printing technology.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Delivery</h3>
+                    <p>We deliver your finished backdrop with support stands and hardware for easy setup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Order Your Custom Backdrop?</h2>
+            <div class="contact-details">
+                <p><i class="fa fa-map-marker"></i> Windhoek, Namibia</p>
+                <p><i class="fa fa-phone"></i> <a href="tel:+264814705563">+264 814 705 563</a></p>
+                <p><i class="fa fa-envelope"></i> <a href="mailto:info@hd.com.na">info@hd.com.na</a></p>
+            </div>
+            <form action="https://formspree.io/f/mrgnbgwl" method="post" class="contact-form">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="Phone">
+                </div>
+                <div>
+                    <label for="event">Event Type</label>
+                    <input type="text" id="event" name="Event Type" placeholder="e.g., Wedding, Conference">
+                </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" placeholder="Tell us about your backdrop needs..." required></textarea>
+                <button type="submit">REQUEST A QUOTE</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://www.facebook.com/HDPrinting.na" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/+264814705563" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.pinterest.com" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://www.linkedin.com" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved. Windhoek, Namibia.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.backgroundColor = '#fff';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
+            navLinks.style.zIndex = '101';
+        });
+    </script>
+</body>
+</html>
