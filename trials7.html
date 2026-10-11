@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barrier Covers - HD Printing</title>
+    <title>Backdrop Solutions - HD Printing</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="index_files/apple-touch-icon.png">
@@ -11,15 +11,37 @@
     <link rel="icon" type="image/png" sizes="16x16" href="index_files/favicon-16x16.png">
     <link rel="manifest" href="index_files/site.webmanifest">
     <link rel="icon" href="index_files/ico.ico" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="32x32" type="image/x-icon">
-    <link rel="icon" href="index_files/ico.ico" sizes="16x16" type="image/x-icon">
     <style>
+        :root {
+            --primary: #1565c0;
+            --primary-dark: #0d47a1;
+            --secondary: #e3f2fd;
+            --white: #ffffff;
+            --text: #333333;
+            --muted: #555555;
+            --light: #f8f9fa;
+            --panel: #f1f5fb;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light);
+            color: var(--text);
             line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .container {
@@ -29,7 +51,7 @@
         }
 
         .header {
-            background-color: #fff;
+            background-color: var(--white);
             padding: 1rem 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
@@ -41,10 +63,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo h1 {
-            color: #1565c0;
+            color: var(--primary);
             margin: 0;
             font-size: 1.5rem;
             font-weight: 700;
@@ -56,6 +79,7 @@
             padding: 0;
             margin: 0;
             display: flex;
+            align-items: center;
         }
 
         .nav-links li {
@@ -63,190 +87,300 @@
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #555;
+            color: var(--muted);
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #1565c0;
+            color: var(--primary);
         }
 
         .mobile-menu-button {
             display: none;
             font-size: 1.5rem;
-            color: #1565c0;
+            color: var(--primary);
             cursor: pointer;
         }
 
         .hero {
-            background-color: #e3f2fd;
-            color: #333;
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: var(--white);
             text-align: center;
-            padding: 2rem 0 1rem 0;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
+            background-size: 18px 18px;
+            opacity: 0.45;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 0.75rem;
             font-weight: 700;
-            color: #1565c0;
+            letter-spacing: 1px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            max-width: 700px;
         }
 
         .hero-button {
             display: inline-block;
-            background-color: #1565c0;
-            color: #fff;
+            background: var(--white);
+            color: var(--primary);
             padding: 1rem 2rem;
-            text-decoration: none;
             border-radius: 5px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         .hero-button:hover {
-            background-color: #0d47a1;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
         }
 
-        .hero-image {
-            max-width: 60%;
-            margin-top: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .printing-solutions {
-            padding: 1rem 0 0.5rem 0;
+        .intro {
+            padding: 4rem 0;
+            background: var(--panel);
             text-align: center;
         }
 
-        .printing-solutions h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #1565c0;
-            font-weight: 700;
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 1rem;
-        }
-
-        .solution-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .solution-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .solution-image-container {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .solution-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .solution-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .solution-info h3 {
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            font-size: 1.2rem;
-            color: #1565c0;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 4px #e3f2fd;
-        }
-
-        .solution-info p {
-            font-size: 1rem;
-            color: #555;
+        .intro h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary);
             margin-bottom: 1rem;
         }
 
-        .gallery {
-            background: #f1f5fb;
-            padding: 4rem 0 2rem 0;
+        .intro p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1.05rem;
         }
-        .gallery h2 {
-            font-size: 2rem;
-            color: #1565c0;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px var(--shadow);
+            padding: 2rem 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(21,101,192,0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .showcase {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .showcase h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-bottom: 2.5rem;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .show-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .show-card:hover {
+            transform: scale(1.02);
+        }
+
+        .show-image {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .show-info {
+            padding: 1.5rem;
+        }
+
+        .show-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .show-info p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .applications {
+            background: var(--panel);
+            padding: 4rem 0;
             text-align: center;
         }
-        .gallery-grid {
+
+        .applications h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-bottom: 2.5rem;
+        }
+
+        .application-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
+            gap: 18px;
+        }
+
+        .app-item {
+            background: var(--white);
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .app-item:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .app-item i {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .app-item:hover i {
+            color: var(--white);
+        }
+
+        .app-item h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .process {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .process h2 {
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
-        .gallery-item {
-            background: #fff;
-            border-radius: 7px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+
+        .process-step {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            padding-bottom: 1rem;
         }
-        .gallery-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
-        .gallery-item p {
-            margin: 1rem 0 0 0;
-            color: #1565c0;
-            font-weight: 500;
-            font-size: 1.1rem;
+
+        .process-step h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .process-step p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 0.92rem;
         }
 
         .contact {
             padding: 4rem 0;
-            background-color: #e3f2fd;
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: var(--white);
             text-align: center;
         }
 
         .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #1565c0;
-            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            margin-bottom: 1rem;
         }
 
         .contact-details {
@@ -254,74 +388,72 @@
         }
 
         .contact-details p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            margin: 0.5rem 0;
         }
 
         .contact-details a {
-            color: #1565c0;
-            text-decoration: none;
+            color: var(--white);
             font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: #0d47a1;
         }
 
         .contact-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .contact-form div {
             display: flex;
             flex-direction: column;
+            text-align: left;
         }
 
         .contact-form label {
-            font-weight: 500;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 5px;
             font-size: 1rem;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .contact-form textarea {
             grid-column: 1 / 3;
+            resize: vertical;
+            min-height: 120px;
         }
 
         .contact-form button {
-            background-color: #1565c0;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
             grid-column: 1 / 3;
+            background: var(--white);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
         .contact-form button:hover {
-            background-color: #0d47a1;
+            transform: translateY(-2px);
         }
 
         .footer {
-            background-color: #333;
-            color: #fff;
+            background: #1f1f1f;
+            color: var(--white);
             padding: 2rem 0;
             text-align: center;
-            font-size: 0.9rem;
         }
 
         .footer-links {
@@ -329,19 +461,14 @@
         }
 
         .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #1565c0;
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.2rem;
         }
 
         .footer-bottom {
-            margin-top: 1rem;
             opacity: 0.8;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
@@ -351,30 +478,13 @@
             .mobile-menu-button {
                 display: block;
             }
-            .navbar {
-                justify-content: space-between;
-            }
             .logo h1 {
                 font-size: 1.2rem;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .hero-image {
-                max-width: 100%;
-            }
-            .solution-grid, .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
             .contact-form {
                 grid-template-columns: 1fr;
             }
-            .contact-form textarea {
-                grid-column: 1;
-            }
+            .contact-form textarea,
             .contact-form button {
                 grid-column: 1;
             }
@@ -389,16 +499,13 @@
                     <h1>HD Printing</h1>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="http://hd.com.na">Home</a></li>
-                    <li><a href="https://hd.com.na/Teardrops">Teardrops</a></li>
-                    <li><a href="https://hd.com.na/Gazebos">Gazebos</a></li>
-                    <li><a href="https://hd.com.na/Flags">Flags</a></li>
-                    <li><a href="https://hd.com.na/Table">Table Throws</a></li>
-                    <li><a href="https://hd.com.na/pull">Pull Ups/a></li>
-                    <li><a href="https://hd.com.na/Arch">Entrance Arch</a></li>
-                    <li><a href="https://hd.com.na/contact">Contact Us</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#showcase">Backdrops</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#applications">Applications</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
-                <div class="mobile-menu-button">
+                <div class="mobile-menu-button" aria-label="Open menu">
                     <i class="fa fa-bars"></i>
                 </div>
             </nav>
@@ -406,65 +513,145 @@
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h2>Custom Barrier Cover Solutions</h2>
-            <p>
-                HD Printing creates premium custom barrier covers that strengthen your brand visibility, protect public-facing spaces, and turn construction or event barriers into impactful marketing surfaces. From site hoardings to public events, our barrier covers help you communicate clearly and professionally.
-            </p>
-        </div>
-    </section>
-
-    <section class="printing-solutions" id="printing-solutions">
         <div class="container">
-            <h2>Our Barrier Cover Services</h2>
-            <p>We design and print premium custom barrier covers tailored to your business, organisation, construction project, or event. Built for visibility, durability, and impact, our barrier covers transform temporary fencing into polished brand displays that work in any environment.</p>
-            <div class="solution-grid">
-                <div class="solution-card">
-                    <div class="solution-image-container">
-                        <img src="cchurch-stamp-seal_files/backdrop.jpg" alt="Company Barrier Covers" class="solution-image">
-                    </div>
-                    <div class="solution-info">
-                        <h3>Company Barrier Covers</h3>
-                        <p>Custom barrier covers designed to showcase your brand, colours, and corporate identity with clean, professional finishes for worksites and public spaces.</p>
-                    </div>
-                </div>
+            <div class="hero-content">
+                <h2>Custom Backdrop Solutions</h2>
+                <p>Make a strong visual impact with premium custom backdrops for events, exhibitions, corporate branding, and photo moments.</p>
+                <a href="#contact" class="hero-button">Get a Quote</a>
+            </div>
+        </div>
+    </section>
 
-                <div class="solution-card">
-                    <div class="solution-image-container">
-                        <img src="church-stamp-seal_files/backdrop2.jpg" alt="Event Barrier Covers" class="solution-image">
-                    </div>
-                    <div class="solution-info">
-                        <h3>Event Barrier Covers</h3>
-                        <p>High-impact barrier covers designed for festivals, exhibitions, conferences, and promotional events where visibility and branding matter most.</p>
+    <section class="intro" id="services">
+        <div class="container">
+            <h2>Premium Quality Backdrops That Stand Out</h2>
+            <p>HD Printing creates bold, durable, and visually striking backdrops tailored to your brand and event needs. From stage backdrops to photography sets, our solutions help you attract attention and deliver the right impression.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-print"></i></div>
+                    <h3>High-Definition Printing</h3>
+                    <p>Sharp image quality with vibrant colors that keep your branding crisp and professional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h3>Custom Sizes</h3>
+                    <p>From intimate photo booth sets to large event signage, we tailor every backdrop to your required dimensions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hammer"></i></div>
+                    <h3>Durable Materials</h3>
+                    <p>Built to withstand repeated use while maintaining an impressive finish for public-facing environments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Reliable production and delivery to keep your event or campaign on schedule.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Design Support</h3>
+                    <p>Collaborate with our team to align artwork, colors, and branding with your event goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-star"></i></div>
+                    <h3>Professional Finish</h3>
+                    <p>Our backdrops add polish to conferences, launches, activations, and social media-ready moments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase" id="showcase">
+        <div class="container">
+            <h2>Backdrop Styles We Offer</h2>
+            <div class="showcase-grid">
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-image"></i></div>
+                    <div class="show-info">
+                        <h3>Fabric Backdrops</h3>
+                        <p>Clean, wrinkle-resistant materials designed for polished event presentations and photo moments.</p>
                     </div>
                 </div>
-                <div class="solution-card">
-                    <div class="solution-image-container">
-                        <img src="church-stamp-seal_files/backdrop3.jpg" alt="Custom Barrier Covers" class="solution-image">
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-building"></i></div>
+                    <div class="show-info">
+                        <h3>Corporate Backdrops</h3>
+                        <p>Strong branding for conferences, exhibitions, launches, and high-visibility business events.</p>
                     </div>
-                    <div class="solution-info">
-                        <h3>Custom Barrier Covers</h3>
-                        <p>Durable, high-quality custom barrier covers built to maximise brand visibility at construction sites, community spaces, and any outdoor event.</p>
+                </div>
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-camera"></i></div>
+                    <div class="show-info">
+                        <h3>Photo Booth Setups</h3>
+                        <p>Creative booth backdrops tailored for weddings, parties, promotions, and social media content.</p>
+                    </div>
+                </div>
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-microphone"></i></div>
+                    <div class="show-info">
+                        <h3>Stage Backdrops</h3>
+                        <p>Statement graphics for presenters, performers, conferences, and award ceremonies.</p>
+                    </div>
+                </div>
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-shop"></i></div>
+                    <div class="show-info">
+                        <h3>Retail Display Backdrops</h3>
+                        <p>High-impact branded visuals for product displays, in-store activations, and promotional spaces.</p>
+                    </div>
+                </div>
+                <div class="show-card">
+                    <div class="show-image"><i class="fas fa-gift"></i></div>
+                    <div class="show-info">
+                        <h3>Event & Celebration Backdrops</h3>
+                        <p>Perfect for weddings, birthdays, exhibitions, and memorable occasions that deserve standout visuals.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="gallery">
-        <h2>What barrier cover style are you after?</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <p>Construction Barrier Covers</p>
+    <section class="applications" id="applications">
+        <div class="container">
+            <h2>Perfect For Every Occasion</h2>
+            <div class="application-grid">
+                <div class="app-item"><i class="fas fa-briefcase"></i><h3>Corporate Events</h3></div>
+                <div class="app-item"><i class="fas fa-users"></i><h3>Conferences</h3></div>
+                <div class="app-item"><i class="fas fa-camera"></i><h3>Photography</h3></div>
+                <div class="app-item"><i class="fas fa-ring"></i><h3>Weddings</h3></div>
+                <div class="app-item"><i class="fas fa-chart-line"></i><h3>Trade Shows</h3></div>
+                <div class="app-item"><i class="fas fa-music"></i><h3>Concerts</h3></div>
+                <div class="app-item"><i class="fas fa-graduation-cap"></i><h3>Graduations</h3></div>
+                <div class="app-item"><i class="fas fa-gift"></i><h3>Celebrations</h3></div>
             </div>
-            <div class="gallery-item">
-                <p>Event Barrier Covers</p>
-            </div>
-            <div class="gallery-item">
-                <p>Promotional Barrier Covers</p>
-            </div>
-            <div class="gallery-item">
-                <p>Advertising Barrier Covers</p>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Tell us about your event, size requirements, and aesthetic direction.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design</h3>
+                    <p>We prepare a mockup aligned to your brand, theme, and message.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Production</h3>
+                    <p>We print your backdrop on premium, durable materials with attention to detail.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Delivery</h3>
+                    <p>Your finished backdrop is delivered ready for setup and presentation.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -473,10 +660,11 @@
         <div class="container">
             <h2>Contact Us</h2>
             <div class="contact-details">
-                <p> <a href="https://www.google.com/maps/place/HD+Prining+and+Signs/@-22.5149634,17.0445509,3a,75y,193.42h,82.7t/data=!3m7!1e1!3m5!1s71oJKJjRwK8RF1bupf4UzA!2e0!6shttps:%2F%2Fstree[...]
-                <br><i class="fa fa-phone"></i> +264 814 705 563
-                <br><i class="fa fa-envelope"></i> info@hd.com.na 
+                <p><i class="fa fa-map-marker"></i> Windhoek, Namibia</p>
+                <p><i class="fa fa-phone"></i> <a href="tel:+264814705563">+264 814 705 563</a></p>
+                <p><i class="fa fa-envelope"></i> <a href="mailto:info@hd.com.na">info@hd.com.na</a></p>
             </div>
+
             <form action="https://formspree.io/f/mrgnbgwl" method="post" class="contact-form">
                 <div>
                     <label for="name">Name</label>
@@ -494,33 +682,37 @@
     </section>
 
     <footer class="footer">
-        <a href="https://www.facebook.com/HDPrinting.na"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://wa.me/+264814705563"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
-        <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
-        <p>© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved. Windhoek Namibia.</p>
+        <div class="footer-links">
+            <a href="https://www.facebook.com/HDPrinting.na"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/+264814705563"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <div class="footer-bottom">© <span id="currentYear"></span> HD Printing (hd.com.na). All rights reserved.</div>
     </footer>
 
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-    <script>
+
         const menuButton = document.querySelector('.mobile-menu-button');
         const navLinks = document.querySelector('.nav-links');
 
-        menuButton.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.backgroundColor = '#fff';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.right = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.padding = '1rem';
-            navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
-        });
+        if (menuButton && navLinks) {
+            menuButton.addEventListener('click', () => {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.right = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = '#fff';
+                navLinks.style.padding = '1rem';
+                navLinks.style.boxShadow = '0 2px 8px rgba(21,101,192,0.07)';
+            });
+        }
     </script>
 </body>
 </html>
